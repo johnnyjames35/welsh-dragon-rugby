@@ -11,7 +11,7 @@ app.use(express.static('public'));
 let cache = {};
 let cacheTime = {};
 const CACHE_DURATION = 3 * 60 * 60 * 1000;
-const SEASON = 2024;
+const SEASON = 2025;
 
 const TEAM_IDS = {
   wales: 391,
