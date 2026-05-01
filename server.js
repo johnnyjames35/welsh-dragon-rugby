@@ -14,16 +14,16 @@ const CACHE_DURATION = 3 * 60 * 60 * 1000;
 const SEASON = 2024;
 
 const TEAM_IDS = {
-  wales: 3,
-  scarlets: 1016,
-  ospreys: 1017,
-  cardiff: 1018,
-  dragons: 1019
+  wales: 391,
+  scarlets: 397,
+  ospreys: 394,
+  cardiff: 611,
+  dragons: 396
 };
 
 const LEAGUE_IDS = {
-  sixNations: 115,
-  urc: 108,
+  sixNations: 51,
+  urc: 76,
   autumnNationals: 133
 };
 
@@ -99,6 +99,20 @@ app.get('/api/sixnations', async (req, res) => {
 app.get('/api/wales-fixtures', async (req, res) => {
   try {
     const data = await fetchAPI(`games?team=${TEAM_IDS.wales}&season=${SEASON}`);
+    res.json(data || { response: [] });
+  } catch (err) {
+    res.json({ response: [] });
+  }
+});
+
+app.get('/api/team-fixtures', async (req, res) => {
+  try {
+    const team = req.query.team;
+    const teamId = TEAM_IDS[team];
+    if (!teamId) {
+      return res.json({ response: [] });
+    }
+    const data = await fetchAPI(`games?team=${teamId}&season=${SEASON}`);
     res.json(data || { response: [] });
   } catch (err) {
     res.json({ response: [] });
