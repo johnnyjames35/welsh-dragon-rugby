@@ -335,7 +335,7 @@ function renderFixtures(games, containerId) {
       <div class="fixture-date">${formatDate(g.date)}</div>
       <div class="fixture-teams">
         <div class="fixture-home">${home}${isWelsh(home)?'<span class="welsh-badge">WAL</span>':''}</div>
-        <div class="fixture-away">vs ${away}${isWelsh(away)?'<span class="welsh-badge">WAL</span>':''}</div>
+        <div class="fixture-away">vs ${away}</div>
       </div>
       <div class="fixture-score-wrap"><div class="fixture-score ${upcoming?'upcoming':''}">${upcoming?'TBC':score}</div></div>
       <div class="fixture-comp">${comp}</div>
