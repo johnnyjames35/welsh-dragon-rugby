@@ -11,6 +11,7 @@ app.use(express.static('public'));
 let cache = {};
 let cacheTime = {};
 const CACHE_DURATION = 3 * 60 * 60 * 1000;
+const SEASON = 2024;
 
 const TEAM_IDS = {
   wales: 22,
@@ -50,8 +51,7 @@ async function fetchAPI(endpoint) {
 app.get('/api/fixtures', async (req, res) => {
   try {
     const teamId = req.query.team || TEAM_IDS.wales;
-    const season = new Date().getFullYear();
-    const data = await fetchAPI(`games?team=${teamId}&season=${season}`);
+    const data = await fetchAPI(`games?team=${teamId}&season=${SEASON}`);
     res.json(data || { response: [] });
   } catch (err) {
     res.json({ response: [] });
@@ -60,8 +60,7 @@ app.get('/api/fixtures', async (req, res) => {
 
 app.get('/api/standings', async (req, res) => {
   try {
-    const season = new Date().getFullYear();
-    const data = await fetchAPI(`standings?league=${LEAGUE_IDS.urc}&season=${season}`);
+    const data = await fetchAPI(`standings?league=${LEAGUE_IDS.urc}&season=${SEASON}`);
     res.json(data || { response: [] });
   } catch (err) {
     res.json({ response: [] });
@@ -70,8 +69,7 @@ app.get('/api/standings', async (req, res) => {
 
 app.get('/api/sixnations', async (req, res) => {
   try {
-    const season = new Date().getFullYear();
-    const data = await fetchAPI(`standings?league=${LEAGUE_IDS.sixNations}&season=${season}`);
+    const data = await fetchAPI(`standings?league=${LEAGUE_IDS.sixNations}&season=${SEASON}`);
     res.json(data || { response: [] });
   } catch (err) {
     res.json({ response: [] });
@@ -80,8 +78,7 @@ app.get('/api/sixnations', async (req, res) => {
 
 app.get('/api/wales-fixtures', async (req, res) => {
   try {
-    const season = new Date().getFullYear();
-    const data = await fetchAPI(`games?team=${TEAM_IDS.wales}&season=${season}`);
+    const data = await fetchAPI(`games?team=${TEAM_IDS.wales}&season=${SEASON}`);
     res.json(data || { response: [] });
   } catch (err) {
     res.json({ response: [] });
