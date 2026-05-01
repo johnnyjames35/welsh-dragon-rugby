@@ -18,7 +18,9 @@ const TEAM_IDS = {
   scarlets: 397,
   ospreys: 394,
   cardiff: 611,
-  dragons: 396
+  dragons: 396,
+  'wales-u20': 453,
+  'wales-women': 459
 };
 
 const LEAGUE_IDS = {
