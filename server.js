@@ -14,7 +14,7 @@ const CACHE_DURATION = 3 * 60 * 60 * 1000;
 const SEASON = 2024;
 
 const TEAM_IDS = {
-  wales: 22,
+  wales: 3,
   scarlets: 1016,
   ospreys: 1017,
   cardiff: 1018,
@@ -47,6 +47,26 @@ async function fetchAPI(endpoint) {
     return null;
   }
 }
+
+app.get('/api/search-team', async (req, res) => {
+  try {
+    const name = req.query.name || 'Wales';
+    const data = await fetchAPI(`teams?search=${encodeURIComponent(name)}`);
+    res.json(data || { response: [] });
+  } catch (err) {
+    res.json({ response: [] });
+  }
+});
+
+app.get('/api/search-league', async (req, res) => {
+  try {
+    const name = req.query.name || 'Six Nations';
+    const data = await fetchAPI(`leagues?search=${encodeURIComponent(name)}`);
+    res.json(data || { response: [] });
+  } catch (err) {
+    res.json({ response: [] });
+  }
+});
 
 app.get('/api/fixtures', async (req, res) => {
   try {
