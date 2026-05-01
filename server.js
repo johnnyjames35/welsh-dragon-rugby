@@ -48,6 +48,32 @@ async function fetchAPI(endpoint) {
   }
 }
 
+app.get('/api/clear-cache', (req, res) => {
+  cache = {};
+  cacheTime = {};
+  res.json({ message: 'Cache cleared' });
+});
+
+app.get('/api/debug-wales', async (req, res) => {
+  try {
+    const data = await fetchAPI(`games?team=${TEAM_IDS.wales}&season=${SEASON}`);
+    const first = data && data.response && data.response[0];
+    res.json({
+      teamIdUsed: TEAM_IDS.wales,
+      totalGames: data && data.response ? data.response.length : 0,
+      errors: data && data.errors,
+      firstGame: first ? {
+        home: first.teams && first.teams.home && first.teams.home.name,
+        away: first.teams && first.teams.away && first.teams.away.name,
+        league: first.league && first.league.name,
+        date: first.date
+      } : null
+    });
+  } catch (err) {
+    res.json({ error: err.message });
+  }
+});
+
 app.get('/api/search-team', async (req, res) => {
   try {
     const name = req.query.name || 'Wales';
