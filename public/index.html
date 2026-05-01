@@ -20,52 +20,32 @@
     --text-muted:   #5a7a65;
     --border:       rgba(201,168,76,0.2);
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'DM Sans', sans-serif; background: var(--green-deep); color: var(--white); min-height: 100vh; }
-
-  /* ── HEADER ── */
   header { background: var(--green-deep); border-bottom: 2px solid var(--gold); position: relative; overflow: hidden; }
   header::before { content: '🐉'; position: absolute; right: -10px; top: -15px; font-size: 140px; opacity: 0.04; pointer-events: none; transform: scaleX(-1); }
-
   .header-top { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; position: relative; }
   .logo { display: flex; align-items: center; gap: 16px; }
-
-  /* Welsh flag as CSS — white top half, green bottom half, red dragon emoji overlay */
   .logo-shield { width: 46px; height: 46px; border-radius: 8px; background: linear-gradient(135deg, var(--gold), var(--gold-light)); display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; font-size: 11px; font-weight: 900; color: var(--green-deep); letter-spacing: 1px; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px; line-height: 1;
-  }
-
   .logo-text h1 { font-family: 'Cinzel', serif; font-size: 22px; font-weight: 900; letter-spacing: 1px; color: var(--gold-light); line-height: 1.1; }
   .logo-text p { font-size: 11px; color: var(--green-accent); margin-top: 3px; letter-spacing: 0.5px; }
   .header-tagline { font-family: 'Cinzel', serif; font-size: 13px; color: var(--gold); letter-spacing: 1px; }
   .header-flag-strip { height: 4px; background: linear-gradient(90deg, #fff 50%, #00A550 50%); opacity: 0.12; }
-
-  /* ── NAV ── */
   nav { background: var(--green-mid); display: flex; overflow-x: auto; border-top: 1px solid var(--border); }
   nav button { color: var(--off-white); background: none; border: none; border-bottom: 3px solid transparent; padding: 12px 20px; font-size: 13px; font-family: 'DM Sans', sans-serif; font-weight: 600; cursor: pointer; white-space: nowrap; opacity: 0.6; transition: all 0.2s; letter-spacing: 0.3px; }
   nav button:hover { opacity: 0.9; }
   nav button.active { opacity: 1; border-bottom-color: var(--gold); color: var(--gold-light); }
-
-  /* ── LAYOUT ── */
   .container { max-width: 1120px; margin: 0 auto; padding: 24px 16px; }
   .grid { display: grid; grid-template-columns: 1fr 320px; gap: 22px; }
   @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
-
-  /* ── CARDS ── */
   .card { background: var(--green-mid); border-radius: 10px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border); box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
   .card-header { background: linear-gradient(90deg, var(--green-bright), var(--green-mid)); padding: 12px 16px; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px; color: var(--gold-light); border-bottom: 1px solid var(--border); letter-spacing: 0.3px; }
   .card-header .icon { font-size: 15px; }
   .card-body { padding: 0; }
-
-  /* ── SWITCHER TABS ── */
   .switcher { display: flex; gap: 0; border-bottom: 1px solid var(--border); overflow-x: auto; }
   .switcher button { background: none; border: none; border-bottom: 2px solid transparent; padding: 9px 16px; font-size: 12px; font-family: 'DM Sans', sans-serif; font-weight: 600; color: var(--text-muted); cursor: pointer; white-space: nowrap; transition: all 0.2s; letter-spacing: 0.3px; margin-bottom: -1px; }
   .switcher button:hover { color: var(--gold-light); }
   .switcher button.active { color: var(--gold); border-bottom-color: var(--gold); }
-
-  /* ── FIXTURES ── */
   .fixture { display: grid; grid-template-columns: 72px 1fr 72px 76px; align-items: center; padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); gap: 8px; transition: background 0.15s; }
   .fixture:last-child { border-bottom: none; }
   .fixture:hover { background: rgba(255,255,255,0.03); }
@@ -77,8 +57,6 @@
   .fixture-score.upcoming { background: rgba(255,255,255,0.07); color: rgba(248,245,238,0.45); box-shadow: none; }
   .fixture-comp { font-size: 10px; color: var(--green-accent); text-align: right; line-height: 1.4; }
   .welsh-badge { display: inline-block; font-size: 9px; background: rgba(201,168,76,0.15); color: var(--gold); border: 1px solid rgba(201,168,76,0.3); border-radius: 3px; padding: 1px 4px; margin-left: 4px; vertical-align: middle; font-weight: 600; }
-
-  /* ── STANDINGS ── */
   .standings-table { width: 100%; border-collapse: collapse; }
   .standings-table thead tr { background: rgba(0,0,0,0.2); border-bottom: 1px solid var(--border); }
   .standings-table thead th { font-size: 10px; font-weight: 600; color: var(--green-accent); text-transform: uppercase; letter-spacing: 0.8px; padding: 8px 10px; text-align: center; }
@@ -91,8 +69,6 @@
   .standings-table tbody td:nth-child(2) { text-align: left; font-weight: 600; color: var(--white); }
   .standings-table tbody td.pts { font-weight: 700; color: var(--gold); font-size: 13px; }
   .standings-table tbody td.pos { color: var(--text-muted); font-size: 11px; font-weight: 600; }
-
-  /* ── NEXT MATCH ── */
   .next-match { background: linear-gradient(135deg, #0f3524 0%, #0a2318 60%, #1a2a10 100%); border: 1px solid var(--border); border-radius: 10px; padding: 24px 20px; margin-bottom: 22px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.4); position: relative; overflow: hidden; }
   .next-match .label { font-size: 10px; color: var(--green-accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; font-weight: 600; font-family: 'DM Sans', sans-serif; }
   .next-match .teams { font-family: 'Cinzel', serif; font-size: 19px; font-weight: 700; color: var(--white); margin-bottom: 8px; line-height: 1.3; }
@@ -100,41 +76,30 @@
   .next-match .detail { font-size: 12px; color: var(--text-muted); font-family: 'DM Sans', sans-serif; }
   .next-match .countdown { font-family: 'Cinzel', serif; font-size: 36px; font-weight: 900; margin-top: 14px; color: var(--gold); text-shadow: 0 0 20px rgba(201,168,76,0.35); }
   .next-match .countdown-label { font-size: 10px; color: var(--green-accent); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; font-family: 'DM Sans', sans-serif; }
-
-  /* ── TEAM TABS ── */
   .team-tabs { display: flex; gap: 6px; flex-wrap: wrap; padding: 14px 16px 4px; }
   .team-tab { padding: 5px 14px; border-radius: 20px; border: 1.5px solid rgba(255,255,255,0.12); background: transparent; font-size: 12px; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.2s; color: rgba(248,245,238,0.6); font-weight: 500; }
   .team-tab:hover { border-color: var(--gold); color: var(--gold-light); }
   .team-tab.active { background: var(--gold); border-color: var(--gold); color: var(--green-deep); font-weight: 700; }
   #region-fixtures { padding-top: 8px; }
-
-  /* ── SECTION HERO ── */
   .section-hero { background: linear-gradient(135deg, var(--green-bright), var(--green-deep)); border: 1px solid var(--border); border-radius: 10px; padding: 20px 24px; margin-bottom: 20px; display: flex; align-items: center; gap: 16px; }
   .section-hero h2 { font-family: 'Cinzel', serif; font-size: 20px; font-weight: 700; color: var(--gold-light); }
   .section-hero p { font-size: 12px; color: var(--green-accent); margin-top: 3px; }
-
-  /* ── MISC ── */
   .loading { text-align: center; padding: 30px; color: var(--text-muted); font-size: 13px; }
   .error { text-align: center; padding: 20px; color: #d4173a; font-size: 13px; }
   .section { display: none; }
   .section.active { display: block; }
-
-  /* ── FOOTER ── */
   footer { background: var(--green-deep); border-top: 1px solid var(--border); color: var(--text-muted); text-align: center; padding: 24px 16px; font-size: 12px; margin-top: 40px; }
   footer a { color: var(--green-accent); }
   .footer-dragon { font-size: 28px; display: block; margin-bottom: 10px; opacity: 0.5; }
-
   ::-webkit-scrollbar { width: 6px; height: 6px; }
   ::-webkit-scrollbar-track { background: var(--green-deep); }
   ::-webkit-scrollbar-thumb { background: var(--green-accent); border-radius: 3px; }
 </style>
 </head>
 <body>
-
 <header>
   <div class="header-top">
     <div class="logo">
-      
       <div class="logo-shield">WDR</div>
       <div class="logo-text">
         <h1>Welsh Dragon Rugby</h1>
@@ -151,17 +116,15 @@
     <button onclick="showSection('ospreys', event)">Ospreys</button>
     <button onclick="showSection('cardiff', event)">Cardiff Rugby</button>
     <button onclick="showSection('dragons', event)">Dragons</button>
+    <button onclick="showSection('wales-u20', event)">Wales U20</button>
+    <button onclick="showSection('wales-women', event)">Wales Women</button>
     <button onclick="showSection('tables', event)">Tables</button>
   </nav>
 </header>
-
 <div class="container">
-
-  <!-- ══ HOME ══ -->
   <div id="home" class="section active">
     <div class="grid">
       <div>
-        <!-- Next match -->
         <div class="next-match">
           <div class="label">Next Wales Match</div>
           <div id="next-teams" class="teams">Loading...</div>
@@ -169,14 +132,10 @@
           <div id="next-countdown" class="countdown"></div>
           <div id="next-countdown-label" class="countdown-label"></div>
         </div>
-
-        <!-- Wales fixtures -->
         <div class="card">
           <div class="card-header"><span class="icon">📅</span> Recent & upcoming — Wales</div>
           <div class="card-body" id="home-fixtures"><div class="loading">Loading fixtures...</div></div>
         </div>
-
-        <!-- Region fixtures — switchable -->
         <div class="card">
           <div class="card-header"><span class="icon">🏟️</span> Region fixtures</div>
           <div class="team-tabs">
@@ -188,10 +147,7 @@
           <div id="region-fixtures"><div class="loading">Loading...</div></div>
         </div>
       </div>
-
-      <!-- SIDEBAR -->
       <div>
-        <!-- URC standings — switchable between full / Welsh only -->
         <div class="card">
           <div class="card-header"><span class="icon">📊</span> URC standings</div>
           <div class="switcher">
@@ -201,8 +157,6 @@
           <div id="urc-welsh" class="card-body"><div class="loading">Loading...</div></div>
           <div id="urc-full-side" class="card-body" style="display:none"></div>
         </div>
-
-        <!-- Six Nations standings — switchable -->
         <div class="card">
           <div class="card-header"><span class="icon">🏆</span> Six Nations standings</div>
           <div class="switcher">
@@ -215,55 +169,57 @@
       </div>
     </div>
   </div>
-
-  <!-- ══ WALES ══ -->
   <div id="wales" class="section">
     <div class="section-hero">
-      
-      <div>
-        <h2>Wales National Team</h2>
-        <p>All fixtures & results — 2024 season</p>
-      </div>
+      <div><h2>Wales National Team</h2><p>All fixtures & results — 2024 season</p></div>
     </div>
     <div class="card">
       <div class="card-header"><span class="icon">📅</span> All fixtures & results</div>
       <div class="card-body" id="wales-fixtures"><div class="loading">Loading...</div></div>
     </div>
   </div>
-
-  <!-- ══ SCARLETS ══ -->
   <div id="scarlets" class="section">
     <div class="card">
       <div class="card-header"><span class="icon">🏉</span> Scarlets — fixtures & results</div>
       <div class="card-body" id="scarlets-fixtures"><div class="loading">Loading...</div></div>
     </div>
   </div>
-
-  <!-- ══ OSPREYS ══ -->
   <div id="ospreys" class="section">
     <div class="card">
       <div class="card-header"><span class="icon">🏉</span> Ospreys — fixtures & results</div>
       <div class="card-body" id="ospreys-fixtures"><div class="loading">Loading...</div></div>
     </div>
   </div>
-
-  <!-- ══ CARDIFF ══ -->
   <div id="cardiff" class="section">
     <div class="card">
       <div class="card-header"><span class="icon">🏉</span> Cardiff Rugby — fixtures & results</div>
       <div class="card-body" id="cardiff-fixtures"><div class="loading">Loading...</div></div>
     </div>
   </div>
-
-  <!-- ══ DRAGONS ══ -->
   <div id="dragons" class="section">
     <div class="card">
       <div class="card-header"><span class="icon">🏉</span> Dragons RFC — fixtures & results</div>
       <div class="card-body" id="dragons-fixtures"><div class="loading">Loading...</div></div>
     </div>
   </div>
-
-  <!-- ══ TABLES ══ -->
+  <div id="wales-u20" class="section">
+    <div class="section-hero">
+      <div><h2>Wales Under 20s</h2><p>Fixtures & results — 2024 season</p></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span class="icon">🏉</span> Wales U20 — all fixtures & results</div>
+      <div class="card-body" id="wales-u20-fixtures"><div class="loading">Loading...</div></div>
+    </div>
+  </div>
+  <div id="wales-women" class="section">
+    <div class="section-hero">
+      <div><h2>Wales Women</h2><p>Fixtures & results — 2024 season</p></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span class="icon">🏉</span> Wales Women — all fixtures & results</div>
+      <div class="card-body" id="wales-women-fixtures"><div class="loading">Loading...</div></div>
+    </div>
+  </div>
   <div id="tables" class="section">
     <div class="grid">
       <div class="card">
@@ -276,282 +232,53 @@
       </div>
     </div>
   </div>
-
 </div>
-
 <footer>
   <span class="footer-dragon">🐉</span>
   <p>Welsh Dragon Rugby &copy; 2025 &nbsp;|&nbsp; Data: API-Sports &nbsp;|&nbsp; <a href="mailto:hello@welshdragonrugby.co.uk">hello@welshdragonrugby.co.uk</a></p>
   <p style="margin-top:5px;">Celebrating Welsh rugby — Wales · Scarlets · Ospreys · Cardiff Rugby · Dragons</p>
 </footer>
-
 <script>
 const WELSH_TEAMS = ['wales','scarlets','ospreys','cardiff rugby','dragons','cardiff','llanelli'];
 const WELSH_REGION_NAMES = ['scarlets','ospreys','cardiff rugby','dragons','cardiff','llanelli'];
-
-function cleanName(name) {
-  if (!name) return '';
-  return name.replace(/\s+PS$/i, '').trim();
-}
-
-function isWelsh(name) {
-  if (!name) return false;
-  return WELSH_TEAMS.some(t => cleanName(name).toLowerCase().includes(t));
-}
-
-function isWelshRegion(name) {
-  if (!name) return false;
-  return WELSH_REGION_NAMES.some(t => cleanName(name).toLowerCase().includes(t));
-}
-
-function formatDate(dateStr) {
-  if (!dateStr) return '';
-  const d = new Date(dateStr);
-  return d.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
-}
-
-function formatScore(game) {
-  if (!game) return '';
-  const status = game.status?.short;
-  if (status === 'FT' || status === 'AO') {
-    return `${game.scores?.home ?? '-'} - ${game.scores?.away ?? '-'}`;
-  }
-  return 'upcoming';
-}
-
+function cleanName(name) { if (!name) return ''; return name.replace(/\s+PS$/i, '').trim(); }
+function isWelsh(name) { if (!name) return false; return WELSH_TEAMS.some(t => cleanName(name).toLowerCase().includes(t)); }
+function isWelshRegion(name) { if (!name) return false; return WELSH_REGION_NAMES.some(t => cleanName(name).toLowerCase().includes(t)); }
+function formatDate(dateStr) { if (!dateStr) return ''; const d = new Date(dateStr); return d.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' }); }
+function formatScore(game) { if (!game) return ''; const status = game.status?.short; if (status === 'FT' || status === 'AO') { return `${game.scores?.home ?? '-'} - ${game.scores?.away ?? '-'}`; } return 'upcoming'; }
 function renderFixtures(games, containerId) {
   const el = document.getElementById(containerId);
   if (!games || games.length === 0) { el.innerHTML = '<div class="error">No fixtures found</div>'; return; }
   const sorted = [...games].sort((a,b) => new Date(b.date)-new Date(a.date));
   el.innerHTML = sorted.slice(0,20).map(g => {
-    const score = formatScore(g);
-    const upcoming = score === 'upcoming';
-    const home = cleanName(g.teams?.home?.name || '');
-    const away = cleanName(g.teams?.away?.name || '');
-    const comp = (g.league?.name||'')
-      .replace('United Rugby Championship','URC')
-      .replace('Six Nations','6 Nations')
-      .replace('Friendly International','Friendly');
-    return `<div class="fixture">
-      <div class="fixture-date">${formatDate(g.date)}</div>
-      <div class="fixture-teams">
-        <div class="fixture-home">${home}${isWelsh(home)?'<span class="welsh-badge">WAL</span>':''}</div>
-        <div class="fixture-away">vs ${away}</div>
-      </div>
-      <div class="fixture-score-wrap"><div class="fixture-score ${upcoming?'upcoming':''}">${upcoming?'TBC':score}</div></div>
-      <div class="fixture-comp">${comp}</div>
-    </div>`;
+    const score = formatScore(g); const upcoming = score === 'upcoming';
+    const home = cleanName(g.teams?.home?.name || ''); const away = cleanName(g.teams?.away?.name || '');
+    const comp = (g.league?.name||'').replace('United Rugby Championship','URC').replace('Six Nations','6 Nations').replace('Friendly International','Friendly');
+    return `<div class="fixture"><div class="fixture-date">${formatDate(g.date)}</div><div class="fixture-teams"><div class="fixture-home">${home}${isWelsh(home)?'<span class="welsh-badge">WAL</span>':''}</div><div class="fixture-away">vs ${away}</div></div><div class="fixture-score-wrap"><div class="fixture-score ${upcoming?'upcoming':''}">${upcoming?'TBC':score}</div></div><div class="fixture-comp">${comp}</div></div>`;
   }).join('');
 }
-
-// Render full standings table
 function buildStandingsTable(standings, highlightWelsh) {
-  const rows = standings.map((s,i) => {
-    const teamName = cleanName(s.team?.name || s.name || '');
-    const pos = s.position || (i+1);
-    const played = s.games?.played ?? s.played ?? '';
-    const won = s.games?.win?.total ?? s.won ?? '';
-    const lost = s.games?.lose?.total ?? s.lost ?? '';
-    const pts = s.points ?? '';
-    const welsh = highlightWelsh && isWelsh(teamName);
-    return `<tr class="${welsh?'welsh-row':''}">
-      <td class="pos">${pos}</td>
-      <td>${teamName}${welsh?'<span class="welsh-badge" style="margin-left:6px">WAL</span>':''}</td>
-      <td>${played}</td><td>${won}</td><td>${lost}</td>
-      <td class="pts">${pts}</td>
-    </tr>`;
-  }).join('');
-  return `<table class="standings-table">
-    <thead><tr><th>#</th><th>Team</th><th>P</th><th>W</th><th>L</th><th>Pts</th></tr></thead>
-    <tbody>${rows}</tbody>
-  </table>`;
+  const rows = standings.map((s,i) => { const teamName = cleanName(s.team?.name || s.name || ''); const pos = s.position||(i+1); const played = s.games?.played??s.played??''; const won = s.games?.win?.total??s.won??''; const lost = s.games?.lose?.total??s.lost??''; const pts = s.points??''; const welsh = highlightWelsh&&isWelsh(teamName); return `<tr class="${welsh?'welsh-row':''}"><td class="pos">${pos}</td><td>${teamName}${welsh?'<span class="welsh-badge" style="margin-left:6px">WAL</span>':''}</td><td>${played}</td><td>${won}</td><td>${lost}</td><td class="pts">${pts}</td></tr>`; }).join('');
+  return `<table class="standings-table"><thead><tr><th>#</th><th>Team</th><th>P</th><th>W</th><th>L</th><th>Pts</th></tr></thead><tbody>${rows}</tbody></table>`;
 }
-
-// Render Welsh-only subset of URC
 function buildWelshStandings(standings) {
   const welsh = standings.filter(s => isWelshRegion(s.team?.name || s.name || ''));
-  if (welsh.length === 0) return buildStandingsTable(standings, true); // fallback: show all
-  const rows = welsh.map(s => {
-    const teamName = cleanName(s.team?.name || s.name || '');
-    const pos = s.position || '';
-    const played = s.games?.played ?? s.played ?? '';
-    const won = s.games?.win?.total ?? s.won ?? '';
-    const lost = s.games?.lose?.total ?? s.lost ?? '';
-    const pts = s.points ?? '';
-    return `<tr class="welsh-row">
-      <td class="pos">${pos}</td>
-      <td>${teamName} <span class="welsh-badge" style="margin-left:4px">WAL</span></td>
-      <td>${played}</td><td>${won}</td><td>${lost}</td>
-      <td class="pts">${pts}</td>
-    </tr>`;
-  }).join('');
-  return `<table class="standings-table">
-    <thead><tr><th>#</th><th>Team</th><th>P</th><th>W</th><th>L</th><th>Pts</th></tr></thead>
-    <tbody>${rows}</tbody>
-  </table>`;
+  if (welsh.length === 0) return buildStandingsTable(standings, true);
+  const rows = welsh.map(s => { const teamName = cleanName(s.team?.name || s.name || ''); const pos = s.position||''; const played = s.games?.played??s.played??''; const won = s.games?.win?.total??s.won??''; const lost = s.games?.lose?.total??s.lost??''; const pts = s.points??''; return `<tr class="welsh-row"><td class="pos">${pos}</td><td>${teamName} <span class="welsh-badge" style="margin-left:4px">WAL</span></td><td>${played}</td><td>${won}</td><td>${lost}</td><td class="pts">${pts}</td></tr>`; }).join('');
+  return `<table class="standings-table"><thead><tr><th>#</th><th>Team</th><th>P</th><th>W</th><th>L</th><th>Pts</th></tr></thead><tbody>${rows}</tbody></table>`;
 }
-
-function extractStandings(data) {
-  if (!data || !data.response || data.response.length === 0) return null;
-  let s = data.response[0]?.standings?.[0];
-  if (!s || s.length === 0) {
-    if (Array.isArray(data.response) && data.response[0]?.position !== undefined) s = data.response;
-  }
-  if (!s || s.length === 0) {
-    if (Array.isArray(data.response[0])) s = data.response[0];
-  }
-  return (s && s.length > 0) ? s : null;
-}
-
-function renderStandings(data, containerId, highlightWelsh=true) {
-  const el = document.getElementById(containerId);
-  const standings = extractStandings(data);
-  if (!standings) { el.innerHTML = '<div class="error">No standings available</div>'; return; }
-  el.innerHTML = buildStandingsTable(standings, highlightWelsh);
-}
-
-// Cached data
-let urcData = null;
-let snData = null;
-let snPrevData = null;
-
-// Switch URC sidebar between Welsh-only and full
-function switchStandings(panelId, btn) {
-  btn.closest('.card').querySelectorAll('.switcher button').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  const card = btn.closest('.card');
-  card.querySelectorAll('.card-body').forEach(p => p.style.display = 'none');
-  document.getElementById(panelId).style.display = 'block';
-
-  // Populate if empty
-  if (panelId === 'urc-full-side' && urcData) {
-    const standings = extractStandings(urcData);
-    if (standings) document.getElementById('urc-full-side').innerHTML = buildStandingsTable(standings, true);
-  }
-}
-
-// Switch Six Nations year
-function switchSixNations(panelId, btn) {
-  btn.closest('.card').querySelectorAll('.switcher button').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  const card = btn.closest('.card');
-  card.querySelectorAll('.card-body').forEach(p => p.style.display = 'none');
-  document.getElementById(panelId).style.display = 'block';
-
-  if (panelId === 'sn-prev' && !snPrevData) {
-    document.getElementById('sn-prev').innerHTML = '<div class="loading">Loading...</div>';
-    fetch('/api/sixnations?season=2023').then(r=>r.json()).then(d => {
-      snPrevData = d;
-      const standings = extractStandings(d);
-      document.getElementById('sn-prev').innerHTML = standings
-        ? buildStandingsTable(standings, true)
-        : '<div class="error">No data available</div>';
-    });
-  }
-}
-
-function setNextMatch(games) {
-  const teamsEl = document.getElementById('next-teams');
-  const detailEl = document.getElementById('next-detail');
-  const countdownEl = document.getElementById('next-countdown');
-  const countdownLabelEl = document.getElementById('next-countdown-label');
-
-  if (!games || games.length === 0) {
-    teamsEl.className = 'no-match';
-    teamsEl.textContent = 'No upcoming matches scheduled';
-    return;
-  }
-  const now = new Date();
-  const upcoming = games.filter(g => new Date(g.date) > now).sort((a,b) => new Date(a.date)-new Date(b.date));
-  if (upcoming.length === 0) {
-    teamsEl.className = 'no-match';
-    teamsEl.textContent = 'No upcoming matches scheduled';
-    return;
-  }
-  const next = upcoming[0];
-  teamsEl.className = 'teams';
-  teamsEl.textContent = `${next.teams?.home?.name} vs ${next.teams?.away?.name}`;
-  detailEl.textContent = `${next.league?.name||''} · ${formatDate(next.date)}`;
-  const diff = new Date(next.date) - now;
-  const days = Math.floor(diff/(1000*60*60*24));
-  const hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-  countdownEl.textContent = days > 0 ? `${days}d ${hours}h` : `${hours}h`;
-  countdownLabelEl.textContent = 'until kick off';
-}
-
-const teamIds = {wales:391, scarlets:397, ospreys:394, cardiff:611, dragons:396};
-const loadedSections = {};
-
-async function loadFixtures(team, containerId) {
-  try {
-    const res = await fetch(`/api/fixtures?team=${teamIds[team]}`);
-    const data = await res.json();
-    renderFixtures(data.response||[], containerId);
-    return data.response||[];
-  } catch(e) {
-    document.getElementById(containerId).innerHTML = '<div class="error">Could not load fixtures</div>';
-    return [];
-  }
-}
-
-async function loadRegion(team, btn) {
-  document.querySelectorAll('.team-tab').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('region-fixtures').innerHTML = '<div class="loading">Loading...</div>';
-  await loadFixtures(team, 'region-fixtures');
-}
-
-function showSection(name, e) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
-  document.getElementById(name).classList.add('active');
-  if (e && e.target) e.target.classList.add('active');
-  if (!loadedSections[name]) {
-    loadedSections[name] = true;
-    if (name === 'wales') loadFixtures('wales','wales-fixtures');
-    if (name === 'scarlets') loadFixtures('scarlets','scarlets-fixtures');
-    if (name === 'ospreys') loadFixtures('ospreys','ospreys-fixtures');
-    if (name === 'cardiff') loadFixtures('cardiff','cardiff-fixtures');
-    if (name === 'dragons') loadFixtures('dragons','dragons-fixtures');
-    if (name === 'tables') {
-      fetch('/api/standings').then(r=>r.json()).then(d => renderStandings(d,'urc-full'));
-      fetch('/api/sixnations').then(r=>r.json()).then(d => renderStandings(d,'sixnations-full'));
-    }
-  }
-}
-
-async function init() {
-  // Load Wales fixtures
-  const walesGames = await loadFixtures('wales','home-fixtures');
-  setNextMatch(walesGames);
-
-  // Load region fixtures (Scarlets default)
-  loadFixtures('scarlets','region-fixtures');
-
-  // Load URC standings — populate both Welsh and full panels
-  fetch('/api/standings').then(r=>r.json()).then(d => {
-    urcData = d;
-    const standings = extractStandings(d);
-    if (standings) {
-      document.getElementById('urc-welsh').innerHTML = buildWelshStandings(standings);
-      document.getElementById('urc-full-side').innerHTML = buildStandingsTable(standings, true);
-    } else {
-      document.getElementById('urc-welsh').innerHTML = '<div class="error">No standings available</div>';
-    }
-  });
-
-  // Load Six Nations
-  fetch('/api/sixnations').then(r=>r.json()).then(d => {
-    snData = d;
-    const standings = extractStandings(d);
-    if (standings) {
-      document.getElementById('sn-current').innerHTML = buildStandingsTable(standings, true);
-    } else {
-      document.getElementById('sn-current').innerHTML = '<div class="error">No standings available</div>';
-    }
-  });
-}
-
+function extractStandings(data) { if (!data||!data.response||data.response.length===0) return null; let s = data.response[0]?.standings?.[0]; if (!s||s.length===0) { if (Array.isArray(data.response)&&data.response[0]?.position!==undefined) s=data.response; } if (!s||s.length===0) { if (Array.isArray(data.response[0])) s=data.response[0]; } return (s&&s.length>0)?s:null; }
+function renderStandings(data, containerId, highlightWelsh=true) { const el=document.getElementById(containerId); const standings=extractStandings(data); if (!standings) { el.innerHTML='<div class="error">No standings available</div>'; return; } el.innerHTML=buildStandingsTable(standings,highlightWelsh); }
+let urcData=null, snData=null, snPrevData=null;
+function switchStandings(panelId, btn) { btn.closest('.card').querySelectorAll('.switcher button').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); btn.closest('.card').querySelectorAll('.card-body').forEach(p=>p.style.display='none'); document.getElementById(panelId).style.display='block'; if (panelId==='urc-full-side'&&urcData) { const s=extractStandings(urcData); if(s) document.getElementById('urc-full-side').innerHTML=buildStandingsTable(s,true); } }
+function switchSixNations(panelId, btn) { btn.closest('.card').querySelectorAll('.switcher button').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); btn.closest('.card').querySelectorAll('.card-body').forEach(p=>p.style.display='none'); document.getElementById(panelId).style.display='block'; if (panelId==='sn-prev'&&!snPrevData) { document.getElementById('sn-prev').innerHTML='<div class="loading">Loading...</div>'; fetch('/api/sixnations?season=2023').then(r=>r.json()).then(d=>{snPrevData=d;const s=extractStandings(d);document.getElementById('sn-prev').innerHTML=s?buildStandingsTable(s,true):'<div class="error">No data available</div>';}); } }
+function setNextMatch(games) { const teamsEl=document.getElementById('next-teams'); const detailEl=document.getElementById('next-detail'); const countdownEl=document.getElementById('next-countdown'); const countdownLabelEl=document.getElementById('next-countdown-label'); if (!games||games.length===0){teamsEl.className='no-match';teamsEl.textContent='No upcoming matches scheduled';return;} const now=new Date(); const upcoming=games.filter(g=>new Date(g.date)>now).sort((a,b)=>new Date(a.date)-new Date(b.date)); if (upcoming.length===0){teamsEl.className='no-match';teamsEl.textContent='No upcoming matches scheduled';return;} const next=upcoming[0]; teamsEl.className='teams'; teamsEl.textContent=`${next.teams?.home?.name} vs ${next.teams?.away?.name}`; detailEl.textContent=`${next.league?.name||''} · ${formatDate(next.date)}`; const diff=new Date(next.date)-now; const days=Math.floor(diff/(1000*60*60*24)); const hours=Math.floor((diff%(1000*60*60*24))/(1000*60*60)); countdownEl.textContent=days>0?`${days}d ${hours}h`:`${hours}h`; countdownLabelEl.textContent='until kick off'; }
+const teamIds={wales:391,scarlets:397,ospreys:394,cardiff:611,dragons:396,'wales-u20':453,'wales-women':459};
+const loadedSections={};
+async function loadFixtures(team,containerId){try{const res=await fetch(`/api/fixtures?team=${teamIds[team]}`);const data=await res.json();renderFixtures(data.response||[],containerId);return data.response||[];}catch(e){document.getElementById(containerId).innerHTML='<div class="error">Could not load fixtures</div>';return[];}}
+async function loadRegion(team,btn){document.querySelectorAll('.team-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('region-fixtures').innerHTML='<div class="loading">Loading...</div>';await loadFixtures(team,'region-fixtures');}
+function showSection(name,e){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));document.getElementById(name).classList.add('active');if(e&&e.target)e.target.classList.add('active');if(!loadedSections[name]){loadedSections[name]=true;if(name==='wales')loadFixtures('wales','wales-fixtures');if(name==='scarlets')loadFixtures('scarlets','scarlets-fixtures');if(name==='ospreys')loadFixtures('ospreys','ospreys-fixtures');if(name==='cardiff')loadFixtures('cardiff','cardiff-fixtures');if(name==='dragons')loadFixtures('dragons','dragons-fixtures');if(name==='wales-u20')loadFixtures('wales-u20','wales-u20-fixtures');if(name==='wales-women')loadFixtures('wales-women','wales-women-fixtures');if(name==='tables'){fetch('/api/standings').then(r=>r.json()).then(d=>renderStandings(d,'urc-full'));fetch('/api/sixnations').then(r=>r.json()).then(d=>renderStandings(d,'sixnations-full'));}}}
+async function init(){const walesGames=await loadFixtures('wales','home-fixtures');setNextMatch(walesGames);loadFixtures('scarlets','region-fixtures');fetch('/api/standings').then(r=>r.json()).then(d=>{urcData=d;const s=extractStandings(d);if(s){document.getElementById('urc-welsh').innerHTML=buildWelshStandings(s);document.getElementById('urc-full-side').innerHTML=buildStandingsTable(s,true);}else{document.getElementById('urc-welsh').innerHTML='<div class="error">No standings available</div>';}});fetch('/api/sixnations').then(r=>r.json()).then(d=>{snData=d;const s=extractStandings(d);if(s){document.getElementById('sn-current').innerHTML=buildStandingsTable(s,true);}else{document.getElementById('sn-current').innerHTML='<div class="error">No standings available</div>';}});}
 init();
 </script>
 </body>
