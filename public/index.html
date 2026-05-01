@@ -5,152 +5,254 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Welsh Dragon Rugby - Live Scores, Fixtures & Tables</title>
 <meta name="description" content="Live scores, fixtures, results and league tables for Welsh rugby - Wales national team, Scarlets, Ospreys, Cardiff Rugby and Dragons.">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --green-deep:   #0a2318;
+    --green-mid:    #0f3524;
+    --green-bright: #1a5c3a;
+    --green-accent: #2a7a50;
+    --gold:         #c9a84c;
+    --gold-light:   #e2c47a;
+    --gold-pale:    #f5e9c8;
+    --red:          #b5132b;
+    --red-bright:   #d4173a;
+    --white:        #f8f5ee;
+    --off-white:    #ede8de;
+    --text-muted:   #5a7a65;
+    --border:       rgba(201,168,76,0.2);
+  }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; background: #f0ece6; color: #1a1a1a; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--green-deep);
+    color: var(--white);
+    min-height: 100vh;
+  }
 
   /* ── HEADER ── */
-  header { background: #c8102e; color: white; }
+  header {
+    background: var(--green-deep);
+    border-bottom: 2px solid var(--gold);
+    position: relative; overflow: hidden;
+  }
+
+  header::before {
+    content: '🐉';
+    position: absolute; right: -10px; top: -15px;
+    font-size: 140px; opacity: 0.04;
+    pointer-events: none; transform: scaleX(-1);
+  }
+
   .header-top {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 10px 20px;
+    padding: 16px 24px; position: relative;
   }
-  .logo { display: flex; align-items: center; gap: 14px; }
 
-  /* Welsh flag SVG */
+  .logo { display: flex; align-items: center; gap: 16px; }
+
   .welsh-flag-icon {
-    width: 52px; height: 34px; border-radius: 4px;
+    width: 58px; height: 38px; border-radius: 4px;
     overflow: hidden; flex-shrink: 0;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,168,76,0.4);
   }
 
   .logo-text h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px; font-weight: 900; letter-spacing: -0.3px; line-height: 1.1;
+    font-family: 'Cinzel', serif;
+    font-size: 22px; font-weight: 900;
+    letter-spacing: 1px; color: var(--gold-light);
+    text-shadow: 0 1px 8px rgba(0,0,0,0.4); line-height: 1.1;
   }
-  .logo-text p { font-size: 11px; opacity: 0.8; margin-top: 2px; }
-  .header-tagline { font-size: 12px; opacity: 0.8; font-style: italic; text-align: right; }
 
-  nav { background: #a00d26; display: flex; overflow-x: auto; border-top: 1px solid rgba(255,255,255,0.1); }
-  nav button {
-    color: white; background: none; border: none; border-bottom: 3px solid transparent;
-    padding: 11px 18px; font-size: 13px; font-family: 'DM Sans', sans-serif;
-    font-weight: 500; cursor: pointer; white-space: nowrap; opacity: 0.75;
-    transition: all 0.2s;
+  .logo-text p { font-size: 11px; color: var(--green-accent); margin-top: 3px; letter-spacing: 0.5px; }
+
+  .header-tagline {
+    font-family: 'Cinzel', serif;
+    font-size: 13px; color: var(--gold); letter-spacing: 1px;
   }
-  nav button:hover, nav button.active { opacity: 1; border-bottom-color: #ffd700; }
+
+  .header-flag-strip {
+    height: 4px;
+    background: linear-gradient(90deg, #fff 50%, #00A550 50%);
+    opacity: 0.12;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--green-mid);
+    display: flex; overflow-x: auto;
+    border-top: 1px solid var(--border);
+  }
+
+  nav button {
+    color: var(--off-white); background: none; border: none;
+    border-bottom: 3px solid transparent;
+    padding: 12px 20px; font-size: 13px;
+    font-family: 'DM Sans', sans-serif; font-weight: 600;
+    cursor: pointer; white-space: nowrap;
+    opacity: 0.6; transition: all 0.2s; letter-spacing: 0.3px;
+  }
+
+  nav button:hover { opacity: 0.9; }
+  nav button.active { opacity: 1; border-bottom-color: var(--gold); color: var(--gold-light); }
 
   /* ── LAYOUT ── */
-  .container { max-width: 1100px; margin: 0 auto; padding: 20px 16px; }
-
-  .grid { display: grid; grid-template-columns: 1fr 320px; gap: 20px; }
+  .container { max-width: 1120px; margin: 0 auto; padding: 24px 16px; }
+  .grid { display: grid; grid-template-columns: 1fr 320px; gap: 22px; }
   @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
 
   /* ── CARDS ── */
   .card {
-    background: white; border-radius: 10px; overflow: hidden;
-    margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    background: var(--green-mid); border-radius: 10px; overflow: hidden;
+    margin-bottom: 20px; border: 1px solid var(--border);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
   }
+
   .card-header {
-    background: #c8102e; color: white; padding: 11px 16px;
-    font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px;
-    font-family: 'DM Sans', sans-serif;
+    background: linear-gradient(90deg, var(--green-bright), var(--green-mid));
+    padding: 12px 16px; font-size: 13px; font-weight: 600;
+    display: flex; align-items: center; gap: 8px;
+    color: var(--gold-light); border-bottom: 1px solid var(--border);
+    letter-spacing: 0.3px;
   }
+
   .card-header .icon { font-size: 15px; }
   .card-body { padding: 0; }
 
   /* ── FIXTURES ── */
   .fixture {
     display: grid;
-    grid-template-columns: 72px 1fr 70px 80px;
-    align-items: center;
-    padding: 10px 16px;
-    border-bottom: 1px solid #f2ede8;
-    gap: 8px;
+    grid-template-columns: 72px 1fr 72px 76px;
+    align-items: center; padding: 10px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    gap: 8px; transition: background 0.15s;
   }
+
   .fixture:last-child { border-bottom: none; }
-  .fixture-date { font-size: 11px; color: #999; line-height: 1.3; }
-  .fixture-teams { min-width: 0; }
-  .fixture-home { font-size: 13px; font-weight: 600; color: #1a1a1a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .fixture-away { font-size: 12px; color: #777; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .fixture:hover { background: rgba(255,255,255,0.03); }
+
+  .fixture-date { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
+  .fixture-home { font-size: 13px; font-weight: 600; color: var(--white); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .fixture-away { font-size: 12px; color: rgba(248,245,238,0.55); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .fixture-score-wrap { display: flex; justify-content: center; }
+
   .fixture-score {
-    background: #c8102e; color: white;
-    padding: 4px 10px; border-radius: 5px;
+    background: var(--red); color: white;
+    padding: 4px 8px; border-radius: 5px;
     font-size: 12px; font-weight: 700;
-    text-align: center; white-space: nowrap;
-    min-width: 58px;
+    text-align: center; white-space: nowrap; min-width: 60px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
   }
-  .fixture-score.upcoming { background: #e5e0d8; color: #666; }
-  .fixture-comp { font-size: 10px; color: #aaa; text-align: right; line-height: 1.3; }
+
+  .fixture-score.upcoming {
+    background: rgba(255,255,255,0.07);
+    color: rgba(248,245,238,0.45); box-shadow: none;
+  }
+
+  .fixture-comp { font-size: 10px; color: var(--green-accent); text-align: right; line-height: 1.4; }
+
+  .welsh-badge {
+    display: inline-block; font-size: 9px;
+    background: rgba(201,168,76,0.15); color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 3px; padding: 1px 4px;
+    margin-left: 4px; vertical-align: middle; font-weight: 600;
+  }
 
   /* ── STANDINGS ── */
   .standings-table { width: 100%; border-collapse: collapse; }
-  .standings-table thead tr { background: #f7f3ee; }
+
+  .standings-table thead tr { background: rgba(0,0,0,0.2); border-bottom: 1px solid var(--border); }
   .standings-table thead th {
-    font-size: 10px; font-weight: 600; color: #999;
-    text-transform: uppercase; letter-spacing: 0.5px;
-    padding: 8px 10px; text-align: center;
+    font-size: 10px; font-weight: 600; color: var(--green-accent);
+    text-transform: uppercase; letter-spacing: 0.8px; padding: 8px 10px; text-align: center;
   }
   .standings-table thead th:nth-child(2) { text-align: left; }
-  .standings-table tbody tr { border-bottom: 1px solid #f2ede8; }
+
+  .standings-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); transition: background 0.15s; }
   .standings-table tbody tr:last-child { border-bottom: none; }
-  .standings-table tbody tr.welsh-row { background: #fff5f5; border-left: 3px solid #c8102e; }
-  .standings-table tbody td { padding: 8px 10px; font-size: 12px; text-align: center; }
-  .standings-table tbody td:nth-child(2) { text-align: left; font-weight: 600; font-size: 12px; }
-  .standings-table tbody td.pts { font-weight: 700; color: #c8102e; font-size: 13px; }
-  .standings-table tbody td.pos { color: #bbb; font-size: 11px; font-weight: 600; }
+  .standings-table tbody tr:hover { background: rgba(255,255,255,0.03); }
+
+  .standings-table tbody tr.welsh-row {
+    background: rgba(201,168,76,0.06);
+    border-left: 3px solid var(--gold);
+  }
+
+  .standings-table tbody td { padding: 8px 10px; font-size: 12px; text-align: center; color: var(--off-white); }
+  .standings-table tbody td:nth-child(2) { text-align: left; font-weight: 600; color: var(--white); }
+  .standings-table tbody td.pts { font-weight: 700; color: var(--gold); font-size: 13px; }
+  .standings-table tbody td.pos { color: var(--text-muted); font-size: 11px; font-weight: 600; }
+
+  /* ── NEXT MATCH ── */
+  .next-match {
+    background: linear-gradient(135deg, #0f3524 0%, #0a2318 60%, #1a2a10 100%);
+    border: 1px solid var(--border); border-radius: 10px;
+    padding: 24px 20px; margin-bottom: 22px; text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    position: relative; overflow: hidden;
+  }
+
+  .next-match::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c9a84c' fill-opacity='0.03'%3E%3Cpath d='M20 20.5V18h-1v2.5l-2 2V20h-1v3l2.5 2.5V28h1v-2.5l2.5-2.5V20h-1v2.5l-2-2z'/%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .next-match .label { font-size: 10px; color: var(--green-accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; font-weight: 600; }
+  .next-match .teams { font-family: 'Cinzel', serif; font-size: 19px; font-weight: 700; color: var(--white); margin-bottom: 8px; line-height: 1.3; }
+  .next-match .detail { font-size: 12px; color: var(--text-muted); }
+  .next-match .countdown { font-family: 'Cinzel', serif; font-size: 36px; font-weight: 900; margin-top: 14px; color: var(--gold); text-shadow: 0 0 20px rgba(201,168,76,0.35); }
+  .next-match .countdown-label { font-size: 10px; color: var(--green-accent); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
 
   /* ── TEAM TABS ── */
-  .team-tabs { display: flex; gap: 6px; flex-wrap: wrap; padding: 14px 16px 0; }
-  .team-tab {
-    padding: 5px 13px; border-radius: 20px; border: 1.5px solid #ddd;
-    background: white; font-size: 12px; font-family: 'DM Sans', sans-serif;
-    cursor: pointer; transition: all 0.2s; color: #555;
-  }
-  .team-tab:hover { border-color: #c8102e; color: #c8102e; }
-  .team-tab.active { background: #c8102e; border-color: #c8102e; color: white; }
+  .team-tabs { display: flex; gap: 6px; flex-wrap: wrap; padding: 14px 16px 4px; }
 
-  /* ── NEXT MATCH BANNER ── */
-  .next-match {
-    background: linear-gradient(135deg, #c8102e 0%, #8b0000 100%);
-    color: white; border-radius: 10px; padding: 22px 20px;
-    margin-bottom: 20px; text-align: center;
-    box-shadow: 0 2px 8px rgba(200,16,46,0.25);
+  .team-tab {
+    padding: 5px 14px; border-radius: 20px;
+    border: 1.5px solid rgba(255,255,255,0.12);
+    background: transparent; font-size: 12px;
+    font-family: 'DM Sans', sans-serif; cursor: pointer;
+    transition: all 0.2s; color: rgba(248,245,238,0.6); font-weight: 500;
   }
-  .next-match .label {
-    font-size: 10px; opacity: 0.7; text-transform: uppercase;
-    letter-spacing: 1.5px; margin-bottom: 10px;
+
+  .team-tab:hover { border-color: var(--gold); color: var(--gold-light); }
+  .team-tab.active { background: var(--gold); border-color: var(--gold); color: var(--green-deep); font-weight: 700; }
+
+  #region-fixtures { padding-top: 8px; }
+
+  /* ── SECTION HERO ── */
+  .section-hero {
+    background: linear-gradient(135deg, var(--green-bright), var(--green-deep));
+    border: 1px solid var(--border); border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 16px;
   }
-  .next-match .teams {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px; font-weight: 700; margin-bottom: 6px; line-height: 1.2;
-  }
-  .next-match .detail { font-size: 12px; opacity: 0.8; }
-  .next-match .countdown { font-size: 32px; font-weight: 700; margin-top: 14px; color: #ffd700; }
-  .next-match .countdown-label { font-size: 10px; opacity: 0.65; letter-spacing: 1px; text-transform: uppercase; }
+
+  .section-hero img { width: 48px; height: 32px; border-radius: 3px; box-shadow: 0 2px 6px rgba(0,0,0,0.4); }
+  .section-hero h2 { font-family: 'Cinzel', serif; font-size: 20px; font-weight: 700; color: var(--gold-light); }
+  .section-hero p { font-size: 12px; color: var(--green-accent); margin-top: 3px; }
 
   /* ── MISC ── */
-  .loading { text-align: center; padding: 30px; color: #aaa; font-size: 13px; }
-  .error { text-align: center; padding: 20px; color: #c8102e; font-size: 13px; }
+  .loading { text-align: center; padding: 30px; color: var(--text-muted); font-size: 13px; }
+  .error { text-align: center; padding: 20px; color: var(--red-bright); font-size: 13px; }
   .section { display: none; }
   .section.active { display: block; }
-  .welsh-badge {
-    display: inline-block; font-size: 9px; background: #fff0f0;
-    color: #c8102e; border: 1px solid #ffd0d0; border-radius: 3px;
-    padding: 1px 4px; margin-left: 4px; vertical-align: middle;
-  }
 
-  /* region fixtures padding */
-  #region-fixtures { padding-top: 10px; }
-
+  /* ── FOOTER ── */
   footer {
-    background: #1a1a1a; color: #777; text-align: center;
-    padding: 22px 16px; font-size: 12px; margin-top: 40px;
+    background: var(--green-deep); border-top: 1px solid var(--border);
+    color: var(--text-muted); text-align: center;
+    padding: 24px 16px; font-size: 12px; margin-top: 40px;
   }
-  footer a { color: #999; }
-  footer p + p { margin-top: 5px; }
+  footer a { color: var(--green-accent); }
+  .footer-dragon { font-size: 28px; display: block; margin-bottom: 10px; opacity: 0.5; }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--green-deep); }
+  ::-webkit-scrollbar-thumb { background: var(--green-accent); border-radius: 3px; }
 </style>
 </head>
 <body>
@@ -158,19 +260,18 @@
 <header>
   <div class="header-top">
     <div class="logo">
-      <!-- Welsh Flag -->
       <img class="welsh-flag-icon"
            src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Flag_of_Wales.svg/200px-Flag_of_Wales.svg.png"
            alt="Welsh Flag"
-           onerror="this.style.display='none'"
-      />
+           onerror="this.style.display='none'">
       <div class="logo-text">
         <h1>Welsh Dragon Rugby</h1>
         <p>Live scores · Fixtures · Tables</p>
       </div>
     </div>
-    <div class="header-tagline">Cymru am byth 🏴󠁧󠁢󠁷󠁬󠁳󠁿</div>
+    <div class="header-tagline">Cymru am byth</div>
   </div>
+  <div class="header-flag-strip"></div>
   <nav>
     <button class="active" onclick="showSection('home', event)">Home</button>
     <button onclick="showSection('wales', event)">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Wales</button>
@@ -184,11 +285,10 @@
 
 <div class="container">
 
-  <!-- HOME -->
   <div id="home" class="section active">
     <div class="grid">
       <div>
-        <div id="next-match-card" class="next-match">
+        <div class="next-match">
           <div class="label">Next Wales Match</div>
           <div class="teams" id="next-teams">Loading...</div>
           <div class="detail" id="next-detail"></div>
@@ -218,7 +318,6 @@
           <div class="card-header"><span class="icon">📊</span> URC standings — Welsh regions</div>
           <div class="card-body" id="sidebar-standings"><div class="loading">Loading...</div></div>
         </div>
-
         <div class="card">
           <div class="card-header"><span class="icon">🏆</span> Six Nations standings</div>
           <div class="card-body" id="sidebar-sixnations"><div class="loading">Loading...</div></div>
@@ -227,15 +326,17 @@
     </div>
   </div>
 
-  <!-- WALES -->
   <div id="wales" class="section">
+    <div class="section-hero">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Flag_of_Wales.svg/200px-Flag_of_Wales.svg.png" alt="Wales">
+      <div><h2>Wales National Team</h2><p>All fixtures & results — 2024 season</p></div>
+    </div>
     <div class="card">
-      <div class="card-header"><span class="icon">🏴󠁧󠁢󠁷󠁬󠁳󠁿</span> Wales — all fixtures & results</div>
+      <div class="card-header"><span class="icon">🏴󠁧󠁢󠁷󠁬󠁳󠁿</span> All fixtures & results</div>
       <div class="card-body" id="wales-fixtures"><div class="loading">Loading...</div></div>
     </div>
   </div>
 
-  <!-- SCARLETS -->
   <div id="scarlets" class="section">
     <div class="card">
       <div class="card-header"><span class="icon">🏉</span> Scarlets — fixtures & results</div>
@@ -243,7 +344,6 @@
     </div>
   </div>
 
-  <!-- OSPREYS -->
   <div id="ospreys" class="section">
     <div class="card">
       <div class="card-header"><span class="icon">🏉</span> Ospreys — fixtures & results</div>
@@ -251,7 +351,6 @@
     </div>
   </div>
 
-  <!-- CARDIFF -->
   <div id="cardiff" class="section">
     <div class="card">
       <div class="card-header"><span class="icon">🏉</span> Cardiff Rugby — fixtures & results</div>
@@ -259,7 +358,6 @@
     </div>
   </div>
 
-  <!-- DRAGONS -->
   <div id="dragons" class="section">
     <div class="card">
       <div class="card-header"><span class="icon">🏉</span> Dragons RFC — fixtures & results</div>
@@ -267,7 +365,6 @@
     </div>
   </div>
 
-  <!-- TABLES -->
   <div id="tables" class="section">
     <div class="grid">
       <div class="card">
@@ -284,12 +381,13 @@
 </div>
 
 <footer>
-  <p>Welsh Dragon Rugby &copy; 2025 &nbsp;|&nbsp; Data provided by API-Sports &nbsp;|&nbsp; <a href="mailto:hello@welshdragonrugby.co.uk">hello@welshdragonrugby.co.uk</a></p>
-  <p>Celebrating Welsh rugby — Wales, Scarlets, Ospreys, Cardiff Rugby & Dragons</p>
+  <span class="footer-dragon">🐉</span>
+  <p>Welsh Dragon Rugby &copy; 2025 &nbsp;|&nbsp; Data: API-Sports &nbsp;|&nbsp; <a href="mailto:hello@welshdragonrugby.co.uk">hello@welshdragonrugby.co.uk</a></p>
+  <p style="margin-top:5px;">Celebrating Welsh rugby — Wales · Scarlets · Ospreys · Cardiff Rugby · Dragons</p>
 </footer>
 
 <script>
-const WELSH_TEAMS = ['wales', 'scarlets', 'ospreys', 'cardiff rugby', 'dragons', 'cardiff', 'llanelli'];
+const WELSH_TEAMS = ['wales','scarlets','ospreys','cardiff rugby','dragons','cardiff','llanelli'];
 
 function isWelsh(name) {
   if (!name) return false;
@@ -299,7 +397,7 @@ function isWelsh(name) {
 function formatDate(dateStr) {
   if (!dateStr) return '';
   const d = new Date(dateStr);
-  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+  return d.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
 }
 
 function formatScore(game) {
@@ -313,174 +411,123 @@ function formatScore(game) {
 
 function renderFixtures(games, containerId) {
   const el = document.getElementById(containerId);
-  if (!games || games.length === 0) {
-    el.innerHTML = '<div class="error">No fixtures found</div>';
-    return;
-  }
-  const sorted = [...games].sort((a, b) => new Date(b.date) - new Date(a.date));
-  const recent = sorted.slice(0, 20);
-  el.innerHTML = recent.map(g => {
+  if (!games || games.length === 0) { el.innerHTML = '<div class="error">No fixtures found</div>'; return; }
+  const sorted = [...games].sort((a,b) => new Date(b.date)-new Date(a.date));
+  el.innerHTML = sorted.slice(0,20).map(g => {
     const score = formatScore(g);
     const upcoming = score === 'upcoming';
     const home = g.teams?.home?.name || '';
     const away = g.teams?.away?.name || '';
-    const comp = g.league?.name || '';
-    const shortComp = comp.replace('United Rugby Championship', 'URC').replace('Six Nations', '6 Nations').replace('Friendly International', 'Friendly');
-    return `
-      <div class="fixture">
-        <div class="fixture-date">${formatDate(g.date)}</div>
-        <div class="fixture-teams">
-          <div class="fixture-home">${home}${isWelsh(home) ? '<span class="welsh-badge">WAL</span>' : ''}</div>
-          <div class="fixture-away">vs ${away}${isWelsh(away) ? '<span class="welsh-badge">WAL</span>' : ''}</div>
-        </div>
-        <div class="fixture-score-wrap">
-          <div class="fixture-score ${upcoming ? 'upcoming' : ''}">${upcoming ? 'TBC' : score}</div>
-        </div>
-        <div class="fixture-comp">${shortComp}</div>
-      </div>`;
+    const comp = (g.league?.name||'').replace('United Rugby Championship','URC').replace('Six Nations','6 Nations').replace('Friendly International','Friendly');
+    return `<div class="fixture">
+      <div class="fixture-date">${formatDate(g.date)}</div>
+      <div class="fixture-teams">
+        <div class="fixture-home">${home}${isWelsh(home)?'<span class="welsh-badge">WAL</span>':''}</div>
+        <div class="fixture-away">vs ${away}${isWelsh(away)?'<span class="welsh-badge">WAL</span>':''}</div>
+      </div>
+      <div class="fixture-score-wrap"><div class="fixture-score ${upcoming?'upcoming':''}">${upcoming?'TBC':score}</div></div>
+      <div class="fixture-comp">${comp}</div>
+    </div>`;
   }).join('');
 }
 
-// FIXED: handles both flat array and nested standings formats from API
-function renderStandings(data, containerId, highlightWelsh = true) {
+function renderStandings(data, containerId, highlightWelsh=true) {
   const el = document.getElementById(containerId);
-  if (!data || !data.response || data.response.length === 0) {
-    el.innerHTML = '<div class="error">No standings available</div>';
-    return;
-  }
+  if (!data||!data.response||data.response.length===0) { el.innerHTML='<div class="error">No standings available</div>'; return; }
 
-  // Try nested format first: response[0].standings[0]
   let standings = data.response[0]?.standings?.[0];
-
-  // If not found, try flat array: response is the standings directly
-  if (!standings || standings.length === 0) {
-    if (Array.isArray(data.response) && data.response[0]?.position !== undefined) {
-      standings = data.response;
-    }
+  if (!standings||standings.length===0) {
+    if (Array.isArray(data.response) && data.response[0]?.position!==undefined) standings = data.response;
   }
-
-  // Try another nested path: response[0] is the standings array
-  if (!standings || standings.length === 0) {
-    if (Array.isArray(data.response[0])) {
-      standings = data.response[0];
-    }
+  if (!standings||standings.length===0) {
+    if (Array.isArray(data.response[0])) standings = data.response[0];
   }
+  if (!standings||standings.length===0) { el.innerHTML='<div class="error">No standings available</div>'; return; }
 
-  if (!standings || standings.length === 0) {
-    el.innerHTML = '<div class="error">No standings available</div>';
-    return;
-  }
-
-  const rows = standings.map((s, i) => {
-    const teamName = s.team?.name || s.name || '';
-    const pos = s.position || (i + 1);
-    const played = s.games?.played ?? s.played ?? '';
-    const won = s.games?.win?.total ?? s.won ?? '';
-    const lost = s.games?.lose?.total ?? s.lost ?? '';
-    const pts = s.points ?? '';
-    const welsh = highlightWelsh && isWelsh(teamName);
-    return `
-      <tr class="${welsh ? 'welsh-row' : ''}">
-        <td class="pos">${pos}</td>
-        <td>${teamName}${welsh ? ' 🏴󠁧󠁢󠁷󠁬󠁳󠁿' : ''}</td>
-        <td>${played}</td>
-        <td>${won}</td>
-        <td>${lost}</td>
-        <td class="pts">${pts}</td>
-      </tr>`;
+  const rows = standings.map((s,i) => {
+    const teamName = s.team?.name||s.name||'';
+    const pos = s.position||(i+1);
+    const played = s.games?.played??s.played??'';
+    const won = s.games?.win?.total??s.won??'';
+    const lost = s.games?.lose?.total??s.lost??'';
+    const pts = s.points??'';
+    const welsh = highlightWelsh&&isWelsh(teamName);
+    return `<tr class="${welsh?'welsh-row':''}">
+      <td class="pos">${pos}</td>
+      <td>${teamName}${welsh?' 🏴󠁧󠁢󠁷󠁬󠁳󠁿':''}</td>
+      <td>${played}</td><td>${won}</td><td>${lost}</td>
+      <td class="pts">${pts}</td>
+    </tr>`;
   }).join('');
 
-  el.innerHTML = `
-    <table class="standings-table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th style="text-align:left">Team</th>
-          <th>P</th>
-          <th>W</th>
-          <th>L</th>
-          <th>Pts</th>
-        </tr>
-      </thead>
-      <tbody>${rows}</tbody>
-    </table>`;
+  el.innerHTML = `<table class="standings-table">
+    <thead><tr><th>#</th><th>Team</th><th>P</th><th>W</th><th>L</th><th>Pts</th></tr></thead>
+    <tbody>${rows}</tbody>
+  </table>`;
 }
 
 function setNextMatch(games) {
-  if (!games || games.length === 0) {
-    document.getElementById('next-teams').textContent = 'No upcoming matches';
-    return;
-  }
+  if (!games||games.length===0) { document.getElementById('next-teams').textContent='No upcoming matches scheduled'; return; }
   const now = new Date();
-  const upcoming = games
-    .filter(g => new Date(g.date) > now)
-    .sort((a, b) => new Date(a.date) - new Date(b.date));
-  if (upcoming.length === 0) {
-    document.getElementById('next-teams').textContent = 'No upcoming matches';
-    return;
-  }
+  const upcoming = games.filter(g=>new Date(g.date)>now).sort((a,b)=>new Date(a.date)-new Date(b.date));
+  if (upcoming.length===0) { document.getElementById('next-teams').textContent='No upcoming matches scheduled'; return; }
   const next = upcoming[0];
-  document.getElementById('next-teams').textContent =
-    `${next.teams?.home?.name} vs ${next.teams?.away?.name}`;
-  document.getElementById('next-detail').textContent =
-    `${next.league?.name || ''} · ${formatDate(next.date)}`;
-
-  const diff = new Date(next.date) - now;
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  document.getElementById('next-countdown').textContent =
-    days > 0 ? `${days}d ${hours}h` : `${hours}h`;
+  document.getElementById('next-teams').textContent = `${next.teams?.home?.name} vs ${next.teams?.away?.name}`;
+  document.getElementById('next-detail').textContent = `${next.league?.name||''} · ${formatDate(next.date)}`;
+  const diff = new Date(next.date)-now;
+  const days = Math.floor(diff/(1000*60*60*24));
+  const hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  document.getElementById('next-countdown').textContent = days>0?`${days}d ${hours}h`:`${hours}h`;
   document.getElementById('next-countdown-label').textContent = 'until kick off';
 }
 
-const teamIds = { wales: 391, scarlets: 397, ospreys: 394, cardiff: 611, dragons: 396 };
+const teamIds = {wales:391,scarlets:397,ospreys:394,cardiff:611,dragons:396};
 const loadedSections = {};
 
 async function loadFixtures(team, containerId) {
   try {
     const res = await fetch(`/api/fixtures?team=${teamIds[team]}`);
     const data = await res.json();
-    renderFixtures(data.response || [], containerId);
-    return data.response || [];
-  } catch (e) {
-    document.getElementById(containerId).innerHTML = '<div class="error">Could not load fixtures</div>';
+    renderFixtures(data.response||[], containerId);
+    return data.response||[];
+  } catch(e) {
+    document.getElementById(containerId).innerHTML='<div class="error">Could not load fixtures</div>';
     return [];
   }
 }
 
 async function loadRegion(team, btn) {
-  document.querySelectorAll('.team-tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.team-tab').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  document.getElementById('region-fixtures').innerHTML = '<div class="loading">Loading...</div>';
-  await loadFixtures(team, 'region-fixtures');
+  document.getElementById('region-fixtures').innerHTML='<div class="loading">Loading...</div>';
+  await loadFixtures(team,'region-fixtures');
 }
 
 function showSection(name, e) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
   document.getElementById(name).classList.add('active');
-  if (e && e.target) e.target.classList.add('active');
-
+  if (e&&e.target) e.target.classList.add('active');
   if (!loadedSections[name]) {
     loadedSections[name] = true;
-    if (name === 'wales') loadFixtures('wales', 'wales-fixtures');
-    if (name === 'scarlets') loadFixtures('scarlets', 'scarlets-fixtures');
-    if (name === 'ospreys') loadFixtures('ospreys', 'ospreys-fixtures');
-    if (name === 'cardiff') loadFixtures('cardiff', 'cardiff-fixtures');
-    if (name === 'dragons') loadFixtures('dragons', 'dragons-fixtures');
-    if (name === 'tables') {
-      fetch('/api/standings').then(r => r.json()).then(d => renderStandings(d, 'urc-full'));
-      fetch('/api/sixnations').then(r => r.json()).then(d => renderStandings(d, 'sixnations-full'));
+    if (name==='wales') loadFixtures('wales','wales-fixtures');
+    if (name==='scarlets') loadFixtures('scarlets','scarlets-fixtures');
+    if (name==='ospreys') loadFixtures('ospreys','ospreys-fixtures');
+    if (name==='cardiff') loadFixtures('cardiff','cardiff-fixtures');
+    if (name==='dragons') loadFixtures('dragons','dragons-fixtures');
+    if (name==='tables') {
+      fetch('/api/standings').then(r=>r.json()).then(d=>renderStandings(d,'urc-full'));
+      fetch('/api/sixnations').then(r=>r.json()).then(d=>renderStandings(d,'sixnations-full'));
     }
   }
 }
 
 async function init() {
-  const walesGames = await loadFixtures('wales', 'home-fixtures');
+  const walesGames = await loadFixtures('wales','home-fixtures');
   setNextMatch(walesGames);
-  loadFixtures('scarlets', 'region-fixtures');
-  fetch('/api/standings').then(r => r.json()).then(d => renderStandings(d, 'sidebar-standings'));
-  fetch('/api/sixnations').then(r => r.json()).then(d => renderStandings(d, 'sidebar-sixnations'));
+  loadFixtures('scarlets','region-fixtures');
+  fetch('/api/standings').then(r=>r.json()).then(d=>renderStandings(d,'sidebar-standings'));
+  fetch('/api/sixnations').then(r=>r.json()).then(d=>renderStandings(d,'sidebar-sixnations'));
 }
 
 init();
