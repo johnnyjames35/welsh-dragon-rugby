@@ -32,13 +32,9 @@
   .logo { display: flex; align-items: center; gap: 16px; }
 
   /* Welsh flag as CSS — white top half, green bottom half, red dragon emoji overlay */
-  .welsh-flag {
-    width: 58px; height: 38px; border-radius: 4px; flex-shrink: 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,168,76,0.4);
-    background: linear-gradient(to bottom, #fff 50%, #00A550 50%);
+  .logo-shield { width: 46px; height: 46px; border-radius: 8px; background: linear-gradient(135deg, var(--gold), var(--gold-light)); display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; font-size: 11px; font-weight: 900; color: var(--green-deep); letter-spacing: 1px; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
     display: flex; align-items: center; justify-content: center;
     font-size: 22px; line-height: 1;
-    overflow: hidden; position: relative;
   }
 
   .logo-text h1 { font-family: 'Cinzel', serif; font-size: 22px; font-weight: 900; letter-spacing: 1px; color: var(--gold-light); line-height: 1.1; }
@@ -114,7 +110,6 @@
 
   /* ── SECTION HERO ── */
   .section-hero { background: linear-gradient(135deg, var(--green-bright), var(--green-deep)); border: 1px solid var(--border); border-radius: 10px; padding: 20px 24px; margin-bottom: 20px; display: flex; align-items: center; gap: 16px; }
-  .section-hero .flag-sm { width: 48px; height: 32px; border-radius: 3px; background: linear-gradient(to bottom, #fff 50%, #00A550 50%); display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: 0 2px 6px rgba(0,0,0,0.4); }
   .section-hero h2 { font-family: 'Cinzel', serif; font-size: 20px; font-weight: 700; color: var(--gold-light); }
   .section-hero p { font-size: 12px; color: var(--green-accent); margin-top: 3px; }
 
@@ -139,7 +134,8 @@
 <header>
   <div class="header-top">
     <div class="logo">
-      <div class="welsh-flag">🐉</div>
+      
+      <div class="logo-shield">WDR</div>
       <div class="logo-text">
         <h1>Welsh Dragon Rugby</h1>
         <p>Live scores · Fixtures · Tables</p>
@@ -223,7 +219,7 @@
   <!-- ══ WALES ══ -->
   <div id="wales" class="section">
     <div class="section-hero">
-      <div class="flag-sm">🐉</div>
+      
       <div>
         <h2>Wales National Team</h2>
         <p>All fixtures & results — 2024 season</p>
@@ -293,14 +289,19 @@
 const WELSH_TEAMS = ['wales','scarlets','ospreys','cardiff rugby','dragons','cardiff','llanelli'];
 const WELSH_REGION_NAMES = ['scarlets','ospreys','cardiff rugby','dragons','cardiff','llanelli'];
 
+function cleanName(name) {
+  if (!name) return '';
+  return name.replace(/\s+PS$/i, '').trim();
+}
+
 function isWelsh(name) {
   if (!name) return false;
-  return WELSH_TEAMS.some(t => name.toLowerCase().includes(t));
+  return WELSH_TEAMS.some(t => cleanName(name).toLowerCase().includes(t));
 }
 
 function isWelshRegion(name) {
   if (!name) return false;
-  return WELSH_REGION_NAMES.some(t => name.toLowerCase().includes(t));
+  return WELSH_REGION_NAMES.some(t => cleanName(name).toLowerCase().includes(t));
 }
 
 function formatDate(dateStr) {
@@ -325,8 +326,8 @@ function renderFixtures(games, containerId) {
   el.innerHTML = sorted.slice(0,20).map(g => {
     const score = formatScore(g);
     const upcoming = score === 'upcoming';
-    const home = g.teams?.home?.name || '';
-    const away = g.teams?.away?.name || '';
+    const home = cleanName(g.teams?.home?.name || '');
+    const away = cleanName(g.teams?.away?.name || '');
     const comp = (g.league?.name||'')
       .replace('United Rugby Championship','URC')
       .replace('Six Nations','6 Nations')
@@ -346,7 +347,7 @@ function renderFixtures(games, containerId) {
 // Render full standings table
 function buildStandingsTable(standings, highlightWelsh) {
   const rows = standings.map((s,i) => {
-    const teamName = s.team?.name || s.name || '';
+    const teamName = cleanName(s.team?.name || s.name || '');
     const pos = s.position || (i+1);
     const played = s.games?.played ?? s.played ?? '';
     const won = s.games?.win?.total ?? s.won ?? '';
@@ -371,7 +372,7 @@ function buildWelshStandings(standings) {
   const welsh = standings.filter(s => isWelshRegion(s.team?.name || s.name || ''));
   if (welsh.length === 0) return buildStandingsTable(standings, true); // fallback: show all
   const rows = welsh.map(s => {
-    const teamName = s.team?.name || s.name || '';
+    const teamName = cleanName(s.team?.name || s.name || '');
     const pos = s.position || '';
     const played = s.games?.played ?? s.played ?? '';
     const won = s.games?.win?.total ?? s.won ?? '';
