@@ -119,16 +119,19 @@ app.get('/api/debug-wales', async (req, res) => {
 
 // ── STARS OF THE WEEK ─────────────────────────────────────────────────────────
 // Default stars — update via POST /api/admin/stars with secret key
+// REPLACE the starsOfWeek variable in server.js with this block
+// (lines starting with "let starsOfWeek = {" through to the closing "};")
+
 let starsOfWeek = {
-  updatedDate: new Date().toISOString().split('T')[0],
+  updatedDate: '2026-05-04',
   stars: [
     {
       team: 'Wales',
       teamKey: 'wales',
       playerName: 'Tomos Williams',
       position: 'Scrum-half',
-      why: 'Controlled the tempo brilliantly, two try assists and 9 from 9 in the box kick contest.',
-      stats: '9 kicks won | 2 assists | 82% tackle success',
+      why: 'Captaining Gloucester this season and named in the Wales squad for the Nations Championship, Williams has been in outstanding form — his Lions tour try-scoring exploits and consistent Premiership performances make him the standout Welsh player of the moment.',
+      stats: 'Wales Nations Champ. squad | Gloucester captain | Lions tourist 2025',
       rating: 9
     },
     {
@@ -136,35 +139,35 @@ let starsOfWeek = {
       teamKey: 'scarlets',
       playerName: 'Gareth Davies',
       position: 'Scrum-half',
-      why: 'Explosive around the fringes with two tries and relentless work rate throughout.',
-      stats: '2 tries | 67m carries | 100% tackle success',
-      rating: 9
+      why: 'The veteran Scarlets scrum-half continues to pull the strings for the region, providing crucial experience as the Scarlets battle to end the season strongly ahead of a crucial URC run-in.',
+      stats: 'URC regular season | 60+ Wales caps | Scarlets vice-captain',
+      rating: 8
     },
     {
       team: 'Ospreys',
       teamKey: 'ospreys',
-      playerName: 'Alun Wyn Jones',
-      position: 'Lock',
-      why: 'Dominant lineout presence and led from the front with 18 carries in a physical encounter.',
-      stats: '18 carries | 14 tackles | 100% lineout',
+      playerName: 'Morgan Morris',
+      position: 'Number 8',
+      why: 'A powerhouse display in the Welsh derby at Cardiff Arms Park on 24 April. Morris carried hard all night and was central to the Ospreys\'s strong second-half fightback that nearly stole a dramatic result.',
+      stats: 'Welsh derby | Strong carry game | Key in Ospreys fightback',
       rating: 8
     },
     {
       team: 'Cardiff Rugby',
       teamKey: 'cardiff',
-      playerName: 'Josh Adams',
-      position: 'Wing',
-      why: 'Hat-trick hero with clinical finishing and strong aerial contest throughout the match.',
-      stats: '3 tries | 124m | 4 defenders beaten',
-      rating: 10
+      playerName: 'Dan Thomas',
+      position: 'Openside Flanker',
+      why: 'Player of the Match in Cardiff\'s thrilling 24–21 Welsh derby win over Ospreys on 24 April. Thomas was outstanding at the breakdown and led from the front in a vital win that moved Cardiff to 4th in the URC — within touching distance of history.',
+      stats: 'Player of the Match | Welsh derby win | Cardiff 4th in URC',
+      rating: 9
     },
     {
       team: 'Dragons',
       teamKey: 'dragons',
-      playerName: 'Taine Basham',
-      position: 'Flanker',
-      why: 'Tireless display at the breakdown, winning 4 turnovers and making 19 tackles.',
-      stats: '19 tackles | 4 turnovers | 8 carries',
+      playerName: 'Aneurin Owen',
+      position: 'Centre',
+      why: 'The Dragons hero in their brave Challenge Cup semi-final against Montpellier on 3 May. Owen scored twice including a 73rd-minute try that almost pulled off a stunning upset, leaving Montpellier clinging on at the end in a 18–12 defeat.',
+      stats: '2 tries vs Montpellier | Challenge Cup semi-final | Nearly stole it',
       rating: 9
     },
     {
@@ -172,8 +175,8 @@ let starsOfWeek = {
       teamKey: 'world',
       playerName: 'Antoine Dupont',
       position: 'Scrum-half',
-      why: 'Simply unplayable. Two tries, two assists and the best player on the planet in full flow.',
-      stats: '2 tries | 2 assists | 156m | 6 defenders beaten',
+      why: 'The world\'s best player continues to dazzle for Toulouse as they chase another Top 14 title. Dupont is already building excitement ahead of France\'s Nations Championship campaign where he will be Wales\'s biggest threat in 2026.',
+      stats: 'World #1 ranked player | Toulouse Top 14 title race | Nations Champ. threat',
       rating: 10
     }
   ]
