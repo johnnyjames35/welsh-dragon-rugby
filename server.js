@@ -14,7 +14,7 @@ app.use(express.json());
 let cache = {};
 let cacheTime = {};
 const CACHE_DURATION = 3 * 60 * 60 * 1000;
-const SEASON = 2025;
+const SEASON = 2024;
 
 const TEAM_IDS = {
   wales: 391, scarlets: 397, ospreys: 394,
