@@ -259,7 +259,7 @@
       bottom: 0;
       width: 60px;
       pointer-events: none;
-      z-index: 999;
+      z-index: 0;
     }
     body::before {
       left: 0;
@@ -271,13 +271,45 @@
       background: linear-gradient(270deg, rgba(0,0,0,0.35) 0%, transparent 100%);
       border-left: 1px solid rgba(201,168,76,0.12);
     }
-    #particle-canvas {
+    #rugby-ball-bg {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      bottom: -80px;
+      right: -80px;
+      width: 600px;
+      height: 600px;
+      background: url('rugby-ball-bg.png') no-repeat center center;
+      background-size: contain;
+      opacity: 0.10;
       pointer-events: none;
-      z-index: 998;
-      opacity: 0.45;
+      z-index: 0;
+    }
+
+    #dragon-bg {
+      position: fixed;
+      left: -120px;
+      top: 120px;
+      width: 700px;
+      height: 700px;
+      background: url('ChatGPT Image May 8, 2026, 10_49_23 PM.png') no-repeat center center;
+      background-size: contain;
+      opacity: 0.05;
+      mix-blend-mode: screen;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #rugby-ball-bg {
+      position: fixed;
+      right: -80px;
+      bottom: 60px;
+      width: 700px;
+      height: 700px;
+      background: url('ChatGPT Image May 8, 2026, 10_50_38 PM.png') no-repeat center center;
+      background-size: contain;
+      opacity: 0.10;
+      mix-blend-mode: screen;
+      pointer-events: none;
+      z-index: 0;
     }
 
     /* ── POLL BAND ── */
@@ -889,60 +921,9 @@ async function init(){
 init();
 </script>
 
-<!-- GOLD PARTICLE EFFECT -->
-<canvas id="particle-canvas"></canvas>
-<script>
-(function(){
-  const canvas = document.getElementById('particle-canvas');
-  const ctx = canvas.getContext('2d');
-  let W, H, particles = [];
-
-  function resize() {
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  function randomBetween(a, b) { return a + Math.random() * (b - a); }
-
-  // Create particles
-  for (let i = 0; i < 55; i++) {
-    particles.push({
-      x: randomBetween(0, window.innerWidth),
-      y: randomBetween(0, window.innerHeight),
-      r: randomBetween(0.5, 2.2),
-      speedX: randomBetween(-0.18, 0.18),
-      speedY: randomBetween(-0.35, -0.08),
-      opacity: randomBetween(0.08, 0.45),
-      pulse: randomBetween(0, Math.PI * 2),
-      pulseSpeed: randomBetween(0.005, 0.018)
-    });
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-    particles.forEach(p => {
-      p.pulse += p.pulseSpeed;
-      const alpha = p.opacity * (0.6 + 0.4 * Math.sin(p.pulse));
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(201,168,76,${alpha})`;
-      ctx.fill();
-
-      p.x += p.speedX;
-      p.y += p.speedY;
-
-      // wrap around
-      if (p.y < -5) p.y = H + 5;
-      if (p.x < -5) p.x = W + 5;
-      if (p.x > W + 5) p.x = -5;
-    });
-    requestAnimationFrame(draw);
-  }
-  draw();
-})();
-</script>
+<!-- BACKGROUND RUGBY BALL -->
+<div id="dragon-bg"></div>
+<div id="rugby-ball-bg"></div>
 
 </body>
 </html>
