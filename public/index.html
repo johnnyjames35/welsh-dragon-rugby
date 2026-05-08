@@ -1018,13 +1018,159 @@ async function init() {
 
 init();
 </script>
-  <section class="feature-section-dark">
-  <div class="feature-section">
-    <h2 class="feature-heading">⭐ Stars of the Week</h2>
-    <p class="feature-subheading">Standout performers from across Welsh rugby</p>
-    <div id="stars-container"></div>
+ <section style="background:radial-gradient(circle at top,#0f3524 0%,#0a2318 58%);padding:28px 16px 48px;">
+  <div style="max-width:980px;margin:0 auto;">
+
+    <section style="text-align:center;padding:34px 18px;background:linear-gradient(145deg,rgba(15,53,36,0.96),rgba(10,35,24,0.94));border:1px solid rgba(201,168,76,0.45);border-radius:24px;box-shadow:0 20px 50px rgba(0,0,0,0.28);margin-bottom:22px;">
+      <span style="display:inline-block;color:#e2c47a;border:1px solid rgba(226,196,122,0.55);border-radius:999px;padding:5px 14px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;font-size:0.78rem;margin-bottom:12px;">Welsh Rugby Stories</span>
+      <h1 style="color:#c9a84c;margin:0 0 10px;font-size:clamp(2rem,5vw,3.8rem);line-height:1.05;font-family:'Cinzel',serif;">The Ultimate Welsh Rugby Fan Quiz</h1>
+      <p style="max-width:720px;margin:0 auto;color:#ede8de;font-size:1.05rem;">Start steady, finish like a proper rugby brain. Enter your fan nickname, take the mixed Welsh rugby quiz, and see where you land on the supporters table.</p>
+    </section>
+
+    <section id="wrsStartPanel" style="background:rgba(15,53,36,0.94);border:1px solid rgba(42,122,80,0.72);border-radius:20px;padding:22px;margin-bottom:18px;box-shadow:0 12px 34px rgba(0,0,0,0.18);">
+      <h2 style="color:#c9a84c;margin-top:0;font-family:'Cinzel',serif;">Are you ready?</h2>
+      <p style="color:#ede8de;">This quiz gets harder as you go: Wales basics, Six Nations moments, club rugby, Lions links, and proper old-school Welsh rugby knowledge.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px;">
+        <div style="background:rgba(10,35,24,0.72);border:1px solid rgba(201,168,76,0.28);border-radius:16px;padding:16px;"><strong style="display:block;color:#e2c47a;margin-bottom:4px;">20 Questions</strong><span style="color:#ede8de;">Mixed difficulty from easy to expert.</span></div>
+        <div style="background:rgba(10,35,24,0.72);border:1px solid rgba(201,168,76,0.28);border-radius:16px;padding:16px;"><strong style="display:block;color:#e2c47a;margin-bottom:4px;">Fan Table</strong><span style="color:#ede8de;">Your nickname and score appear at the end.</span></div>
+        <div style="background:rgba(10,35,24,0.72);border:1px solid rgba(201,168,76,0.28);border-radius:16px;padding:16px;"><strong style="display:block;color:#e2c47a;margin-bottom:4px;">Prize Hook</strong><span style="color:#ede8de;">Top monthly score can win a Welsh Rugby Stories prize.</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end;margin-top:20px;">
+        <div><label style="display:block;color:#e2c47a;font-weight:700;margin-bottom:6px;">Your name</label><input id="wrsFanName" type="text" placeholder="Example: John" maxlength="30" style="width:100%;padding:13px 14px;border-radius:12px;border:1px solid rgba(226,196,122,0.45);background:#0a2318;color:#f8f5ee;font-size:1rem;outline:none;" /></div>
+        <div><label style="display:block;color:#e2c47a;font-weight:700;margin-bottom:6px;">Fan nickname</label><input id="wrsNickname" type="text" placeholder="Example: The Cwtch Crusher" maxlength="30" style="width:100%;padding:13px 14px;border-radius:12px;border:1px solid rgba(226,196,122,0.45);background:#0a2318;color:#f8f5ee;font-size:1rem;outline:none;" /></div>
+        <button onclick="wrsStartQuiz()" style="cursor:pointer;border:0;border-radius:12px;padding:13px 18px;background:linear-gradient(135deg,#c9a84c,#e2c47a);color:#0a2318;font-weight:900;font-size:1rem;">Start Quiz</button>
+      </div>
+      <p style="color:#5a7a65;font-size:0.9rem;margin-top:12px;">Note: this simple version saves scores only in the visitor's browser.</p>
+    </section>
+
+    <section id="wrsQuizPanel" style="display:none;background:rgba(15,53,36,0.94);border:1px solid rgba(42,122,80,0.72);border-radius:20px;padding:22px;margin-bottom:18px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:12px;">
+        <span id="wrsDiffBadge" style="display:inline-flex;align-items:center;background:rgba(181,19,43,0.22);color:#f8f5ee;border:1px solid rgba(181,19,43,0.7);border-radius:999px;padding:6px 12px;font-weight:800;">Easy</span>
+        <strong id="wrsScoreText" style="color:#f8f5ee;">Score: 0</strong>
+      </div>
+      <div style="width:100%;background:rgba(10,35,24,0.75);border-radius:999px;overflow:hidden;border:1px solid rgba(42,122,80,0.8);height:12px;margin-bottom:20px;">
+        <div id="wrsProgressFill" style="height:100%;background:linear-gradient(90deg,#1a5c3a,#c9a84c);width:0%;transition:width 0.25s ease;"></div>
+      </div>
+      <p id="wrsQuestionText" style="font-size:clamp(1.25rem,3vw,1.8rem);color:#f8f5ee;font-weight:900;margin:0 0 16px;"></p>
+      <div id="wrsAnswers" style="display:grid;gap:10px;"></div>
+      <div id="wrsFeedback" style="display:none;margin-top:14px;padding:14px;border-radius:14px;background:rgba(10,35,24,0.72);border-left:5px solid #c9a84c;color:#ede8de;"></div>
+      <div style="margin-top:18px;">
+        <button id="wrsNextBtn" onclick="wrsNextQuestion()" style="display:none;cursor:pointer;border:0;border-radius:12px;padding:13px 18px;background:linear-gradient(135deg,#c9a84c,#e2c47a);color:#0a2318;font-weight:900;font-size:1rem;">Next Question</button>
+      </div>
+    </section>
+
+    <section id="wrsResultPanel" style="display:none;background:rgba(15,53,36,0.94);border:1px solid rgba(42,122,80,0.72);border-radius:20px;padding:22px;margin-bottom:18px;">
+      <h2 style="color:#c9a84c;margin-top:0;font-family:'Cinzel',serif;">Final Whistle</h2>
+      <p id="wrsResultLine" style="color:#ede8de;"></p>
+      <div id="wrsFinalScore" style="font-size:clamp(2.5rem,8vw,5rem);color:#c9a84c;margin:8px 0;font-weight:900;line-height:1;"></div>
+      <p id="wrsRankMsg" style="color:#ede8de;"></p>
+      <div style="background:linear-gradient(145deg,rgba(201,168,76,0.18),rgba(181,19,43,0.16));border:1px solid rgba(226,196,122,0.62);border-radius:18px;padding:18px;margin-top:16px;">
+        <h3 style="color:#e2c47a;margin-top:0;">Prize Challenge</h3>
+        <p style="color:#ede8de;"><strong>Top score at the end of the month wins a Welsh Rugby Stories prize.</strong></p>
+        <p style="color:#ede8de;">Suggested prize: £10 voucher, Welsh rugby mug, sticker pack, or "Fan of the Month" feature on the website.</p>
+      </div>
+      <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;">
+        <button onclick="wrsRestartQuiz()" style="cursor:pointer;border:0;border-radius:12px;padding:13px 18px;background:linear-gradient(135deg,#c9a84c,#e2c47a);color:#0a2318;font-weight:900;font-size:1rem;">Try Again</button>
+        <button onclick="wrsClearScores()" style="cursor:pointer;border:1px solid rgba(226,196,122,0.35);border-radius:12px;padding:13px 18px;background:#1a5c3a;color:#f8f5ee;font-weight:900;font-size:1rem;">Clear This Browser's Table</button>
+      </div>
+    </section>
+
+    <section style="background:rgba(15,53,36,0.94);border:1px solid rgba(42,122,80,0.72);border-radius:20px;padding:22px;margin-bottom:18px;">
+      <h2 style="color:#c9a84c;margin-top:0;font-family:'Cinzel',serif;">Supporters Table</h2>
+      <p style="color:#ede8de;">Fan nicknames and scores appear here after each completed quiz.</p>
+      <table style="width:100%;border-collapse:collapse;margin-top:12px;">
+        <thead><tr>
+          <th style="padding:12px 10px;text-align:left;border-bottom:1px solid rgba(42,122,80,0.55);color:#e2c47a;background:rgba(10,35,24,0.88);font-size:0.92rem;text-transform:uppercase;letter-spacing:0.04em;">Rank</th>
+          <th style="padding:12px 10px;text-align:left;border-bottom:1px solid rgba(42,122,80,0.55);color:#e2c47a;background:rgba(10,35,24,0.88);font-size:0.92rem;text-transform:uppercase;letter-spacing:0.04em;">Fan Nickname</th>
+          <th style="padding:12px 10px;text-align:left;border-bottom:1px solid rgba(42,122,80,0.55);color:#e2c47a;background:rgba(10,35,24,0.88);font-size:0.92rem;text-transform:uppercase;letter-spacing:0.04em;">Score</th>
+          <th style="padding:12px 10px;text-align:left;border-bottom:1px solid rgba(42,122,80,0.55);color:#e2c47a;background:rgba(10,35,24,0.88);font-size:0.92rem;text-transform:uppercase;letter-spacing:0.04em;">Date</th>
+        </tr></thead>
+        <tbody id="wrsLeaderboard"></tbody>
+      </table>
+      <p style="color:#5a7a65;font-size:0.9rem;margin-top:12px;">Competition note: add your own terms before making the prize official.</p>
+    </section>
+
   </div>
 </section>
+
+<script>
+(function(){
+  const wrsQuestions = [
+    { d:"Easy", q:"What colour shirt is Wales rugby most famous for wearing?", a:["Red","Blue","Green","Black"], c:0, f:"Wales are famous worldwide for the red jersey." },
+    { d:"Easy", q:"Where do Wales usually play their home international rugby matches?", a:["Principality Stadium","Liberty Stadium","Cardiff City Stadium","Rodney Parade"], c:0, f:"The Principality Stadium in Cardiff is the home of Welsh rugby internationals." },
+    { d:"Easy", q:"Which annual tournament includes Wales, England, Scotland, Ireland, France and Italy?", a:["Six Nations","Rugby Championship","URC","Champions Cup"], c:0, f:"The Six Nations is the annual northern hemisphere championship." },
+    { d:"Easy", q:"What is the nickname commonly used for the Wales national rugby team?", a:["The Dragons","The Falcons","The Bulls","The Sharks"], c:0, f:"Wales are commonly known as the Dragons." },
+    { d:"Easy", q:"Which Welsh city is strongly associated with the national rugby stadium?", a:["Cardiff","Swansea","Wrexham","Newport"], c:0, f:"Cardiff is the capital city and home of the national stadium." },
+    { d:"Medium", q:"Who is widely regarded as one of Wales' greatest ever rugby players and wore the famous number 10 shirt?", a:["Barry John","Gareth Southgate","Ian Rush","Joe Calzaghe"], c:0, f:"Barry John, 'The King', is one of Welsh rugby's legendary fly-halves." },
+    { d:"Medium", q:"Which Welsh scrum-half is often called one of the greatest players in rugby history?", a:["Gareth Edwards","Ryan Giggs","Rob Page","Mark Hughes"], c:0, f:"Sir Gareth Edwards is often named among the greatest rugby players ever." },
+    { d:"Medium", q:"Which region plays at Rodney Parade?", a:["Dragons RFC","Ospreys","Scarlets","Cardiff Rugby"], c:0, f:"Dragons RFC are based at Rodney Parade in Newport." },
+    { d:"Medium", q:"Which Welsh region is strongly associated with Llanelli?", a:["Scarlets","Ospreys","Dragons","Cardiff Rugby"], c:0, f:"The Scarlets are based in Llanelli and carry huge West Wales rugby tradition." },
+    { d:"Medium", q:"Which competition do the Welsh regions currently play in against Irish, Scottish, Italian and South African sides?", a:["United Rugby Championship","Premiership Rugby","Super Rugby","Top 14"], c:0, f:"The Welsh regions play in the United Rugby Championship." },
+    { d:"Hard", q:"Who captained Wales to the 2019 Grand Slam?", a:["Alun Wyn Jones","Sam Warburton","Justin Tipuric","Dan Biggar"], c:0, f:"Alun Wyn Jones captained Wales during the 2019 Grand Slam campaign." },
+    { d:"Hard", q:"Which Welsh flanker captained the British & Irish Lions in 2013?", a:["Sam Warburton","Taulupe Faletau","Martyn Williams","Neil Jenkins"], c:0, f:"Sam Warburton captained the Lions on the successful 2013 tour of Australia." },
+    { d:"Hard", q:"Which Welsh kicker was a key points machine for Wales and the Lions in the 1990s and 2000s?", a:["Neil Jenkins","Shane Williams","Scott Quinnell","Adam Jones"], c:0, f:"Neil Jenkins was renowned for his goal-kicking accuracy." },
+    { d:"Hard", q:"Which winger won World Rugby Player of the Year in 2008?", a:["Shane Williams","George North","Leigh Halfpenny","Josh Adams"], c:0, f:"Shane Williams won the award in 2008 after a brilliant year." },
+    { d:"Hard", q:"Which Welsh forward is famous for his powerful scrummaging and distinctive hair?", a:["Adam Jones","Stephen Jones","Ryan Jones","Alun Wyn Jones"], c:0, f:"Adam Jones was a cornerstone of the Welsh and Lions scrum." },
+    { d:"Expert", q:"In which decade did the original golden era of Welsh rugby peak?", a:["1970s","1950s","1990s","2010s"], c:0, f:"The 1970s are remembered as a golden era for Welsh rugby." },
+    { d:"Expert", q:"Which Welsh club is strongly associated with the historic 'Sospan Fach' rugby culture?", a:["Llanelli","Pontypool","Neath","Bridgend"], c:0, f:"Llanelli and Scarlets supporters are strongly linked with Sospan Fach." },
+    { d:"Expert", q:"Which Wales player was nicknamed 'The Prince of Centres'?", a:["Bleddyn Williams","JPR Williams","Jonathan Davies","Scott Gibbs"], c:0, f:"Bleddyn Williams was famously known as 'The Prince of Centres'." },
+    { d:"Expert", q:"Which Welsh club side famously beat New Zealand in 1972?", a:["Llanelli","Cardiff","Swansea","Pontypool"], c:0, f:"Llanelli's 1972 win over the All Blacks remains one of Welsh rugby's famous club moments." },
+    { d:"Expert", q:"Which legendary Welsh full-back was known for his fearless attacking style and huge sideburns?", a:["JPR Williams","Gerald Davies","Mervyn Davies","Phil Bennett"], c:0, f:"JPR Williams became one of the most iconic Welsh and Lions players of all time." }
+  ];
+
+  let wrsCurrent=0, wrsScore=0, wrsAnswered=false, wrsPlayer={name:'',nickname:''};
+
+  window.wrsStartQuiz = function(){
+    wrsPlayer.name = document.getElementById('wrsFanName').value.trim()||'Welsh Rugby Fan';
+    wrsPlayer.nickname = document.getElementById('wrsNickname').value.trim()||'Anonymous Dragon';
+    wrsCurrent=0; wrsScore=0; wrsAnswered=false;
+    document.getElementById('wrsStartPanel').style.display='none';
+    document.getElementById('wrsResultPanel').style.display='none';
+    document.getElementById('wrsQuizPanel').style.display='block';
+    wrsShowQuestion();
+  };
+
+  function wrsShowQuestion(){
+    wrsAnswered=false;
+    const item=wrsQuestions[wrsCurrent];
+    document.getElementById('wrsDiffBadge').textContent=item.d;
+    document.getElementById('wrsScoreText').textContent='Score: '+wrsScore;
+    document.getElementById('wrsProgressFill').style.width=(wrsCurrent/wrsQuestions.length*100)+'%';
+    document.getElementById('wrsQuestionText').textContent='Q'+(wrsCurrent+1)+'. '+item.q;
+    document.getElementById('wrsFeedback').style.display='none';
+    document.getElementById('wrsNextBtn').style.display='none';
+    const answers=document.getElementById('wrsAnswers');
+    answers.innerHTML='';
+    item.a.forEach((ans,i)=>{
+      const btn=document.createElement('button');
+      btn.textContent=ans;
+      btn.style.cssText='text-align:left;background:rgba(10,35,24,0.72);color:#f8f5ee;border:1px solid rgba(42,122,80,0.8);font-weight:800;padding:15px;border-radius:12px;cursor:pointer;width:100%;font-size:1rem;';
+      btn.onmouseover=()=>btn.style.borderColor='#c9a84c';
+      btn.onmouseout=()=>btn.style.borderColor='rgba(42,122,80,0.8)';
+      btn.onclick=()=>wrsChoose(i,btn);
+      answers.appendChild(btn);
+    });
+  }
+
+  function wrsChoose(index,btn){
+    if(wrsAnswered)return;
+    wrsAnswered=true;
+    const item=wrsQuestions[wrsCurrent];
+    document.querySelectorAll('#wrsAnswers button').forEach((b,i)=>{
+      b.disabled=true;
+      if(i===item.c) b.style.background='rgba(26,92,58,0.95)';
+    });
+    if(index===item.c){wrsScore++;btn.style.background='rgba(26,92,58,0.95)';}
+    else{btn.style.background='rgba(181,19,43,0.7)';}
+    document.getElementById('wrsScoreText').textContent='Score: '+wrsScore;
+    document.getElementById('wrsFeedback').innerHTML='<strong>'+(index===item.c?'Correct.':'Not this time.')+'</strong> '+item.f;
+    document.getElementById('wrsFeedback').style.display='block';
+    document.getElementById('wrsNextBtn').style.display='inline-block';
+  }
+
+  window.wrsNextQuestion=function(){
+    wrsCurrent++;
+    i
 
 <section class="feature-section-dark">
   <div class="feature-section">
