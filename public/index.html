@@ -252,25 +252,6 @@
     .nations-divider::before, .nations-divider::after { content: ''; flex: 1; height: 1px; background: rgba(201,168,76,0.2); }
 
     /* ATMOSPHERIC SIDE EDGES */
-    body::before, body::after {
-      content: '';
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      width: 60px;
-      pointer-events: none;
-      z-index: -1;
-    }
-    body::before {
-      left: 0;
-      background: linear-gradient(90deg, rgba(0,0,0,0.35) 0%, transparent 100%);
-      border-right: 1px solid rgba(201,168,76,0.12);
-    }
-    body::after {
-      right: 0;
-      background: linear-gradient(270deg, rgba(0,0,0,0.35) 0%, transparent 100%);
-      border-left: 1px solid rgba(201,168,76,0.12);
-    }
     #rugby-ball-bg {
       position: fixed;
       bottom: -80px;
