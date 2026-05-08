@@ -587,6 +587,158 @@
       </div>
     </div>
   </div>
+<!-- PLAYER OF THE MATCH POLL SECTION -->
+<!-- Paste this into index.html where you want the poll to appear -->
+
+<section id="poll-section" style="
+  background: linear-gradient(135deg, #0a1f12 0%, #0d2b1e 50%, #091a0f 100%);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 12px;
+  padding: 32px;
+  margin: 32px 0;
+  position: relative;
+  overflow: hidden;
+">
+  <!-- decorative background -->
+  <div style="position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;"></div>
+
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+    <span style="font-size:24px;">🏉</span>
+    <span style="
+      background: linear-gradient(90deg, #c9a84c, #e2c47a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: 'Cinzel', serif;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:3px;
+      text-transform:uppercase;
+    ">Nations Cup 2026</span>
+  </div>
+
+  <h2 style="
+    font-family: 'Cinzel', serif;
+    color: #f8f5ee;
+    font-size: clamp(20px, 4vw, 28px);
+    margin: 0 0 6px 0;
+    line-height: 1.2;
+  ">Player of the Match</h2>
+
+  <p id="poll-match-label" style="
+    color: #5a7a65;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    margin: 0 0 28px 0;
+    letter-spacing: 0.5px;
+  ">Wales vs Fiji · 4 Jul 2026 · Round 1</p>
+
+  <div id="poll-options" style="display:flex;flex-direction:column;gap:12px;"></div>
+
+  <div id="poll-result" style="display:none;margin-top:24px;">
+    <p style="color:#c9a84c;font-family:'DM Sans',sans-serif;font-size:13px;text-align:center;letter-spacing:1px;">RESULTS</p>
+    <div id="poll-bars" style="display:flex;flex-direction:column;gap:10px;margin-top:12px;"></div>
+    <p style="color:#5a7a65;font-family:'DM Sans',sans-serif;font-size:12px;text-align:center;margin-top:16px;">
+      <span id="poll-total">0</span> votes cast
+    </p>
+  </div>
+
+  <p style="
+    color: #2d4a35;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    margin: 20px 0 0 0;
+    text-align: center;
+    letter-spacing: 0.5px;
+  ">ONE VOTE PER DEVICE · RESETS EACH MATCH</p>
+</section>
+
+<script>
+(function() {
+  // ── EDIT THESE EACH MATCH ──────────────────────────────────────
+  const MATCH_ID   = 'wales-fiji-04jul2026';          // unique per match
+  const MATCH_LABEL = 'Wales vs Fiji · 4 Jul 2026 · Round 1';
+  const PLAYERS = [
+    { name: 'Aaron Wainwright',  position: 'Number 8' },
+    { name: 'Dan Edwards',       position: 'Fly-half' },
+    { name: 'Rhys Carré',        position: 'Prop' },
+    { name: 'Louis Rees-Zammit', position: 'Wing' },
+  ];
+  // ──────────────────────────────────────────────────────────────
+
+  const STORAGE_KEY = 'wdr_poll_' + MATCH_ID;
+  const voted = localStorage.getItem(STORAGE_KEY);
+
+  document.getElementById('poll-match-label').textContent = MATCH_LABEL;
+
+  const votes = JSON.parse(localStorage.getItem(STORAGE_KEY + '_votes') || 'null') || PLAYERS.map(() => 0);
+
+  function totalVotes() { return votes.reduce((a,b) => a+b, 0); }
+
+  function showResults() {
+    document.getElementById('poll-options').style.display = 'none';
+    document.getElementById('poll-result').style.display = 'block';
+    document.getElementById('poll-total').textContent = totalVotes();
+    const bars = document.getElementById('poll-bars');
+    bars.innerHTML = '';
+    const max = Math.max(...votes, 1);
+    PLAYERS.forEach((p, i) => {
+      const pct = totalVotes() ? Math.round(votes[i]/totalVotes()*100) : 0;
+      const width = Math.round(votes[i]/max*100);
+      bars.innerHTML += `
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+            <span style="color:#f8f5ee;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;">${p.name}</span>
+            <span style="color:#c9a84c;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;">${pct}%</span>
+          </div>
+          <div style="background:rgba(255,255,255,0.06);border-radius:4px;height:8px;overflow:hidden;">
+            <div style="height:100%;width:${width}%;background:linear-gradient(90deg,#c9a84c,#e2c47a);border-radius:4px;transition:width 0.6s ease;"></div>
+          </div>
+          <div style="color:#5a7a65;font-family:'DM Sans',sans-serif;font-size:11px;margin-top:3px;">${p.position}</div>
+        </div>`;
+    });
+  }
+
+  function buildOptions() {
+    const container = document.getElementById('poll-options');
+    PLAYERS.forEach((p, i) => {
+      const btn = document.createElement('button');
+      btn.style.cssText = `
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(201,168,76,0.2);
+        border-radius: 8px;
+        padding: 14px 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.2s ease;
+        width: 100%;
+      `;
+      btn.innerHTML = `
+        <div style="text-align:left;">
+          <div style="color:#f8f5ee;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;">${p.name}</div>
+          <div style="color:#5a7a65;font-family:'DM Sans',sans-serif;font-size:12px;margin-top:2px;">${p.position}</div>
+        </div>
+        <div style="
+          width:22px;height:22px;border-radius:50%;
+          border:2px solid rgba(201,168,76,0.4);
+          flex-shrink:0;
+        "></div>`;
+      btn.onmouseover = () => btn.style.borderColor = 'rgba(201,168,76,0.6)';
+      btn.onmouseout  = () => btn.style.borderColor = 'rgba(201,168,76,0.2)';
+      btn.onclick = () => {
+        votes[i]++;
+        localStorage.setItem(STORAGE_KEY, '1');
+        localStorage.setItem(STORAGE_KEY + '_votes', JSON.stringify(votes));
+        showResults();
+      };
+      container.appendChild(btn);
+    });
+  }
+
+  if (voted) { showResults(); } else { buildOptions(); }
+})();
+</script>
 
 </div>
   <span class="footer-dragon">🐉</span>
