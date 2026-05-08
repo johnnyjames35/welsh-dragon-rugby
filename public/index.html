@@ -42,6 +42,100 @@
     nav button:hover { opacity: 0.9; }
     nav button.active { opacity: 1; border-bottom-color: var(--gold); color: var(--gold-light); }
 
+    /* ═══════════════════════════════════════
+       TICKER BANNER
+    ═══════════════════════════════════════ */
+    .ticker-wrap {
+      position: relative;
+      background: linear-gradient(90deg, #091a10 0%, #0d2318 40%, #091a10 100%);
+      border-bottom: 1px solid rgba(201,168,76,0.25);
+      height: 36px;
+      overflow: hidden;
+      /* fade edges */
+    }
+    .ticker-wrap::before,
+    .ticker-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 80px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .ticker-wrap::before {
+      left: 0;
+      background: linear-gradient(90deg, #091a10 0%, transparent 100%);
+    }
+    .ticker-wrap::after {
+      right: 0;
+      background: linear-gradient(270deg, #091a10 0%, transparent 100%);
+    }
+    .ticker-label {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      padding: 0 14px 0 16px;
+      background: var(--gold);
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      font-weight: 900;
+      color: var(--green-deep);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      gap: 6px;
+    }
+    .ticker-label::after {
+      content: '';
+      position: absolute;
+      right: -10px;
+      top: 0;
+      bottom: 0;
+      width: 20px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    .ticker-track {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding-left: 140px; /* space for label */
+      animation: ticker-scroll 18s linear infinite;
+      white-space: nowrap;
+    }
+    .ticker-track:hover {
+      animation-play-state: paused;
+    }
+    @keyframes ticker-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold-light);
+      padding: 0 36px;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+    }
+    .ticker-item::after {
+      content: '·';
+      position: absolute;
+      right: 0;
+      color: rgba(201,168,76,0.3);
+      font-size: 18px;
+    }
+    .ticker-item {
+      position: relative;
+    }
+
     /* ── KEY FIX: single centring class used everywhere ── */
     .page-width { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
 
@@ -185,6 +279,30 @@
     <button onclick="showSection('tables', event)">Tables</button>
     <button onclick="showSection('nations', event)" style="color:var(--gold);">🌍 Nations Champ.</button>
   </nav>
+
+  <!-- ═══════════════════════════════════════
+       ROLLING TICKER BANNER
+  ═══════════════════════════════════════ -->
+  <div class="ticker-wrap" aria-label="Latest news ticker">
+    <div class="ticker-label">🐉 LIVE</div>
+    <div class="ticker-track" id="ticker-track">
+      <!-- Items duplicated for seamless infinite loop -->
+      <span class="ticker-item">🏉 Nations Championship starts 4 July 2026</span>
+      <span class="ticker-item">🔥 Take the Ultimate Welsh Rugby Fan Quiz</span>
+      <span class="ticker-item">⭐ Vote your Wales Player of the Match</span>
+      <span class="ticker-item">🐉 Cymru am Byth</span>
+      <span class="ticker-item">📊 Live URC tables updated</span>
+      <span class="ticker-item">🎁 Monthly fan prize coming soon</span>
+      <!-- Duplicate set for seamless loop -->
+      <span class="ticker-item">🏉 Nations Championship starts 4 July 2026</span>
+      <span class="ticker-item">🔥 Take the Ultimate Welsh Rugby Fan Quiz</span>
+      <span class="ticker-item">⭐ Vote your Wales Player of the Match</span>
+      <span class="ticker-item">🐉 Cymru am Byth</span>
+      <span class="ticker-item">📊 Live URC tables updated</span>
+      <span class="ticker-item">🎁 Monthly fan prize coming soon</span>
+    </div>
+  </div>
+
 </header>
 
 <div class="container">
