@@ -135,6 +135,16 @@
     .ticker-item {
       position: relative;
     }
+    .ticker-link {
+      cursor: pointer;
+      text-decoration: underline;
+      text-decoration-color: rgba(201,168,76,0.4);
+      text-underline-offset: 3px;
+    }
+    .ticker-link:hover {
+      color: var(--white);
+      text-decoration-color: var(--gold);
+    }
 
     /* ── KEY FIX: single centring class used everywhere ── */
     .page-width { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
@@ -288,15 +298,15 @@
     <div class="ticker-track" id="ticker-track">
       <!-- Items duplicated for seamless infinite loop -->
       <span class="ticker-item">🏉 Nations Championship starts 4 July 2026</span>
-      <span class="ticker-item">🔥 Take the Ultimate Welsh Rugby Fan Quiz</span>
-      <span class="ticker-item">⭐ Vote your Wales Player of the Match</span>
+      <span class="ticker-item ticker-link" onclick="document.getElementById('wrsStartPanel').scrollIntoView({behavior:'smooth'})">🔥 Take the Ultimate Welsh Rugby Fan Quiz</span>
+      <span class="ticker-item ticker-link" onclick="document.getElementById('poll-section').scrollIntoView({behavior:'smooth'})">⭐ Vote your Wales Player of the Match</span>
       <span class="ticker-item">🐉 Cymru am Byth</span>
       <span class="ticker-item">📊 Live URC tables updated</span>
       <span class="ticker-item">🎁 Monthly fan prize coming soon</span>
       <!-- Duplicate set for seamless loop -->
       <span class="ticker-item">🏉 Nations Championship starts 4 July 2026</span>
-      <span class="ticker-item">🔥 Take the Ultimate Welsh Rugby Fan Quiz</span>
-      <span class="ticker-item">⭐ Vote your Wales Player of the Match</span>
+      <span class="ticker-item ticker-link" onclick="document.getElementById('wrsStartPanel').scrollIntoView({behavior:'smooth'})">🔥 Take the Ultimate Welsh Rugby Fan Quiz</span>
+      <span class="ticker-item ticker-link" onclick="document.getElementById('poll-section').scrollIntoView({behavior:'smooth'})">⭐ Vote your Wales Player of the Match</span>
       <span class="ticker-item">🐉 Cymru am Byth</span>
       <span class="ticker-item">📊 Live URC tables updated</span>
       <span class="ticker-item">🎁 Monthly fan prize coming soon</span>
