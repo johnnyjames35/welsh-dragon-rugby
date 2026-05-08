@@ -1170,15 +1170,20 @@ init();
 
   window.wrsNextQuestion=function(){
     wrsCurrent++;
-    i
+    if(wrsCurrent>=wrsQuestions.length) wrsEndQuiz(); else wrsShowQuestion();
+  };
+})();
+</script>
 
 <section class="feature-section-dark">
   <div class="feature-section">
-    <h2 class="feature-heading">🧠 Welsh Rugby Quiz</h2>
-    <p class="feature-subheading">New questions every week!</p>
-    <div id="quiz-container"></div>
+    <h2 class="feature-heading">⭐ Stars of the Week</h2>
+    <p class="feature-subheading">Standout performers from across Welsh rugby</p>
+    <div id="stars-container"></div>
   </div>
 </section>
+
+
 
 <section class="feature-section-dark">
   <div class="feature-section">
