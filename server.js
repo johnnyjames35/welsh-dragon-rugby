@@ -306,27 +306,56 @@ app.get('/api/news', async (req, res) => {
     });
   }
 });
-// ── WALES SQUAD ───────────────────────────────────────────────────────────────
-const SQUAD_CACHE_DURATION = 24 * 60 * 60 * 1000;
-
-app.get('/api/wales-squad', async (req, res) => {
-  try {
-    const cacheKey = `squad-wales-${SEASON}`;
-    const now = Date.now();
-    if (cache[cacheKey] && now - cacheTime[cacheKey] < SQUAD_CACHE_DURATION) {
-      return res.json(cache[cacheKey]);
-    }
-    const data = await fetchAPI(`players?team=${TEAM_IDS.wales}&season=${SEASON}`);
-    if (!data || !data.response || data.response.length === 0) {
-      return res.json({ response: [] });
-    }
-    cache[cacheKey] = data;
-    cacheTime[cacheKey] = now;
-    res.json(data);
-  } catch (err) {
-    console.error('Squad fetch error:', err);
-    res.json({ response: [] });
-  }
+// ── WALES SQUAD (hardcoded — API-Sports rugby does not carry national team player data) ──
+app.get('/api/wales-squad', (req, res) => {
+  const squad = {
+    updatedDate: '2026-05-09',
+    season: '2025/26',
+    coach: 'Steve Tandy',
+    captain: 'Dewi Lake',
+    response: [
+      { player: { name: 'Rhys Carré',            position: 'Prop',       age: 28, height: '1.91m', caps: 22 } },
+      { player: { name: 'Nicky Smith',            position: 'Prop',       age: 32, height: '1.83m', caps: 46 } },
+      { player: { name: 'Tomas Francis',          position: 'Prop',       age: 34, height: '1.85m', caps: 65 } },
+      { player: { name: 'Keiron Assiratti',       position: 'Prop',       age: 28, height: '1.88m', caps: 14 } },
+      { player: { name: 'Gareth Thomas',          position: 'Prop',       age: 32, height: '1.88m', caps: 8  } },
+      { player: { name: 'Archie Griffin',         position: 'Prop',       age: 24, height: '1.90m', caps: 9  } },
+      { player: { name: 'Chris Coleman',          position: 'Prop',       age: 27, height: '1.89m', caps: 3  } },
+      { player: { name: 'Dewi Lake',              position: 'Hooker',     age: 27, height: '1.85m', caps: 32 } },
+      { player: { name: 'Ryan Elias',             position: 'Hooker',     age: 31, height: '1.88m', caps: 28 } },
+      { player: { name: 'Liam Belcher',           position: 'Hooker',     age: 30, height: '1.77m', caps: 7  } },
+      { player: { name: 'Brodie Coghlan',         position: 'Hooker',     age: 25, height: '1.83m', caps: 2  } },
+      { player: { name: 'Adam Beard',             position: 'Lock',       age: 30, height: '2.03m', caps: 48 } },
+      { player: { name: 'Dafydd Jenkins',         position: 'Lock',       age: 23, height: '2.01m', caps: 21 } },
+      { player: { name: 'Ben Carter',             position: 'Lock',       age: 25, height: '1.98m', caps: 11 } },
+      { player: { name: 'Taine Plumtree',         position: 'Lock',       age: 26, height: '1.95m', caps: 14 } },
+      { player: { name: 'Rhys Davies',            position: 'Lock',       age: 27, height: '1.97m', caps: 4  } },
+      { player: { name: 'James Ratti',            position: 'Lock',       age: 28, height: '1.96m', caps: 5  } },
+      { player: { name: 'Jac Morgan',             position: 'Flanker',    age: 26, height: '1.82m', caps: 29 } },
+      { player: { name: 'Aaron Wainwright',       position: 'Number 8',   age: 28, height: '1.88m', caps: 52 } },
+      { player: { name: 'James Botham',           position: 'Flanker',    age: 28, height: '1.91m', caps: 18 } },
+      { player: { name: 'Josh Macleod',           position: 'Flanker',    age: 29, height: '1.89m', caps: 12 } },
+      { player: { name: 'Alex Mann',              position: 'Flanker',    age: 24, height: '1.91m', caps: 6  } },
+      { player: { name: 'Olly Cracknell',         position: 'Flanker',    age: 31, height: '1.92m', caps: 9  } },
+      { player: { name: 'Tomos Williams',         position: 'Scrum-half', age: 30, height: '1.80m', caps: 58 } },
+      { player: { name: 'Kieran Hardy',           position: 'Scrum-half', age: 30, height: '1.86m', caps: 22 } },
+      { player: { name: 'Reuben Morgan-Williams', position: 'Scrum-half', age: 28, height: '1.80m', caps: 8  } },
+      { player: { name: 'Dan Edwards',            position: 'Fly-half',   age: 24, height: '1.80m', caps: 14 } },
+      { player: { name: 'Sam Costelow',           position: 'Fly-half',   age: 24, height: '1.83m', caps: 16 } },
+      { player: { name: 'Jarrod Evans',           position: 'Fly-half',   age: 28, height: '1.80m', caps: 11 } },
+      { player: { name: 'Mason Grady',            position: 'Centre',     age: 23, height: '1.93m', caps: 18 } },
+      { player: { name: 'Ben Thomas',             position: 'Centre',     age: 25, height: '1.88m', caps: 12 } },
+      { player: { name: 'Joe Roberts',            position: 'Centre',     age: 24, height: '1.93m', caps: 8  } },
+      { player: { name: 'Louie Hennessey',        position: 'Centre',     age: 22, height: '1.85m', caps: 0  } },
+      { player: { name: 'Louis Rees-Zammit',      position: 'Wing',       age: 24, height: '1.85m', caps: 43 } },
+      { player: { name: 'Josh Adams',             position: 'Wing',       age: 29, height: '1.86m', caps: 42 } },
+      { player: { name: 'Ellis Mee',              position: 'Wing',       age: 23, height: '1.83m', caps: 7  } },
+      { player: { name: 'Gabriel Hamer-Webb',     position: 'Wing',       age: 22, height: '1.87m', caps: 0  } },
+      { player: { name: 'Cameron Winnett',        position: 'Full-back',  age: 23, height: '1.83m', caps: 11 } },
+      { player: { name: 'Blair Murray',           position: 'Full-back',  age: 24, height: '1.80m', caps: 6  } },
+    ]
+  };
+  res.json(squad);
 });
 app.listen(PORT, () => {
   console.log(`Welsh Dragon Rugby running on port ${PORT}`);
