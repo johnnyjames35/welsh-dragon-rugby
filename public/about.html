@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Welsh Dragon Rugby</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #0d2b1e;
+    --green-mid: #133828;
+    --green-light: #1a4d34;
+    --gold: #c9a84c;
+    --gold-light: #e2c47a;
+    --text: #e8e8e8;
+    --text-muted: #a0b0a8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--green-dark);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  header {
+    background: var(--green-mid);
+    border-bottom: 1px solid var(--gold);
+    padding: 1.2rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  header a {
+    color: var(--gold);
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+  }
+
+  header a:hover { color: var(--gold-light); }
+
+  .flag { font-size: 1.4rem; }
+
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  .page-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--green-light);
+  }
+
+  h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--gold-light);
+    letter-spacing: 0.04em;
+    margin: 2.5rem 0 0.8rem;
+  }
+
+  p {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+
+  ul {
+    color: var(--text-muted);
+    margin: 0.5rem 0 1rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  ul li { margin-bottom: 0.4rem; }
+
+  a { color: var(--gold); text-decoration: none; }
+  a:hover { color: var(--gold-light); text-decoration: underline; }
+
+  .teams-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .team-card {
+    background: var(--green-mid);
+    border: 1px solid var(--green-light);
+    border-top: 2px solid var(--gold);
+    padding: 1.2rem 1rem;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .team-card .team-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    color: var(--gold-light);
+    letter-spacing: 0.03em;
+  }
+
+  .highlight-box {
+    background: var(--green-mid);
+    border-left: 3px solid var(--gold);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .highlight-box p { margin: 0; }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--green-light);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="flag">🏴󠁧󠁢󠁷󠁬󠁳󠁿</span>
+  <a href="/">Welsh Dragon Rugby</a>
+  <span style="color: var(--text-muted); margin-left: auto; font-size: 0.85rem;">About</span>
+</header>
+
+<main>
+  <h1 class="page-title">About Welsh Dragon Rugby</h1>
+
+  <div class="highlight-box">
+    <p>Your home for Welsh rugby — live scores, results, standings, and news covering the teams that matter most to Welsh fans.</p>
+  </div>
+
+  <h2>What We Do</h2>
+  <p>Welsh Dragon Rugby is an independent website dedicated to following Welsh rugby at every level. From the Welsh national team to the regional sides competing in the URC and European competitions, we bring together live data, results, and news in one place.</p>
+  <p>We're not affiliated with the WRU or any of the regional clubs — we're simply passionate Welsh rugby fans who wanted a clean, fast, modern site that puts the rugby front and centre.</p>
+
+  <h2>Teams We Cover</h2>
+  <div class="teams-grid">
+    <div class="team-card"><div class="team-name">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Wales</div></div>
+    <div class="team-card"><div class="team-name">🔴 Scarlets</div></div>
+    <div class="team-card"><div class="team-name">⚫ Ospreys</div></div>
+    <div class="team-card"><div class="team-name">🔵 Cardiff Rugby</div></div>
+    <div class="team-card"><div class="team-name">🐉 Dragons</div></div>
+    <div class="team-card"><div class="team-name">🏆 Wales Women</div></div>
+    <div class="team-card"><div class="team-name">⭐ Wales U20</div></div>
+  </div>
+
+  <h2>Our Data</h2>
+  <p>Live scores, fixtures, results, and standings are powered by <strong style="color: var(--text);">API-Sports</strong>, one of the leading sports data providers. This means the information you see is accurate, up to date, and updated in real time during matches.</p>
+
+  <h2>Competitions Covered</h2>
+  <ul>
+    <li>Six Nations Championship</li>
+    <li>United Rugby Championship (URC)</li>
+    <li>European Champions Cup</li>
+    <li>Wales Women's internationals</li>
+    <li>Wales Under-20 internationals</li>
+  </ul>
+
+  <h2>Who Are We?</h2>
+  <p>Welsh Dragon Rugby is operated by <strong style="color: var(--text);">Big Bulldog UK Ltd</strong>, a digital company based in South Wales. We build online platforms with a focus on clean design, fast performance, and genuinely useful content.</p>
+  <p>If you have suggestions, feedback, or just want to get in touch, we'd love to hear from you.</p>
+  <p><a href="/contact.html">→ Contact us here</a></p>
+
+</main>
+
+<footer>
+  <p>Welsh Dragon Rugby &copy; 2026 | <a href="/">Home</a> | <a href="/about.html">About</a> | <a href="/contact.html">Contact</a> | <a href="/privacy-policy.html">Privacy Policy</a></p>
+</footer>
+
+</body>
+</html>

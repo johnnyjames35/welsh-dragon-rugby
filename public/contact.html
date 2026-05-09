@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Welsh Dragon Rugby</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #0d2b1e;
+    --green-mid: #133828;
+    --green-light: #1a4d34;
+    --gold: #c9a84c;
+    --gold-light: #e2c47a;
+    --text: #e8e8e8;
+    --text-muted: #a0b0a8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--green-dark);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  header {
+    background: var(--green-mid);
+    border-bottom: 1px solid var(--gold);
+    padding: 1.2rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  header a {
+    color: var(--gold);
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+  }
+
+  header a:hover { color: var(--gold-light); }
+
+  .flag { font-size: 1.4rem; }
+
+  main {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  .page-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--green-light);
+  }
+
+  p {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+
+  a { color: var(--gold); text-decoration: none; }
+  a:hover { color: var(--gold-light); text-decoration: underline; }
+
+  .contact-card {
+    background: var(--green-mid);
+    border: 1px solid var(--green-light);
+    border-top: 2px solid var(--gold);
+    border-radius: 4px;
+    padding: 2rem;
+    margin: 2rem 0;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--green-light);
+  }
+
+  .contact-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .contact-item:first-child { padding-top: 0; }
+
+  .contact-icon {
+    font-size: 1.3rem;
+    min-width: 2rem;
+    text-align: center;
+    margin-top: 0.1rem;
+  }
+
+  .contact-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    color: var(--gold-light);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.2rem;
+  }
+
+  .contact-value {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  .contact-value a {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .topics {
+    margin: 2rem 0;
+  }
+
+  .topics h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: var(--gold-light);
+    letter-spacing: 0.04em;
+    margin-bottom: 1rem;
+  }
+
+  .topic-list {
+    list-style: none;
+    margin: 0;
+  }
+
+  .topic-list li {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    padding: 0.4rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+  }
+
+  .topic-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--green-light);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="flag">🏴󠁧󠁢󠁷󠁬󠁳󠁿</span>
+  <a href="/">Welsh Dragon Rugby</a>
+  <span style="color: var(--text-muted); margin-left: auto; font-size: 0.85rem;">Contact</span>
+</header>
+
+<main>
+  <h1 class="page-title">Get In Touch</h1>
+
+  <p>Welsh Dragon Rugby is run by a small independent team passionate about Welsh rugby. We welcome feedback, suggestions, and general enquiries.</p>
+
+  <div class="contact-card">
+    <div class="contact-item">
+      <div class="contact-icon">✉️</div>
+      <div>
+        <div class="contact-label">Email</div>
+        <div class="contact-value"><a href="mailto:hello@welshdragonrugby.co.uk">hello@welshdragonrugby.co.uk</a></div>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">🌐</div>
+      <div>
+        <div class="contact-label">Website</div>
+        <div class="contact-value"><a href="https://welshdragonrugby.co.uk">welshdragonrugby.co.uk</a></div>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-icon">📍</div>
+      <div>
+        <div class="contact-label">Based In</div>
+        <div class="contact-value">South Wales, United Kingdom</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topics">
+    <h2>What You Can Contact Us About</h2>
+    <ul class="topic-list">
+      <li>Feedback or suggestions for the site</li>
+      <li>Reporting incorrect or missing data</li>
+      <li>Advertising or sponsorship enquiries</li>
+      <li>Privacy or data protection requests</li>
+      <li>General rugby chat — we're always up for that</li>
+    </ul>
+  </div>
+
+  <p>We aim to respond to all emails within 2 working days.</p>
+
+</main>
+
+<footer>
+  <p>Welsh Dragon Rugby &copy; 2026 | <a href="/">Home</a> | <a href="/about.html">About</a> | <a href="/contact.html">Contact</a> | <a href="/privacy-policy.html">Privacy Policy</a></p>
+</footer>
+
+</body>
+</html>
