@@ -391,11 +391,161 @@ async function loadCountdown() {
   }
 }
 
-// ── INIT ──────────────────────────────────────────────────────
+
+// ── WALES SQUAD ───────────────────────────────────────────────────────────────
+const POSITION_ORDER = {
+  'Prop': 1, 'Hooker': 2, 'Lock': 3, 'Flanker': 4, 'Number 8': 5,
+  'Scrum-half': 6, 'Fly-half': 7, 'Centre': 8, 'Wing': 9, 'Full-back': 10
+};
+
+const POSITION_COLOURS = {
+  'Prop': '#c9a84c', 'Hooker': '#c9a84c', 'Lock': '#c9a84c',
+  'Flanker': '#c9a84c', 'Number 8': '#c9a84c',
+  'Scrum-half': '#b5132b', 'Fly-half': '#b5132b', 'Centre': '#b5132b',
+  'Wing': '#b5132b', 'Full-back': '#b5132b'
+};
+
+function normalisePosition(pos) {
+  if (!pos) return 'Player';
+  const p = pos.toLowerCase();
+  if (p.includes('prop')) return 'Prop';
+  if (p.includes('hooker')) return 'Hooker';
+  if (p.includes('lock') || p.includes('second row')) return 'Lock';
+  if (p.includes('number 8') || p.includes('no. 8')) return 'Number 8';
+  if (p.includes('flanker') || p.includes('back row')) return 'Flanker';
+  if (p.includes('scrum')) return 'Scrum-half';
+  if (p.includes('fly') || p.includes('outside half')) return 'Fly-half';
+  if (p.includes('centre') || p.includes('center')) return 'Centre';
+  if (p.includes('wing')) return 'Wing';
+  if (p.includes('full')) return 'Full-back';
+  return pos;
+}
+
+function getInitials(name) {
+  if (!name) return '?';
+  return name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
+}
+
+async function loadWalesSquad() {
+  const container = document.getElementById('squad-container');
+  if (!container) return;
+
+  container.innerHTML = '<div class="loading">Loading Wales squad...</div>';
+
+  try {
+    const res = await fetch('/api/wales-squad');
+    const data = await res.json();
+    const players = data.response || [];
+
+    if (players.length === 0) {
+      container.innerHTML = '<div class="squad-empty"><p>Squad data not available for this season. Check back soon.</p></div>';
+      return;
+    }
+
+    const sorted = players
+      .map(p => ({
+        name: p.player?.name || 'Unknown',
+        age: p.player?.age || '—',
+        position: normalisePosition(p.player?.position),
+        caps: p.statistics?.[0]?.games?.appearences ?? '—',
+        height: p.player?.height || '—',
+      }))
+      .sort((a, b) => {
+        const pa = POSITION_ORDER[a.position] || 99;
+        const pb = POSITION_ORDER[b.position] || 99;
+        if (pa !== pb) return pa - pb;
+        return a.name.localeCompare(b.name);
+      });
+
+    const forwards = sorted.filter(p => (POSITION_ORDER[p.position] || 99) <= 5);
+    const backs = sorted.filter(p => (POSITION_ORDER[p.position] || 99) > 5);
+
+    container.innerHTML = `
+      <div class="squad-filter-bar">
+        <button class="squad-filter active" onclick="filterSquad('all', this)">All Players</button>
+        <button class="squad-filter" onclick="filterSquad('forward', this)">Forwards</button>
+        <button class="squad-filter" onclick="filterSquad('back', this)">Backs</button>
+      </div>
+      ${forwards.length > 0 ? `
+        <div class="squad-group-label forward-label">🏉 Forwards</div>
+        <div class="squad-grid" id="squad-forwards">
+          ${forwards.map(p => renderSquadCard(p, 'forward')).join('')}
+        </div>
+      ` : ''}
+      ${backs.length > 0 ? `
+        <div class="squad-group-label back-label">⚡ Backs</div>
+        <div class="squad-grid" id="squad-backs">
+          ${backs.map(p => renderSquadCard(p, 'back')).join('')}
+        </div>
+      ` : ''}
+    `;
+  } catch (err) {
+    container.innerHTML = '<div class="squad-empty"><p>Could not load squad data. Please try again later.</p></div>';
+  }
+}
+
+function renderSquadCard(player, group) {
+  const posColour = POSITION_COLOURS[player.position] || '#c9a84c';
+  const initials = getInitials(player.name);
+  return `
+    <div class="squad-card" data-group="${group}">
+      <div class="squad-avatar" style="border-color: ${posColour}">
+        <span class="squad-initials">${initials}</span>
+        <span class="squad-flag">🏴󠁧󠁢󠁷󠁬󠁳󠁿</span>
+      </div>
+      <div class="squad-info">
+        <div class="squad-name">${player.name}</div>
+        <div class="squad-position" style="color: ${posColour}">${player.position}</div>
+        <div class="squad-stats-row">
+          <div class="squad-stat">
+            <span class="squad-stat-value">${player.age}</span>
+            <span class="squad-stat-label">Age</span>
+          </div>
+          <div class="squad-stat-divider"></div>
+          <div class="squad-stat">
+            <span class="squad-stat-value">${player.caps}</span>
+            <span class="squad-stat-label">Apps</span>
+          </div>
+          <div class="squad-stat-divider"></div>
+          <div class="squad-stat">
+            <span class="squad-stat-value">${player.height !== '—' ? player.height.replace(' cm','') : '—'}</span>
+            <span class="squad-stat-label">Height</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function filterSquad(type, btn) {
+  document.querySelectorAll('.squad-filter').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const forwardsGroup = document.getElementById('squad-forwards');
+  const backsGroup = document.getElementById('squad-backs');
+  const forwardLabel = document.querySelector('.forward-label');
+  const backLabel = document.querySelector('.back-label');
+  if (type === 'all') {
+    [forwardsGroup, backsGroup, forwardLabel, backLabel].forEach(el => { if (el) el.style.display = ''; });
+  } else if (type === 'forward') {
+    if (forwardsGroup) forwardsGroup.style.display = '';
+    if (forwardLabel) forwardLabel.style.display = '';
+    if (backsGroup) backsGroup.style.display = 'none';
+    if (backLabel) backLabel.style.display = 'none';
+  } else {
+    if (backsGroup) backsGroup.style.display = '';
+    if (backLabel) backLabel.style.display = '';
+    if (forwardsGroup) forwardsGroup.style.display = 'none';
+    if (forwardLabel) forwardLabel.style.display = 'none';
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  
   loadStarsOfWeek();
   loadQuiz();
   loadPredictor();
   loadNewsFeed();
   loadCountdown();
+  loadWalesSquad();
+  
 });
