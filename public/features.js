@@ -447,7 +447,7 @@ async function loadWalesSquad() {
         name: p.player?.name || 'Unknown',
         age: p.player?.age || '—',
         position: normalisePosition(p.player?.position),
-        caps: p.statistics?.[0]?.games?.appearences ?? '—',
+        caps: p.player?.caps ?? '—',
         height: p.player?.height || '—',
       }))
       .sort((a, b) => {
