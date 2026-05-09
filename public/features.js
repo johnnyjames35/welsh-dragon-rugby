@@ -491,7 +491,7 @@ function renderSquadCard(player, group) {
     <div class="squad-card" data-group="${group}">
       <div class="squad-avatar" style="border-color: ${posColour}">
         <span class="squad-initials">${initials}</span>
-        <span class="squad-flag">🏴󠁧󠁢󠁷󠁬󠁳󠁿</span>
+        <img class="squad-flag-img" src="ChatGPT Image May 8, 2026, 10_49_23 PM.png" alt="Welsh Dragon">
       </div>
       <div class="squad-info">
         <div class="squad-name">${player.name}</div>
