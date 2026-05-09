@@ -306,7 +306,28 @@ app.get('/api/news', async (req, res) => {
     });
   }
 });
+// ── WALES SQUAD ───────────────────────────────────────────────────────────────
+const SQUAD_CACHE_DURATION = 24 * 60 * 60 * 1000;
 
+app.get('/api/wales-squad', async (req, res) => {
+  try {
+    const cacheKey = `squad-wales-${SEASON}`;
+    const now = Date.now();
+    if (cache[cacheKey] && now - cacheTime[cacheKey] < SQUAD_CACHE_DURATION) {
+      return res.json(cache[cacheKey]);
+    }
+    const data = await fetchAPI(`players?team=${TEAM_IDS.wales}&season=${SEASON}`);
+    if (!data || !data.response || data.response.length === 0) {
+      return res.json({ response: [] });
+    }
+    cache[cacheKey] = data;
+    cacheTime[cacheKey] = now;
+    res.json(data);
+  } catch (err) {
+    console.error('Squad fetch error:', err);
+    res.json({ response: [] });
+  }
+});
 app.listen(PORT, () => {
   console.log(`Welsh Dragon Rugby running on port ${PORT}`);
 });
