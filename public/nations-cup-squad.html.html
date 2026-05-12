@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wales Nations Cup 2026 Squad | Welsh Dragon Rugby</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #0d2b1e;
+    --green-mid: #133828;
+    --green-light: #1a4d34;
+    --green-card: #0f3022;
+    --gold: #c9a84c;
+    --gold-light: #e2c47a;
+    --gold-dim: #8a6f2e;
+    --text: #e8e8e8;
+    --text-muted: #7a9e8a;
+    --border: #1e4a30;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--green-dark);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    background: linear-gradient(160deg, #051a0e 0%, #0d2b1e 40%, #133828 100%);
+    padding: 60px 20px 50px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 2px solid var(--gold);
+  }
+  .hero::before {
+    content: '🐉';
+    position: absolute;
+    font-size: 320px;
+    opacity: 0.04;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: #0d2b1e;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    padding: 6px 18px;
+    border-radius: 2px;
+    margin-bottom: 22px;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 6vw, 3.8rem);
+    font-weight: 900;
+    color: white;
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero-sub {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 35px;
+    font-weight: 400;
+  }
+  .hero-stats { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-number {
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    color: var(--gold);
+    font-weight: 700;
+    display: block;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-top: 5px;
+    display: block;
+  }
+
+  /* ── HEADLINES ── */
+  .headlines {
+    background: var(--green-mid);
+    border-bottom: 1px solid var(--border);
+    padding: 30px 20px;
+  }
+  .headlines-inner { max-width: 1100px; margin: 0 auto; }
+  .headlines h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+  .headline-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  .headline-item {
+    background: var(--green-dark);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    padding: 12px 15px;
+    border-radius: 3px;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: #b0c8ba;
+  }
+  .headline-item strong {
+    color: var(--gold-light);
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+
+  /* ── FILTER TABS (squad cards) ── */
+  .filter-bar {
+    max-width: 1100px;
+    margin: 35px auto 0;
+    padding: 0 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .filter-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 8px 22px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover { border-color: var(--gold-dim); color: var(--gold); }
+  .filter-btn.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: #0d2b1e;
+    font-weight: 700;
+  }
+
+  /* ── SQUAD SECTION ── */
+  .squad-section {
+    max-width: 1100px;
+    margin: 30px auto 10px;
+    padding: 0 20px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .section-header span {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .section-line { flex: 1; height: 1px; background: var(--border); }
+
+  /* ── PLAYER GRID ── */
+  .player-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  /* ── PLAYER CARD ── */
+  .player-card {
+    background: var(--green-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 16px 18px;
+    text-align: center;
+    transition: border-color 0.2s, transform 0.2s, background 0.2s;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+  }
+  .player-card:hover {
+    border-color: var(--gold-dim);
+    background: var(--green-mid);
+    transform: translateY(-3px);
+  }
+  .player-card:hover .player-name { color: var(--gold-light); }
+  .player-card.uncapped { border-color: #2a4a20; }
+  .player-card.uncapped:hover { border-color: var(--gold); }
+
+  .card-arrow {
+    position: absolute;
+    bottom: 10px;
+    right: 12px;
+    font-size: 0.65rem;
+    color: var(--gold-dim);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .player-card:hover .card-arrow { opacity: 1; }
+
+  .avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+  }
+  .new-badge {
+    position: absolute;
+    top: 9px; right: 9px;
+    background: var(--gold);
+    color: #0d2b1e;
+    font-size: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 2px 6px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+  .player-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+    line-height: 1.3;
+    transition: color 0.2s;
+  }
+  .player-pos {
+    font-size: 0.65rem;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+  .player-stats {
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+    margin-bottom: 10px;
+  }
+  .p-stat { text-align: center; flex: 1; }
+  .p-stat-val {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    color: var(--gold);
+    font-weight: 700;
+    display: block;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .p-stat-label {
+    font-size: 0.55rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .player-club {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    padding-top: 9px;
+    letter-spacing: 0.5px;
+  }
+  .player-club span { color: #c0d8c8; font-weight: 500; }
+
+  /* ── CLUB BADGES ── */
+  .club-badge {
+    width: 34px;
+    height: 34px;
+    margin: 10px auto 8px;
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+    background: linear-gradient(160deg, var(--green-dark), var(--green-mid));
+    color: var(--gold-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    box-shadow: 0 0 12px rgba(201,168,76,0.12);
+  }
+  .club-badge.ospreys    { border-color: #c9a84c; color: #e2c47a; }
+  .club-badge.cardiff    { border-color: #7aa7d9; color: #b9d6ff; }
+  .club-badge.scarlets   { border-color: #d94848; color: #ffb3b3; }
+  .club-badge.dragons    { border-color: #e2c47a; color: #e2c47a; }
+  .club-badge.exeter     { border-color: #c9a84c; color: #e2c47a; }
+  .club-badge.gloucester { border-color: #d94848; color: #ffb3b3; }
+  .club-badge.leicester  { border-color: #7fbf7f; color: #b7e6b7; }
+  .club-badge.harlequins { border-color: #b58cff; color: #d9c6ff; }
+  .club-badge.bristol    { border-color: #8cc7ff; color: #c8e8ff; }
+  .club-badge.montpellier{ border-color: #8cc7ff; color: #c8e8ff; }
+  .club-badge.saracens   { border-color: #aaaaaa; color: #dddddd; }
+
+  /* ── DIVIDER between squad cards and profiles ── */
+  .section-divider {
+    max-width: 1100px;
+    margin: 20px auto 0;
+    padding: 0 20px;
+    border-top: 2px solid var(--border);
+  }
+
+  /* ── CAPTAIN NOTE ── */
+  .captain-note {
+    max-width: 1100px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+  }
+  .captain-box {
+    background: var(--green-mid);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+    border-radius: 4px;
+    padding: 20px 25px;
+  }
+  .captain-box h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .captain-box p { font-size: 0.85rem; color: #a0b8a8; line-height: 1.7; }
+  .captain-box p span { color: var(--gold-light); font-weight: 600; }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    text-align: center;
+    padding: 30px 20px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+  }
+  .page-footer a { color: var(--gold); text-decoration: none; }
+
+  /* ── PROFILE SECTION ── */
+  .wdr-profiles-wrap {
+    max-width: 1100px;
+    margin: 45px auto 60px;
+    padding: 0 20px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+  }
+  .wdr-profiles-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .wdr-profiles-title span {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .wdr-title-line { flex: 1; height: 1px; background: var(--border); }
+
+  .wdr-profile-intro {
+    background: var(--green-mid);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+    border-radius: 6px;
+    padding: 16px 18px;
+    color: #a0b8a8;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .wdr-profile-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  .wdr-profile-tab {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 8px 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .wdr-profile-tab:hover { border-color: var(--gold-dim); color: var(--gold); }
+  .wdr-profile-tab.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--green-dark);
+  }
+  .wdr-profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+    gap: 16px;
+  }
+  .wdr-profile-card {
+    background: var(--green-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 16px;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .wdr-profile-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--gold-dim);
+    background: var(--green-mid);
+  }
+  .wdr-profile-card.uncapped { border-color: var(--gold-dim); }
+  .wdr-new-badge {
+    position: absolute;
+    top: 10px; right: 10px;
+    background: var(--gold);
+    color: var(--green-dark);
+    font-size: 0.52rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding: 3px 7px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+  .wdr-profile-top {
+    display: flex;
+    gap: 13px;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .wdr-profile-avatar {
+    min-width: 54px;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .wdr-profile-name {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    line-height: 1.25;
+  }
+  .wdr-profile-position {
+    font-size: 0.66rem;
+    color: var(--gold);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .wdr-profile-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .wdr-meta-box {
+    background: rgba(5, 26, 14, 0.45);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px;
+  }
+  .wdr-meta-label {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.55rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .wdr-meta-value { color: var(--gold-light); font-size: 0.78rem; font-weight: 700; }
+  .wdr-profile-summary { color: #a0b8a8; font-size: 0.82rem; line-height: 1.55; }
+  .wdr-profile-link {
+    margin-top: 12px;
+    color: var(--gold);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 800;
+  }
+
+  /* ── MODAL ── */
+  .wdr-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    padding: 20px;
+    overflow-y: auto;
+  }
+  .wdr-modal.open { display: block; }
+  .wdr-modal-card {
+    max-width: 680px;
+    margin: 45px auto;
+    background: var(--green-mid);
+    border: 1px solid var(--gold-dim);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  }
+  .wdr-modal-head {
+    background: linear-gradient(160deg, #051a0e 0%, #0d2b1e 45%, #133828 100%);
+    padding: 24px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .wdr-modal-close {
+    position: absolute;
+    top: 14px; right: 16px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--gold);
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+    font-size: 1.1rem;
+  }
+  .wdr-modal-name {
+    font-family: 'Cinzel', serif;
+    color: white;
+    font-size: 1.65rem;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    padding-right: 40px;
+  }
+  .wdr-modal-sub {
+    color: var(--gold);
+    font-size: 0.78rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .wdr-modal-body { padding: 22px 24px 24px; }
+  .wdr-modal-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .wdr-modal-stat {
+    background: var(--green-dark);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 11px;
+    text-align: center;
+  }
+  .wdr-modal-stat strong {
+    display: block;
+    color: var(--gold-light);
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+  .wdr-modal-stat span {
+    color: var(--text-muted);
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .wdr-modal-copy h4 {
+    color: var(--gold);
+    font-size: 0.76rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 18px 0 7px;
+  }
+  .wdr-modal-copy p { color: #b0c8ba; font-size: 0.9rem; line-height: 1.7; }
+
+  @media (max-width: 600px) {
+    .player-grid { grid-template-columns: repeat(2, 1fr); }
+    .wdr-profile-grid { grid-template-columns: 1fr; }
+    .wdr-modal-stats { grid-template-columns: 1fr; }
+    .wdr-modal-name { font-size: 1.35rem; }
+    .hero-stats { gap: 25px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🏉 Squad Announcement</div>
+  <h1>WALES <span>NATIONS CUP</span><br>2026</h1>
+  <p class="hero-sub">Steve Tandy Names His Squad</p>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-number">48</span><span class="stat-label">Players Named</span></div>
+    <div class="stat"><span class="stat-number">6</span><span class="stat-label">Uncapped Players</span></div>
+    <div class="stat"><span class="stat-number">2027</span><span class="stat-label">World Cup Building</span></div>
+  </div>
+</div>
+
+<!-- HEADLINES -->
+<div class="headlines">
+  <div class="headlines-inner">
+    <h2>Key Talking Points</h2>
+    <div class="headline-grid">
+      <div class="headline-item"><strong>🔴 Jac Morgan Returns</strong>Huge boost after missing the entire Six Nations through injury</div>
+      <div class="headline-item"><strong>🏴󠁧󠁢󠁥󠁮󠁧󠁬󠁿➡️🏴󠁧󠁢󠁷󠁬󠁳󠁿 Kane James</strong>Born in Pembrokeshire, formerly England U20s — now in the senior Wales setup</div>
+      <div class="headline-item"><strong>↩️ Welcome Back</strong>Max Llewellyn and Teddy Williams both return to the squad</div>
+      <div class="headline-item"><strong>❓ No Captain Yet</strong>Leadership options being assessed ahead of the tournament</div>
+      <div class="headline-item"><strong>🌍 Eyes on 2027</strong>A squad built with the Rugby World Cup firmly in mind</div>
+    </div>
+  </div>
+</div>
+
+<!-- FILTER TABS -->
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterCards('all', this)">All Players</button>
+  <button class="filter-btn" onclick="filterCards('forward', this)">Forwards</button>
+  <button class="filter-btn" onclick="filterCards('back', this)">Backs</button>
+  <button class="filter-btn" onclick="filterCards('uncapped', this)">⭐ Uncapped</button>
+</div>
+
+<!-- FORWARDS -->
+<div class="squad-section" id="sec-forwards">
+  <div class="section-header"><span>🏉 Forwards</span><div class="section-line"></div></div>
+  <div class="player-grid">
+
+    <a class="player-card" href="players/rhys-carre.html" data-group="forward">
+      <div class="avatar">RC</div><div class="player-name">Rhys Carré</div><div class="player-pos">Loosehead Prop</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">26</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">22</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.88m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge cardiff">CAR</div>
+      <div class="player-club">Club: <span>Cardiff</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/gareth-thomas.html" data-group="forward">
+      <div class="avatar">GT</div><div class="player-name">Gareth Thomas</div><div class="player-pos">Loosehead Prop</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">32</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">8</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.88m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge ospreys">OSP</div>
+      <div class="player-club">Club: <span>Ospreys</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/nicky-smith.html" data-group="forward">
+      <div class="avatar">NS</div><div class="player-name">Nicky Smith</div><div class="player-pos">Loosehead Prop</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">32</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">46</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.83m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge ospreys">OSP</div>
+      <div class="player-club">Club: <span>Ospreys</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/sam-wainwright.html" data-group="forward">
+      <div class="avatar">SW</div><div class="player-name">Sam Wainwright</div><div class="player-pos">Loosehead Prop</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">23</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">6</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.85m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge scarlets">SCA</div>
+      <div class="player-club">Club: <span>Scarlets</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/dewi-lake.html" data-group="forward">
+      <div class="avatar">DL</div><div class="player-name">Dewi Lake</div><div class="player-pos">Hooker</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">27</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">32</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.85m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge ospreys">OSP</div>
+      <div class="player-club">Club: <span>Ospreys</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/ryan-elias.html" data-group="forward">
+      <div class="avatar">RE</div><div class="player-name">Ryan Elias</div><div class="player-pos">Hooker</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">31</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">28</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.88m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge scarlets">SCA</div>
+      <div class="player-club">Club: <span>Scarlets</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/evan-lloyd.html" data-group="forward">
+      <div class="avatar">EL</div><div class="player-name">Evan Lloyd</div><div class="player-pos">Hooker</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">23</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">5</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.83m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge cardiff">CAR</div>
+      <div class="player-club">Club: <span>Cardiff</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/liam-belcher.html" data-group="forward">
+      <div class="avatar">LB</div><div class="player-name">Liam Belcher</div><div class="player-pos">Hooker</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">30</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">7</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.77m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge cardiff">CAR</div>
+      <div class="player-club">Club: <span>Cardiff</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/dillon-lewis.html" data-group="forward">
+      <div class="avatar">DL</div><div class="player-name">Dillon Lewis</div><div class="player-pos">Tighthead Prop</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">29</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">51</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.83m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge cardiff">CAR</div>
+      <div class="player-club">Club: <span>Cardiff</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/keiron-assiratti.html" data-group="forward">
+      <div class="avatar">KA</div><div class="player-name">Keiron Assiratti</div><div class="player-pos">Tighthead Prop</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">28</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">14</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.88m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge cardiff">CAR</div>
+      <div class="player-club">Club: <span>Cardiff</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card uncapped" href="players/ben-warren.html" data-group="forward uncapped">
+      <div class="new-badge">NEW</div>
+      <div class="avatar">BW</div><div class="player-name">Ben Warren</div><div class="player-pos">Tighthead Prop</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">24</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">0</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">—</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge dragons">DRA</div>
+      <div class="player-club">Club: <span>Dragons</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card uncapped" href="players/rhys-barratt.html" data-group="forward uncapped">
+      <div class="new-badge">NEW</div>
+      <div class="avatar">RB</div><div class="player-name">Rhys Barratt</div><div class="player-pos">Prop</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">25</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">0</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">—</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge ospreys">OSP</div>
+      <div class="player-club">Club: <span>Ospreys</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/dafydd-jenkins.html" data-group="forward">
+      <div class="avatar">DJ</div><div class="player-name">Dafydd Jenkins</div><div class="player-pos">Lock</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">23</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">21</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">2.01m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge exeter">EXE</div>
+      <div class="player-club">Club: <span>Exeter Chiefs</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/adam-beard.html" data-group="forward">
+      <div class="avatar">AB</div><div class="player-name">Adam Beard</div><div class="player-pos">Lock</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">30</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">48</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">2.03m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge montpellier">MON</div>
+      <div class="player-club">Club: <span>Montpellier</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/freddie-thomas.html" data-group="forward">
+      <div class="avatar">FT</div><div class="player-name">Freddie Thomas</div><div class="player-pos">Lock</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">22</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">3</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">2.00m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge gloucester">GLO</div>
+      <div class="player-club">Club: <span>Gloucester</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/ben-carter.html" data-group="forward">
+      <div class="avatar">BC</div><div class="player-name">Ben Carter</div><div class="player-pos">Lock / Flanker</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">25</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">11</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.98m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge dragons">DRA</div>
+      <div class="player-club">Club: <span>Dragons</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/teddy-williams.html" data-group="forward">
+      <div class="avatar">TW</div><div class="player-name">Teddy Williams</div><div class="player-pos">Lock</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">27</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">4</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.97m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge cardiff">CAR</div>
+      <div class="player-club">Club: <span>Cardiff</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/alex-mann.html" data-group="forward">
+      <div class="avatar">AM</div><div class="player-name">Alex Mann</div><div class="player-pos">Blindside Flanker</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">24</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">6</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.91m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge cardiff">CAR</div>
+      <div class="player-club">Club: <span>Cardiff</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card uncapped" href="players/harrison-keddie.html" data-group="forward uncapped">
+      <div class="new-badge">NEW</div>
+      <div class="avatar">HK</div><div class="player-name">Harrison Keddie</div><div class="player-pos">Blindside Flanker</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">25</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">0</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">—</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge dragons">DRA</div>
+      <div class="player-club">Club: <span>Dragons</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card uncapped" href="players/ryan-woodman.html" data-group="forward uncapped">
+      <div class="new-badge">NEW</div>
+      <div class="avatar">RW</div><div class="player-name">Ryan Woodman</div><div class="player-pos">Flanker / No.8</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">24</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">0</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">—</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge dragons">DRA</div>
+      <div class="player-club">Club: <span>Dragons</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/james-botham.html" data-group="forward">
+      <div class="avatar">JB</div><div class="player-name">James Botham</div><div class="player-pos">Flanker</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">28</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">18</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.91m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge cardiff">CAR</div>
+      <div class="player-club">Club: <span>Cardiff</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/taine-plumtree.html" data-group="forward">
+      <div class="avatar">TP</div><div class="player-name">Taine Plumtree</div><div class="player-pos">Flanker / No.8</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">26</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">14</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.95m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge scarlets">SCA</div>
+      <div class="player-club">Club: <span>Scarlets</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/olly-cracknell.html" data-group="forward">
+      <div class="avatar">OC</div><div class="player-name">Olly Cracknell</div><div class="player-pos">Flanker / No.8</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">30</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">4</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.93m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge leicester">LEI</div>
+      <div class="player-club">Club: <span>Leicester Tigers</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/jac-morgan.html" data-group="forward">
+      <div class="avatar">JM</div><div class="player-name">Jac Morgan</div><div class="player-pos">Openside Flanker</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">24</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">29</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.82m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge ospreys">OSP</div>
+      <div class="player-club">Club: <span>Ospreys</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/tommy-reffell.html" data-group="forward">
+      <div class="avatar">TR</div><div class="player-name">Tommy Reffell</div><div class="player-pos">Openside Flanker</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">26</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">22</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.88m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge leicester">LEI</div>
+      <div class="player-club">Club: <span>Leicester Tigers</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/aaron-wainwright.html" data-group="forward">
+      <div class="avatar">AW</div><div class="player-name">Aaron Wainwright</div><div class="player-pos">No.8</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">27</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">47</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.96m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge dragons">DRA</div>
+      <div class="player-club">Club: <span>Dragons</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card uncapped" href="players/kane-james.html" data-group="forward uncapped">
+      <div class="new-badge">NEW</div>
+      <div class="avatar">KJ</div><div class="player-name">Kane James</div><div class="player-pos">No.8 / Flanker</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">23</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">0</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">—</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge exeter">EXE</div>
+      <div class="player-club">Club: <span>Exeter Chiefs</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+  </div>
+</div>
+
+<!-- BACKS -->
+<div class="squad-section" id="sec-backs">
+  <div class="section-header"><span>🏃 Backs</span><div class="section-line"></div></div>
+  <div class="player-grid">
+
+    <a class="player-card" href="players/tomos-williams.html" data-group="back">
+      <div class="avatar">TW</div><div class="player-name">Tomos Williams</div><div class="player-pos">Scrum Half</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">29</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">58</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.74m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge gloucester">GLO</div>
+      <div class="player-club">Club: <span>Gloucester</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/reuben-morgan-williams.html" data-group="back">
+      <div class="avatar">RM</div><div class="player-name">Reuben Morgan-Williams</div><div class="player-pos">Scrum Half</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">24</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">8</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.71m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge ospreys">OSP</div>
+      <div class="player-club">Club: <span>Ospreys</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/ellis-bevan.html" data-group="back">
+      <div class="avatar">EB</div><div class="player-name">Ellis Bevan</div><div class="player-pos">Scrum Half</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">23</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">2</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.72m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge cardiff">CAR</div>
+      <div class="player-club">Club: <span>Cardiff</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/kieran-hardy.html" data-group="back">
+      <div class="avatar">KH</div><div class="player-name">Kieran Hardy</div><div class="player-pos">Scrum Half</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">29</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">19</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.73m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge ospreys">OSP</div>
+      <div class="player-club">Club: <span>Ospreys</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/sam-costelow.html" data-group="back">
+      <div class="avatar">SC</div><div class="player-name">Sam Costelow</div><div class="player-pos">Outside Half</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">23</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">14</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.80m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge scarlets">SCA</div>
+      <div class="player-club">Club: <span>Scarlets</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/dan-edwards.html" data-group="back">
+      <div class="avatar">DE</div><div class="player-name">Dan Edwards</div><div class="player-pos">Outside Half</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">22</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">5</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.82m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge ospreys">OSP</div>
+      <div class="player-club">Club: <span>Ospreys</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/joe-roberts.html" data-group="back">
+      <div class="avatar">JR</div><div class="player-name">Joe Roberts</div><div class="player-pos">Inside Centre</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">24</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">7</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.88m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge scarlets">SCA</div>
+      <div class="player-club">Club: <span>Scarlets</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/ben-thomas.html" data-group="back">
+      <div class="avatar">BT</div><div class="player-name">Ben Thomas</div><div class="player-pos">Centre / Fly Half</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">23</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">6</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.85m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge cardiff">CAR</div>
+      <div class="player-club">Club: <span>Cardiff</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/eddie-james.html" data-group="back">
+      <div class="avatar">EJ</div><div class="player-name">Eddie James</div><div class="player-pos">Centre</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">22</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">3</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.83m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge scarlets">SCA</div>
+      <div class="player-club">Club: <span>Scarlets</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card uncapped" href="players/bryn-bradley.html" data-group="back uncapped">
+      <div class="new-badge">NEW</div>
+      <div class="avatar">BB</div><div class="player-name">Bryn Bradley</div><div class="player-pos">Inside Centre</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">23</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">0</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">—</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge harlequins">HAR</div>
+      <div class="player-club">Club: <span>Harlequins</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/max-llewellyn.html" data-group="back">
+      <div class="avatar">ML</div><div class="player-name">Max Llewellyn</div><div class="player-pos">Outside Centre</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">24</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">11</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.85m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge gloucester">GLO</div>
+      <div class="player-club">Club: <span>Gloucester</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/mason-grady.html" data-group="back">
+      <div class="avatar">MG</div><div class="player-name">Mason Grady</div><div class="player-pos">Centre / Wing</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">22</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">13</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.90m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge cardiff">CAR</div>
+      <div class="player-club">Club: <span>Cardiff</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/johnny-williams.html" data-group="back">
+      <div class="avatar">JW</div><div class="player-name">Johnny Williams</div><div class="player-pos">Outside Centre</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">26</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">9</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.88m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge scarlets">SCA</div>
+      <div class="player-club">Club: <span>Scarlets</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/joe-hawkins.html" data-group="back">
+      <div class="avatar">JH</div><div class="player-name">Joe Hawkins</div><div class="player-pos">Outside Centre</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">21</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">16</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.83m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge ospreys">OSP</div>
+      <div class="player-club">Club: <span>Ospreys</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/keelan-giles.html" data-group="back">
+      <div class="avatar">KG</div><div class="player-name">Keelan Giles</div><div class="player-pos">Wing</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">26</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">8</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.78m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge ospreys">OSP</div>
+      <div class="player-club">Club: <span>Ospreys</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/ellis-mee.html" data-group="back">
+      <div class="avatar">EM</div><div class="player-name">Ellis Mee</div><div class="player-pos">Wing</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">24</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">5</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.82m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge scarlets">SCA</div>
+      <div class="player-club">Club: <span>Scarlets</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/gabriel-hamer-webb.html" data-group="back">
+      <div class="avatar">GH</div><div class="player-name">Gabriel Hamer-Webb</div><div class="player-pos">Wing</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">22</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">2</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.85m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge leicester">LEI</div>
+      <div class="player-club">Club: <span>Leicester Tigers</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/tom-rogers.html" data-group="back">
+      <div class="avatar">TR</div><div class="player-name">Tom Rogers</div><div class="player-pos">Wing</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">27</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">12</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.86m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge scarlets">SCA</div>
+      <div class="player-club">Club: <span>Scarlets</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/louis-rees-zammit.html" data-group="back">
+      <div class="avatar">LR</div><div class="player-name">Louis Rees-Zammit</div><div class="player-pos">Wing / Full Back</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">24</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">31</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.88m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge bristol">BRI</div>
+      <div class="player-club">Club: <span>Bristol Bears</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/blair-murray.html" data-group="back">
+      <div class="avatar">BM</div><div class="player-name">Blair Murray</div><div class="player-pos">Full Back</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">25</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">10</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.83m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge scarlets">SCA</div>
+      <div class="player-club">Club: <span>Scarlets</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+    <a class="player-card" href="players/cam-winnett.html" data-group="back">
+      <div class="avatar">CW</div><div class="player-name">Cam Winnett</div><div class="player-pos">Full Back</div>
+      <div class="player-stats">
+        <div class="p-stat"><span class="p-stat-val">23</span><span class="p-stat-label">Age</span></div>
+        <div class="p-stat"><span class="p-stat-val">8</span><span class="p-stat-label">Apps</span></div>
+        <div class="p-stat"><span class="p-stat-val">1.82m</span><span class="p-stat-label">Height</span></div>
+      </div>
+      <div class="club-badge cardiff">CAR</div>
+      <div class="player-club">Club: <span>Cardiff</span></div>
+      <div class="card-arrow">→ View Profile</div>
+    </a>
+
+  </div>
+</div>
+
+<!-- CAPTAIN NOTE -->
+<div class="captain-note">
+  <div class="captain-box">
+    <h3>❓ Captain To Be Confirmed</h3>
+    <p>Steve Tandy has not yet officially named a captain for the Nations Cup 2026. Leadership candidates include <span>Jac Morgan</span>, <span>Dewi Lake</span>, <span>Dafydd Jenkins</span> and <span>Tomos Williams</span>.</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PLAYER PROFILES WITH MODAL POPUPS
+     ════════════════════════════════════════ -->
+
+<section class="wdr-profiles-wrap" id="wales-player-profiles">
+  <div class="wdr-profiles-title"><span>🐉 Player Profiles</span><div class="wdr-title-line"></div></div>
+  <div class="wdr-profile-intro">
+    Tap any card below for a short profile, club, caps count and why each player matters for the Nations Cup and beyond.
+  </div>
+
+  <div class="wdr-profile-tabs">
+    <button class="wdr-profile-tab active" onclick="wdrFilterProfiles('all', this)">All</button>
+    <button class="wdr-profile-tab" onclick="wdrFilterProfiles('forward', this)">Forwards</button>
+    <button class="wdr-profile-tab" onclick="wdrFilterProfiles('back', this)">Backs</button>
+    <button class="wdr-profile-tab" onclick="wdrFilterProfiles('uncapped', this)">⭐ Uncapped</button>
+    <button class="wdr-profile-tab" onclick="wdrFilterProfiles('returning', this)">Returning Names</button>
+  </div>
+
+  <div class="wdr-profile-grid" id="wdrProfileGrid"></div>
+</section>
+
+<!-- MODAL -->
+<div class="wdr-modal" id="wdrPlayerModal" onclick="wdrCloseModal(event)">
+  <div class="wdr-modal-card" onclick="event.stopPropagation()">
+    <div class="wdr-modal-head">
+      <button class="wdr-modal-close" onclick="wdrCloseModal()">×</button>
+      <div class="wdr-modal-name" id="wdrModalName"></div>
+      <div class="wdr-modal-sub" id="wdrModalSub"></div>
+    </div>
+    <div class="wdr-modal-body">
+      <div class="wdr-modal-stats">
+        <div class="wdr-modal-stat"><strong id="wdrModalClub"></strong><span>Club</span></div>
+        <div class="wdr-modal-stat"><strong id="wdrModalCaps"></strong><span>Wales Caps</span></div>
+        <div class="wdr-modal-stat"><strong id="wdrModalGroup"></strong><span>Group</span></div>
+      </div>
+      <div class="wdr-modal-copy">
+        <h4>Profile</h4>
+        <p id="wdrModalProfile"></p>
+        <h4>Why he matters</h4>
+        <p id="wdrModalAngle"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="page-footer">
+  <p>🐉 <a href="https://welshdragonrugby.co.uk">welshdragonrugby.co.uk</a> — Your home for Welsh rugby news</p>
+</div>
+
+<script>
+  /* ── SQUAD CARD FILTER ── */
+  function filterCards(group, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const fwdSec = document.getElementById('sec-forwards');
+    const bkSec  = document.getElementById('sec-backs');
+    document.querySelectorAll('.player-card').forEach(card => {
+      const g = card.dataset.group || '';
+      if (group === 'all')      card.style.display = '';
+      else if (group === 'forward')  card.style.display = g.includes('forward') ? '' : 'none';
+      else if (group === 'back')     card.style.display = g.includes('back')    ? '' : 'none';
+      else if (group === 'uncapped') card.style.display = g.includes('uncapped')? '' : 'none';
+    });
+    fwdSec.style.display = (group === 'back')    ? 'none' : '';
+    bkSec.style.display  = (group === 'forward') ? 'none' : '';
+  }
+
+  /* ── PLAYER DATA ── */
+  const wdrPlayers = [
+    {name:'Keiron Assiratti',pos:'Tighthead Prop',club:'Cardiff',caps:'19',group:'forward',tags:'forward',profile:'Cardiff tighthead selected as part of Wales\' front-row depth for a demanding summer schedule.',angle:'A reliable scrum option who gives Wales another experienced tighthead route beyond unavailable squad members.'},
+    {name:'Rhys Barratt',pos:'Loosehead Prop',club:'Cardiff',caps:'Uncapped',group:'forward',tags:'forward uncapped',profile:'Uncapped Cardiff loosehead included among the six new faces in Steve Tandy\'s extended squad.',angle:'A fresh front-row option and one of the most interesting development picks in the wider training group.'},
+    {name:'Adam Beard',pos:'Lock',club:'Montpellier',caps:'65',group:'forward',tags:'forward',profile:'Experienced second-row forward with a long Wales record and major set-piece pedigree.',angle:'His lineout experience could be important if Wales want stability while bedding in younger forwards.'},
+    {name:'Liam Belcher',pos:'Hooker',club:'Cardiff',caps:'5',group:'forward',tags:'forward',profile:'Cardiff hooker included in a competitive hooking group alongside Dewi Lake, Ryan Elias and Evan Lloyd.',angle:'Offers depth and competition in one of the most physically demanding positions in the squad.'},
+    {name:'James Botham',pos:'Back Row',club:'Cardiff',caps:'21',group:'forward',tags:'forward',profile:'Versatile Cardiff back-rower who can cover across the loose-forward unit.',angle:'Useful squad player because his flexibility gives Wales options around balance and bench coverage.'},
+    {name:'Rhys Carré',pos:'Loosehead Prop',club:'Saracens',caps:'28',group:'forward',tags:'forward',profile:'Powerful loosehead prop now listed from Saracens in the summer squad.',angle:'Brings size, carrying power and another experienced loosehead option.'},
+    {name:'Ben Carter',pos:'Lock / Flanker',club:'Dragons',caps:'19',group:'forward',tags:'forward',profile:'Dragons forward selected after being part of Wales\' recent campaigns.',angle:'His ability to cover lock and back-row roles can help Wales manage a long travel-heavy summer.'},
+    {name:'Olly Cracknell',pos:'Back Row',club:'Leicester Tigers',caps:'5',group:'forward',tags:'forward',profile:'Leicester back-row forward who adds physicality and carrying strength.',angle:'A hard-edge option for fixtures where Wales need direct collisions and breakdown pressure.'},
+    {name:'Ryan Elias',pos:'Hooker',club:'Scarlets',caps:'48',group:'forward',tags:'forward',profile:'Experienced Scarlets hooker and one of the senior front-row figures in the group.',angle:'His Test experience matters in a squad that includes several developing forwards.'},
+    {name:'Kane James',pos:'Back Row',club:'Exeter Chiefs',caps:'Uncapped',group:'forward',tags:'forward uncapped',profile:'Pembrokeshire-born Exeter back-rower and former England U20 player who can operate at flanker or number eight.',angle:'One of the headline stories of the squad — adds explosive back-row potential and Welsh-qualified intrigue.'},
+    {name:'Dafydd Jenkins',pos:'Lock',club:'Exeter Chiefs',caps:'31',group:'forward',tags:'forward returning',profile:'Exeter lock and one of Wales\' leading young forwards, returning to the wider summer group.',angle:'A major leadership and lineout figure with long-term importance for the 2027 cycle.'},
+    {name:'Harrison Keddie',pos:'Back Row',club:'Dragons',caps:'Uncapped',group:'forward',tags:'forward uncapped',profile:'Dragons back-rower rewarded with a call-up after strong regional form.',angle:'A popular selection for supporters who have followed his long road from Wales U20 promise to senior recognition.'},
+    {name:'Dewi Lake',pos:'Hooker',club:'Ospreys',caps:'31',group:'forward',tags:'forward',profile:'Ospreys hooker and recent Wales captain included despite previous injury concerns.',angle:'A core leadership contender and vital player if Wales want set-piece bite and emotional energy.'},
+    {name:'Dillon Lewis',pos:'Tighthead Prop',club:'Dragons',caps:'57',group:'forward',tags:'forward returning',profile:'Dragons tighthead recalled to the Wales squad for the summer programme.',angle:'His experience is valuable with other tighthead options unavailable this summer.'},
+    {name:'Evan Lloyd',pos:'Hooker',club:'Cardiff',caps:'8',group:'forward',tags:'forward',profile:'Cardiff hooker who has already gained senior Wales exposure.',angle:'Part of the next wave of hookers pushing established names for minutes.'},
+    {name:'Alex Mann',pos:'Blindside Flanker',club:'Cardiff',caps:'16',group:'forward',tags:'forward',profile:'Cardiff flanker who has become a regular part of Wales\' recent rebuilding phase.',angle:'Brings work-rate and back-row balance, especially in physical contests.'},
+    {name:'Jac Morgan',pos:'Openside Flanker',club:'Ospreys',caps:'24',group:'forward',tags:'forward returning',profile:'British and Irish Lions flanker returning after missing Wales\' recent run through injury.',angle:'Possibly the biggest return in the squad — his breakdown work and leadership lift the whole group.'},
+    {name:'Taine Plumtree',pos:'Back Row',club:'Scarlets',caps:'14',group:'forward',tags:'forward',profile:'Scarlets back-rower with the size and versatility to cover several loose-forward roles.',angle:'A useful modern back-row option for carrying, lineout support and defensive coverage.'},
+    {name:'Tommy Reffell',pos:'Openside Flanker',club:'Leicester Tigers',caps:'29',group:'forward',tags:'forward returning',profile:'Leicester openside recalled after missing earlier selection through injury and availability issues.',angle:'A breakdown specialist whose return increases the competition around the seven jersey.'},
+    {name:'Nicky Smith',pos:'Loosehead Prop',club:'Leicester Tigers',caps:'63',group:'forward',tags:'forward',profile:'Experienced loosehead prop now with Leicester and among the senior front-row names.',angle:'A seasoned scrummager who gives Wales experience and stability in the front row.'},
+    {name:'Gareth Thomas',pos:'Loosehead Prop',club:'Ospreys',caps:'44',group:'forward',tags:'forward',profile:'Ospreys loosehead with substantial Wales experience.',angle:'Important depth in a loosehead group that blends senior caps with new selections.'},
+    {name:'Freddie Thomas',pos:'Lock',club:'Gloucester',caps:'8',group:'forward',tags:'forward',profile:'Gloucester lock continuing his rise in the Wales second-row mix.',angle:'Another developing lock option who adds competition behind the senior second-row names.'},
+    {name:'Aaron Wainwright',pos:'No.8 / Back Row',club:'Dragons',caps:'67',group:'forward',tags:'forward',profile:'Dragons back-rower and one of the most-capped forwards in the squad.',angle:'A key ball-carrier and experienced figure who can steady a young, evolving pack.'},
+    {name:'Sam Wainwright',pos:'Prop',club:'Cardiff',caps:'4',group:'forward',tags:'forward',profile:'Cardiff prop selected as part of the extended front-row group.',angle:'Adds extra front-row cover for a summer where player availability is staggered.'},
+    {name:'Ben Warren',pos:'Tighthead Prop',club:'Ospreys',caps:'Uncapped',group:'forward',tags:'forward uncapped',profile:'Uncapped Ospreys tighthead selected among the six new Wales faces.',angle:'A front-row development pick with a real chance to impress in camp.'},
+    {name:'Teddy Williams',pos:'Lock',club:'Cardiff',caps:'8',group:'forward',tags:'forward returning',profile:'Cardiff lock back in the Wales group after missing the Six Nations through injury.',angle:'His return adds size, athleticism and competition in the second row.'},
+    {name:'Ryan Woodman',pos:'Back Row',club:'Dragons',caps:'Uncapped',group:'forward',tags:'forward uncapped',profile:'Uncapped Dragons back-rower included after being around the senior environment earlier in the year.',angle:'Another young loose-forward option who fits the longer-term rebuild.'},
+    {name:'Ellis Bevan',pos:'Scrum Half',club:'Cardiff',caps:'6',group:'back',tags:'back returning',profile:'Cardiff scrum-half recalled to the Wales squad.',angle:'Adds competition at nine and gives Wales another tempo-setting option.'},
+    {name:'Bryn Bradley',pos:'Centre',club:'Harlequins',caps:'Uncapped',group:'back',tags:'back uncapped',profile:'Uncapped Harlequins centre who qualifies through Welsh family links and has Wales U20 background.',angle:'A fresh midfield option and one of the standout new-name stories in the squad.'},
+    {name:'Sam Costelow',pos:'Outside Half',club:'Scarlets',caps:'20',group:'back',tags:'back',profile:'Scarlets fly-half included despite earlier injury concerns.',angle:'A key playmaking option and part of the important battle for the Wales number 10 shirt.'},
+    {name:'Dan Edwards',pos:'Outside Half',club:'Ospreys',caps:'11',group:'back',tags:'back',profile:'Ospreys outside-half who gained valuable Test exposure during the Six Nations.',angle:'His development is central to Wales\' longer-term attacking direction.'},
+    {name:'Mason Grady',pos:'Centre / Wing',club:'Cardiff',caps:'17',group:'back',tags:'back',profile:'Powerful Cardiff back capable of covering centre and wider channels.',angle:'His size and pace make him one of Wales\' most physically intriguing backline weapons.'},
+    {name:'Kieran Hardy',pos:'Scrum Half',club:'Ospreys',caps:'31',group:'back',tags:'back',profile:'Ospreys scrum-half with significant Wales experience.',angle:'Adds senior competition in a scrum-half group that includes Tomos Williams, Reuben Morgan-Williams and Ellis Bevan.'},
+    {name:'Gabriel Hamer-Webb',pos:'Wing',club:'Leicester Tigers',caps:'1',group:'back',tags:'back',profile:'Leicester wing who earned senior Wales exposure earlier in 2026.',angle:'A pace option who keeps pressure on the established back-three players.'},
+    {name:'Joe Hawkins',pos:'Centre',club:'Ospreys',caps:'11',group:'back',tags:'back',profile:'Ospreys centre selected in a crowded midfield group.',angle:'A skilful midfield player who can help Wales link their forwards and outside backs.'},
+    {name:'Eddie James',pos:'Centre',club:'Scarlets',caps:'9',group:'back',tags:'back',profile:'Scarlets centre who has already been involved in Wales\' recent Test squads.',angle:'Part of the new midfield competition as Wales look for long-term centre combinations.'},
+    {name:'Max Llewellyn',pos:'Centre',club:'Gloucester',caps:'11',group:'back',tags:'back returning',profile:'Gloucester centre returning after missing the Six Nations through injury.',angle:'A big midfield presence whose return gives Wales extra carrying power.'},
+    {name:'Ellis Mee',pos:'Wing',club:'Scarlets',caps:'8',group:'back',tags:'back',profile:'Scarlets wing who impressed enough to stay in the wider Wales conversation.',angle:'Offers pace and back-three depth at a time when places are very competitive.'},
+    {name:'Reuben Morgan-Williams',pos:'Scrum Half',club:'Ospreys',caps:'2',group:'back',tags:'back',profile:'Ospreys scrum-half included in the extended summer group.',angle:'A live contender for game time if Wales rotate across the summer fixtures.'},
+    {name:'Blair Murray',pos:'Full Back / Wing',club:'Scarlets',caps:'16',group:'back',tags:'back',profile:'Scarlets back-three player who has become a regular part of Wales\' recent squads.',angle:'His versatility across the back three is particularly useful on a demanding tour schedule.'},
+    {name:'Louis Rees-Zammit',pos:'Wing / Full Back',club:'Bristol Bears',caps:'40',group:'back',tags:'back',profile:'Electric back-three player now with Bristol and back in the Wales setup after his rugby return.',angle:'One of the biggest attacking names in the squad and a natural traffic driver for fan interest.'},
+    {name:'Joe Roberts',pos:'Centre',club:'Scarlets',caps:'7',group:'back',tags:'back returning',profile:'Scarlets centre recalled into the Wales squad.',angle:'Adds another strong midfield option as Wales assess combinations for the summer fixtures.'},
+    {name:'Tom Rogers',pos:'Wing',club:'Scarlets',caps:'13',group:'back',tags:'back',profile:'Scarlets wing selected as part of a strong back-three group.',angle:'A committed wide player who brings energy, finishing threat and defensive work-rate.'},
+    {name:'Ben Thomas',pos:'Centre / Fly Half',club:'Cardiff',caps:'18',group:'back',tags:'back',profile:'Cardiff playmaker capable of operating in midfield or as a secondary distributor.',angle:'His versatility could be valuable if Wales want more ball-playing options in the backline.'},
+    {name:'Tomos Williams',pos:'Scrum Half',club:'Gloucester',caps:'72',group:'back',tags:'back',profile:'Gloucester scrum-half and the most-capped back in the squad.',angle:'A senior tactical voice and one of Wales\' key tempo-setters.'}
+  ];
+
+  function wdrInitials(name) {
+    return name.split(' ').filter(Boolean).map(p => p[0]).join('').slice(0,2).toUpperCase();
+  }
+
+  function wdrRenderProfiles(filter) {
+    const grid = document.getElementById('wdrProfileGrid');
+    const list = filter === 'all' ? wdrPlayers : wdrPlayers.filter(p => p.tags.includes(filter));
+    grid.innerHTML = list.map(p => `
+      <article class="wdr-profile-card ${p.tags.includes('uncapped') ? 'uncapped' : ''}" onclick="wdrOpenPlayer('${p.name.replace(/'/g,"\\'")}')">
+        ${p.tags.includes('uncapped') ? '<div class="wdr-new-badge">NEW</div>' : ''}
+        <div class="wdr-profile-top">
+          <div class="wdr-profile-avatar">${wdrInitials(p.name)}</div>
+          <div>
+            <div class="wdr-profile-name">${p.name}</div>
+            <div class="wdr-profile-position">${p.pos}</div>
+          </div>
+        </div>
+        <div class="wdr-profile-meta">
+          <div class="wdr-meta-box"><span class="wdr-meta-label">Club</span><span class="wdr-meta-value">${p.club}</span></div>
+          <div class="wdr-meta-box"><span class="wdr-meta-label">Caps</span><span class="wdr-meta-value">${p.caps}</span></div>
+        </div>
+        <p class="wdr-profile-summary">${p.profile}</p>
+        <div class="wdr-profile-link">View Profile →</div>
+      </article>
+    `).join('');
+  }
+
+  function wdrFilterProfiles(filter, btn) {
+    document.querySelectorAll('.wdr-profile-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    wdrRenderProfiles(filter);
+  }
+
+  function wdrOpenPlayer(playerName) {
+    const p = wdrPlayers.find(x => x.name === playerName);
+    if (!p) return;
+    document.getElementById('wdrModalName').textContent    = p.name;
+    document.getElementById('wdrModalSub').textContent     = p.pos;
+    document.getElementById('wdrModalClub').textContent    = p.club;
+    document.getElementById('wdrModalCaps').textContent    = p.caps;
+    document.getElementById('wdrModalGroup').textContent   = p.group === 'forward' ? 'Forward' : 'Back';
+    document.getElementById('wdrModalProfile').textContent = p.profile;
+    document.getElementById('wdrModalAngle').textContent   = p.angle;
+    document.getElementById('wdrPlayerModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function wdrCloseModal(event) {
+    const modal = document.getElementById('wdrPlayerModal');
+    if (!event || event.target === modal) {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') wdrCloseModal();
+  });
+
+  wdrRenderProfiles('all');
+</script>
+
+</body>
+</html>
