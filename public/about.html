@@ -7,180 +7,151 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --green-dark: #0d2b1e;
-    --green-mid: #133828;
-    --green-light: #1a4d34;
-    --gold: #c9a84c;
-    --gold-light: #e2c47a;
-    --text: #e8e8e8;
-    --text-muted: #a0b0a8;
+    --green-dark: #0d2b1e; --green-mid: #133828; --green-light: #1a4d34;
+    --gold: #c9a84c; --gold-light: #e2c47a;
+    --text: #e8e8e8; --text-muted: #a0b0a8;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background-color: var(--green-dark); color: var(--text); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.8; }
 
-  body {
-    background-color: var(--green-dark);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    line-height: 1.8;
-  }
+  header { background: var(--green-mid); border-bottom: 2px solid var(--gold); padding: 16px 20px; display: flex; align-items: center; gap: 14px; }
+  .logo-shield { width: 46px; height: 46px; border-radius: 8px; background: linear-gradient(135deg, #c9a84c, #e2c47a); display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; font-size: 11px; font-weight: 900; color: #0d2b1e; letter-spacing: 1px; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.4); text-decoration: none; }
+  .logo-text h1 { font-family: 'Cinzel', serif; font-size: 20px; font-weight: 900; color: var(--gold); letter-spacing: 1px; }
+  .logo-text p { font-size: 11px; color: #2a7a50; margin-top: 3px; }
 
-  header {
-    background: var(--green-mid);
-    border-bottom: 1px solid var(--gold);
-    padding: 1.2rem 2rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
+  nav { background: var(--green-mid); display: flex; overflow-x: auto; border-top: 1px solid rgba(201,168,76,0.2); }
+  nav a { color: var(--text); background: none; border: none; border-bottom: 3px solid transparent; padding: 12px 20px; font-size: 13px; font-family: 'DM Sans', sans-serif; font-weight: 600; white-space: nowrap; opacity: 0.6; transition: all 0.2s; text-decoration: none; display: block; }
+  nav a:hover { opacity: 1; color: var(--gold-light); }
+  nav a.active { opacity: 1; border-bottom-color: var(--gold); color: var(--gold-light); }
 
-  header a {
-    color: var(--gold);
-    text-decoration: none;
-    font-family: 'Cinzel', serif;
-    font-size: 1.1rem;
-    letter-spacing: 0.05em;
-  }
+  .hero { background: linear-gradient(135deg, var(--green-mid), var(--green-dark)); border-bottom: 2px solid rgba(201,168,76,0.2); padding: 50px 20px; text-align: center; }
+  .hero-badge { display: inline-block; background: var(--gold); color: var(--green-dark); font-family: 'Cinzel', serif; font-size: 10px; font-weight: 900; letter-spacing: 0.15em; padding: 4px 14px; border-radius: 2px; margin-bottom: 16px; text-transform: uppercase; }
+  .hero h2 { font-family: 'Cinzel', serif; font-size: clamp(28px, 5vw, 44px); font-weight: 900; color: var(--gold); margin-bottom: 12px; }
+  .hero p { font-size: 15px; color: var(--text); max-width: 600px; margin: 0 auto; line-height: 1.7; opacity: 0.85; }
 
-  header a:hover { color: var(--gold-light); }
+  main { max-width: 860px; margin: 0 auto; padding: 40px 20px 60px; }
 
-  .flag { font-size: 1.4rem; }
+  .founder-card { background: var(--green-mid); border: 1px solid rgba(201,168,76,0.25); border-left: 4px solid var(--gold); border-radius: 8px; padding: 28px 32px; margin-bottom: 40px; }
+  .founder-card h2 { font-family: 'Cinzel', serif; font-size: 18px; color: var(--gold); margin-bottom: 16px; }
+  .founder-card p { color: var(--text-muted); font-size: 15px; margin-bottom: 14px; line-height: 1.8; }
+  .founder-card p:last-child { margin-bottom: 0; }
+  .founder-card strong { color: var(--text); }
 
-  main {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 3rem 2rem 5rem;
-  }
+  .section { margin-bottom: 36px; }
+  .section h2 { font-family: 'Cinzel', serif; font-size: 16px; color: var(--gold-light); letter-spacing: 0.04em; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  .section p { color: var(--text-muted); font-size: 15px; margin-bottom: 12px; line-height: 1.8; }
+  .section ul { color: var(--text-muted); margin: 0.5rem 0 1rem 1.5rem; font-size: 15px; }
+  .section ul li { margin-bottom: 6px; }
 
-  .page-title {
-    font-family: 'Cinzel', serif;
-    font-size: 2rem;
-    color: var(--gold);
-    letter-spacing: 0.05em;
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--green-light);
-  }
+  .teams-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 16px 0; }
+  .team-card { background: var(--green-mid); border: 1px solid var(--green-light); border-top: 2px solid var(--gold); padding: 16px 12px; border-radius: 6px; text-align: center; }
+  .team-card .team-name { font-family: 'Cinzel', serif; font-size: 13px; color: var(--gold-light); }
 
-  h2 {
-    font-family: 'Cinzel', serif;
-    font-size: 1.1rem;
-    color: var(--gold-light);
-    letter-spacing: 0.04em;
-    margin: 2.5rem 0 0.8rem;
-  }
-
-  p {
-    color: var(--text-muted);
-    margin-bottom: 1rem;
-    font-size: 0.95rem;
-  }
-
-  ul {
-    color: var(--text-muted);
-    margin: 0.5rem 0 1rem 1.5rem;
-    font-size: 0.95rem;
-  }
-
-  ul li { margin-bottom: 0.4rem; }
+  .passion-quote { background: linear-gradient(135deg, var(--green-mid), var(--green-dark)); border: 1px solid rgba(201,168,76,0.2); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; padding: 20px 28px; margin: 28px 0; font-family: 'Cinzel', serif; font-size: 14px; color: var(--gold-light); line-height: 1.9; }
 
   a { color: var(--gold); text-decoration: none; }
   a:hover { color: var(--gold-light); text-decoration: underline; }
 
-  .teams-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 1rem;
-    margin: 1.5rem 0;
-  }
-
-  .team-card {
-    background: var(--green-mid);
-    border: 1px solid var(--green-light);
-    border-top: 2px solid var(--gold);
-    padding: 1.2rem 1rem;
-    border-radius: 4px;
-    text-align: center;
-  }
-
-  .team-card .team-name {
-    font-family: 'Cinzel', serif;
-    font-size: 0.85rem;
-    color: var(--gold-light);
-    letter-spacing: 0.03em;
-  }
-
-  .highlight-box {
-    background: var(--green-mid);
-    border-left: 3px solid var(--gold);
-    padding: 1rem 1.5rem;
-    margin: 1.5rem 0;
-    border-radius: 0 4px 4px 0;
-  }
-
-  .highlight-box p { margin: 0; }
-
-  footer {
-    text-align: center;
-    padding: 2rem;
-    color: var(--text-muted);
-    font-size: 0.8rem;
-    border-top: 1px solid var(--green-light);
-  }
+  footer { background: var(--green-mid); border-top: 2px solid var(--gold); padding: 32px 20px; text-align: center; margin-top: 20px; }
+  .footer-logo { font-family: 'Cinzel', serif; font-size: 20px; font-weight: 900; color: var(--gold); margin-bottom: 8px; }
+  footer p { font-size: 13px; color: #2a7a50; }
+  footer a { color: var(--gold); text-decoration: none; }
 </style>
 </head>
 <body>
 
 <header>
-  <span class="flag">🏴󠁧󠁢󠁷󠁬󠁳󠁿</span>
-  <a href="/">Welsh Dragon Rugby</a>
-  <span style="color: var(--text-muted); margin-left: auto; font-size: 0.85rem;">About</span>
+  <a href="index.html" class="logo-shield">WDR</a>
+  <div class="logo-text">
+    <h1>Welsh Dragon Rugby</h1>
+    <p>Live scores · Fixtures · Tables</p>
+  </div>
 </header>
 
+<nav>
+  <a href="index.html">Home</a>
+  <a href="index.html#wales">Wales</a>
+  <a href="index.html#scarlets">Scarlets</a>
+  <a href="index.html#ospreys">Ospreys</a>
+  <a href="index.html#cardiff">Cardiff Rugby</a>
+  <a href="index.html#dragons">Dragons</a>
+  <a href="articles.html">Articles</a>
+  <a href="about.html" class="active">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">Our Story</div>
+  <h2>About Welsh Dragon Rugby</h2>
+  <p>Built by a lifelong Welsh rugby supporter — for Welsh rugby supporters everywhere.</p>
+</div>
+
 <main>
-  <h1 class="page-title">About Welsh Dragon Rugby</h1>
 
-  <div class="highlight-box">
-    <p>Your home for Welsh rugby — live scores, results, standings, and news covering the teams that matter most to Welsh fans.</p>
+  <div class="founder-card">
+    <h2>The Person Behind the Site</h2>
+    <p>My name is <strong>John James</strong>. I have been following Welsh rugby for as long as I can remember — and that takes me back to around <strong>1965</strong>.</p>
+    <p>Over sixty years of watching Wales. Six decades of Six Nations Saturdays, regional rugby, club rugby, women's rugby, Under-20s, cup runs, heartbreaks, Grand Slams and dark periods. I have lived through all of it — and I would not swap a single moment of it.</p>
+    <p>My club is the <strong>Ospreys</strong>. Always has been. South Wales rugby runs through me, and the Ospreys represent everything I love about regional rugby — the passion, the identity, the connection to the community. I follow them through every season, good and bad.</p>
+    <p>But Welsh rugby for me goes far beyond the Ospreys. I follow the <strong>Welsh national team</strong> obsessively. I watch the <strong>Wales Women's team</strong> with immense pride — they deserve far more recognition than they get. And I follow the <strong>Wales Under-20s</strong> closely, because that is where tomorrow's heroes are being built today.</p>
+    <p>Welsh Dragon Rugby is this site. Built from that passion. Written from that experience. No corporate agenda. No scraped content. Just a genuine Welsh rugby fan who wanted a proper home for the sport he loves.</p>
   </div>
 
-  <h2>What We Do</h2>
-  <p>Welsh Dragon Rugby is an independent website dedicated to following Welsh rugby at every level. From the Welsh national team to the regional sides competing in the URC and European competitions, we bring together live data, results, and news in one place.</p>
-  <p>We're not affiliated with the WRU or any of the regional clubs — we're simply passionate Welsh rugby fans who wanted a clean, fast, modern site that puts the rugby front and centre.</p>
-
-  <h2>Teams We Cover</h2>
-  <div class="teams-grid">
-    <div class="team-card"><div class="team-name">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Wales</div></div>
-    <div class="team-card"><div class="team-name">🔴 Scarlets</div></div>
-    <div class="team-card"><div class="team-name">⚫ Ospreys</div></div>
-    <div class="team-card"><div class="team-name">🔵 Cardiff Rugby</div></div>
-    <div class="team-card"><div class="team-name">🐉 Dragons</div></div>
-    <div class="team-card"><div class="team-name">🏆 Wales Women</div></div>
-    <div class="team-card"><div class="team-name">⭐ Wales U20</div></div>
+  <div class="passion-quote">
+    Welsh rugby is not just a sport to me.<br>
+    It is part of who I am — part of where I come from.<br><br>
+    Since 1965, the red jersey has meant everything.<br>
+    It still does.
   </div>
 
-  <h2>Our Data</h2>
-  <p>Live scores, fixtures, results, and standings are powered by <strong style="color: var(--text);">API-Sports</strong>, one of the leading sports data providers. This means the information you see is accurate, up to date, and updated in real time during matches.</p>
+  <div class="section">
+    <h2>What This Site Is</h2>
+    <p>Welsh Dragon Rugby is an independent fan site covering Welsh rugby at every level. Live scores, fixtures, standings and original opinion articles — all in one place, built for supporters who care as deeply about the game as I do.</p>
+    <p>We are not affiliated with the WRU or any regional club. We have no press access, no official relationship, no commercial arrangement with any team. We are simply supporters covering the sport we love.</p>
+    <p>Every article on this site is written with genuine passion and honest opinion. If something is not working in Welsh rugby, we will say so. If something gives us real reason for hope, we will say that too.</p>
+  </div>
 
-  <h2>Competitions Covered</h2>
-  <ul>
-    <li>Six Nations Championship</li>
-    <li>United Rugby Championship (URC)</li>
-    <li>European Champions Cup</li>
-    <li>Wales Women's internationals</li>
-    <li>Wales Under-20 internationals</li>
-  </ul>
+  <div class="section">
+    <h2>Teams We Cover</h2>
+    <div class="teams-grid">
+      <div class="team-card"><div class="team-name">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Wales</div></div>
+      <div class="team-card"><div class="team-name">⚫ Ospreys</div></div>
+      <div class="team-card"><div class="team-name">🔴 Scarlets</div></div>
+      <div class="team-card"><div class="team-name">🔵 Cardiff Rugby</div></div>
+      <div class="team-card"><div class="team-name">🐉 Dragons</div></div>
+      <div class="team-card"><div class="team-name">🏆 Wales Women</div></div>
+      <div class="team-card"><div class="team-name">⭐ Wales Under-20s</div></div>
+    </div>
+  </div>
 
-  <h2>Who Are We?</h2>
-  <p>Welsh Dragon Rugby is operated by <strong style="color: var(--text);">Big Bulldog UK Ltd</strong>, a digital company based in South Wales. We build online platforms with a focus on clean design, fast performance, and genuinely useful content.</p>
-  <p>If you have suggestions, feedback, or just want to get in touch, we'd love to hear from you.</p>
-  <p><a href="/contact.html">→ Contact us here</a></p>
+  <div class="section">
+    <h2>Competitions Covered</h2>
+    <ul>
+      <li>Six Nations Championship</li>
+      <li>United Rugby Championship (URC)</li>
+      <li>European Champions Cup</li>
+      <li>Wales Women's Internationals</li>
+      <li>Wales Under-20 Internationals</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Our Data</h2>
+    <p>Live scores, fixtures and standings are powered by <strong>API-Sports</strong>, one of the leading sports data providers, ensuring accurate and up-to-date information during matches.</p>
+  </div>
+
+  <div class="section">
+    <h2>Who Operates the Site</h2>
+    <p>Welsh Dragon Rugby is operated by <strong>Big Bulldog UK Ltd</strong>, a digital company based in South Wales. The company builds online platforms focused on clean design, fast performance and genuinely useful content.</p>
+    <p><a href="contact.html">→ Get in touch here</a></p>
+  </div>
 
 </main>
 
 <footer>
-  <p>Welsh Dragon Rugby &copy; 2026 | <a href="/">Home</a> | <a href="/about.html">About</a> | <a href="/contact.html">Contact</a> | <a href="/privacy-policy.html">Privacy Policy</a></p>
+  <div class="footer-logo">Welsh Dragon Rugby</div>
+  <p>Independent Welsh rugby coverage &middot; <a href="index.html">welshdragonrugby.co.uk</a></p>
+  <p style="margin-top:8px;"><a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="cookie-policy.html">Cookie Policy</a> &middot; <a href="contact.html">Contact</a></p>
 </footer>
 
 </body>

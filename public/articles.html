@@ -40,7 +40,12 @@
     .article { background: var(--card); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 40px; overflow: hidden; }
     .article-header { background: linear-gradient(135deg, var(--green-mid), var(--green-bright)); padding: 28px 32px; border-bottom: 2px solid var(--border); }
     .article-num { font-family: 'Cinzel', serif; font-size: 11px; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; }
-    .article-title { font-family: 'Cinzel', serif; font-size: clamp(20px, 3vw, 28px); font-weight: 900; color: var(--gold-light); line-height: 1.2; }
+    .article-title { font-family: 'Cinzel', serif; font-size: clamp(20px, 3vw, 28px); font-weight: 900; color: var(--gold-light); line-height: 1.2; margin-bottom: 14px; }
+    .article-meta { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin-top: 4px; }
+    .article-meta span { font-size: 12px; color: var(--green-accent); display: flex; align-items: center; gap: 5px; }
+    .article-meta .author { color: var(--gold); font-weight: 600; }
+    .article-meta .dot { color: var(--border); }
+
     .article-body { padding: 32px; line-height: 1.85; font-size: 15px; color: var(--off-white); }
     .article-body p { margin-bottom: 18px; }
     .article-body p:last-child { margin-bottom: 0; }
@@ -60,7 +65,7 @@
     footer p { font-size: 13px; color: var(--green-accent); }
     footer a { color: var(--gold); text-decoration: none; }
 
-    @media(max-width:600px) { .article-body { padding: 20px; } .article-header { padding: 20px; } }
+    @media(max-width:600px) { .article-body { padding: 20px; } .article-header { padding: 20px; } .article-meta { gap: 10px; } }
   </style>
 </head>
 <body>
@@ -86,7 +91,7 @@
 </nav>
 
 <div class="hero">
-  <div class="hero-badge">Opinion & Analysis</div>
+  <div class="hero-badge">Opinion &amp; Analysis</div>
   <h2>Welsh Rugby Articles</h2>
   <p>Honest opinion, analysis and passion from Welsh rugby fans — for Welsh rugby fans.</p>
 </div>
@@ -98,6 +103,13 @@
     <div class="article-header">
       <div class="article-num">Article 1</div>
       <div class="article-title">Why Welsh Rugby Still Matters More Than Ever</div>
+      <div class="article-meta">
+        <span class="author">&#9998; By John James</span>
+        <span class="dot">|</span>
+        <span>&#128197; 10 May 2026</span>
+        <span class="dot">|</span>
+        <span>&#9201; 4 min read</span>
+      </div>
     </div>
     <div class="article-body">
       <p>Welsh rugby has taken some heavy hits in recent years.</p>
@@ -126,6 +138,13 @@
     <div class="article-header">
       <div class="article-num">Article 2</div>
       <div class="article-title">Five Reasons Welsh Rugby Fans Should Still Be Excited</div>
+      <div class="article-meta">
+        <span class="author">&#9998; By John James</span>
+        <span class="dot">|</span>
+        <span>&#128197; 12 May 2026</span>
+        <span class="dot">|</span>
+        <span>&#9201; 5 min read</span>
+      </div>
     </div>
     <div class="article-body">
       <p>It is easy to feel negative about Welsh rugby right now. Results have been disappointing, confidence has taken a hit and many supporters feel frustrated with how things have been handled at both regional and national level.</p>
@@ -180,6 +199,13 @@
     <div class="article-header">
       <div class="article-num">Article 3</div>
       <div class="article-title">The Greatest Atmospheres in Welsh Rugby</div>
+      <div class="article-meta">
+        <span class="author">&#9998; By John James</span>
+        <span class="dot">|</span>
+        <span>&#128197; 14 May 2026</span>
+        <span class="dot">|</span>
+        <span>&#9201; 4 min read</span>
+      </div>
     </div>
     <div class="article-body">
       <p>There are few sporting experiences quite like a major rugby day in Wales. When Welsh rugby is alive, the atmosphere becomes something special.</p>
@@ -207,11 +233,445 @@
     </div>
   </div>
 
+  <!-- ARTICLE 4 -->
+  <div class="article">
+    <div class="article-header">
+      <div class="article-num">Article 4</div>
+      <div class="article-title">What Does It Mean to Play for Wales? A Fan's Perspective</div>
+      <div class="article-meta">
+        <span class="author">&#9998; By John James</span>
+        <span class="dot">|</span>
+        <span>&#128197; 16 May 2026</span>
+        <span class="dot">|</span>
+        <span>&#9201; 4 min read</span>
+      </div>
+    </div>
+    <div class="article-body">
+      <p>Pull on the red jersey and you carry something much heavier than fabric.</p>
+      <p>You carry every fan who has ever stood in the rain watching Wales play. You carry every kid who ever kicked a ball against a wall dreaming of Principality Stadium. You carry every village, every valley, every community that looks to Welsh rugby as something to belong to.</p>
+      <p>Most nations have a national sport. Wales has a national identity built around one.</p>
+      <p>Rugby in Wales is not a hobby. It is not entertainment. It is part of how people understand who they are. And that weight — that responsibility — is what makes playing for Wales unlike almost any other sporting experience on the planet.</p>
+
+      <h3>More Than a Game</h3>
+      <p>Speak to any Welsh player who has been through the experience and you hear the same things. The anthem. The noise. The feeling of representing something much bigger than yourself. Players from other nations talk about Welsh players being driven by something different — a desperation not to let their country down.</p>
+      <p>That emotional connection between players and supporters is something Wales has always had, even during the worst results. It is almost impossible to fake. And it creates a bond between those who play and those who watch that very few national teams in any sport can claim.</p>
+
+      <h3>The Responsibility That Comes With the Jersey</h3>
+      <p>That same connection also creates pressure. Welsh fans are passionate, vocal and deeply invested. When things go wrong, the disappointment is felt at a community level. Players know that. They feel it before they even walk out of the tunnel.</p>
+      <p>But most Welsh players would not change it. Because the flip side of that pressure is the joy when Wales wins. When Wales beats England. When Wales wins a Grand Slam. When an underdog team produces a performance nobody expected. The release of that collective emotion is extraordinary.</p>
+
+      <h3>A Privilege, Not Just a Job</h3>
+      <p>There will always be debate about contracts, structures, regions and money in professional rugby. But beyond all of that, pulling on the Welsh jersey remains a privilege that players and fans understand in a way that cannot be fully explained to outsiders.</p>
+      <p>It is something felt, not just watched.</p>
+      <div class="closing-quote">
+        Playing for Wales is not just a career moment.<br><br>
+        For those lucky enough to experience it — and for those who watch — it is something that stays with you for life.
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE 5 -->
+  <div class="article">
+    <div class="article-header">
+      <div class="article-num">Article 5</div>
+      <div class="article-title">Welsh Rugby's Greatest Ever Wins — The Moments That Defined a Nation</div>
+      <div class="article-meta">
+        <span class="author">&#9998; By John James</span>
+        <span class="dot">|</span>
+        <span>&#128197; 17 May 2026</span>
+        <span class="dot">|</span>
+        <span>&#9201; 5 min read</span>
+      </div>
+    </div>
+    <div class="article-body">
+      <p>Every nation has its rugby moments. But Welsh rugby has produced some that transcend sport entirely — moments that stopped the country, united communities and became part of the national story.</p>
+      <p>Here are some of the victories that Welsh rugby fans carry with them forever.</p>
+
+      <h3>Defeating the All Blacks — 1953 and Beyond</h3>
+      <p>New Zealand are the greatest rugby nation in history. Which is why beating them means so much. Wales defeated the All Blacks in 1953 in Cardiff, a result that felt almost impossible. Moments like that remind supporters what Welsh rugby is capable of at its absolute peak — and why they keep believing.</p>
+
+      <h3>The Grand Slam Years</h3>
+      <p>Welsh Grand Slams are the stuff of legend. The dominance of the 1970s — arguably the greatest era for any nation in northern hemisphere rugby — produced players and performances that are still talked about decades later. Gareth Edwards. JPR Williams. Barry John. Phil Bennett. That era set a standard that still haunts and inspires Welsh rugby in equal measure.</p>
+      <p>The 2005, 2008, 2012 and 2019 Grand Slams showed that modern Wales could still produce moments of real glory. Each one felt like a nation exhaling years of tension and frustration in a single afternoon.</p>
+
+      <h3>Beating England at Twickenham</h3>
+      <p>Some results matter more than others. Beating England, particularly at Twickenham, holds a special place in Welsh rugby culture. The combination of history, rivalry and pride makes those victories feel disproportionately important to Welsh supporters. Few things unite Wales quite like a win over England.</p>
+
+      <h3>Wales vs France — Epic Six Nations Battles</h3>
+      <p>Wales and France have produced some of the most dramatic and unpredictable matches in Six Nations history. Contests full of flair, passion and late drama have created memories that live long after the final whistle.</p>
+
+      <h3>Why These Moments Still Matter</h3>
+      <p>In difficult periods for Welsh rugby, these memories serve an important purpose. They remind supporters what is possible. They remind players what the jersey represents. They prove that Wales, at its best, can compete with anyone in the world.</p>
+      <div class="closing-quote">
+        History cannot be taken away.<br><br>
+        And Welsh rugby has produced enough of it to fuel belief through even the hardest of times.
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE 6 -->
+  <div class="article">
+    <div class="article-header">
+      <div class="article-num">Article 6</div>
+      <div class="article-title">The URC: Is It Good Enough for Welsh Rugby?</div>
+      <div class="article-meta">
+        <span class="author">&#9998; By John James</span>
+        <span class="dot">|</span>
+        <span>&#128197; 19 May 2026</span>
+        <span class="dot">|</span>
+        <span>&#9201; 5 min read</span>
+      </div>
+    </div>
+    <div class="article-body">
+      <p>The United Rugby Championship is the weekly bread and butter of professional rugby in Wales. Four regions — Scarlets, Ospreys, Cardiff Rugby and the Dragons — compete in a cross-border league involving South African, Irish, Scottish and Italian sides.</p>
+      <p>But is the URC actually serving Welsh rugby well? It is a question worth asking honestly.</p>
+
+      <h3>The Case For the URC</h3>
+      <p>The competition has brought genuine variety and exposure. Playing against South African franchises has raised the physical intensity. European nights still produce meaningful occasions. And for Welsh players, regular top-level competition is essential for national team development.</p>
+      <p>The URC also provides a pathway. Welsh regions can still qualify for European Champions Cup rugby, which remains the pinnacle of club competition in the northern hemisphere.</p>
+
+      <h3>The Concerns</h3>
+      <p>The honest concern is consistency. Welsh regions have struggled in the URC in recent seasons — and when the regions struggle, the national player pool suffers. Confidence built at club level feeds into international performance. When that pipeline is weak, Wales feel it in Six Nations and World Cup campaigns.</p>
+      <p>There are also questions about resources. Irish provinces in particular have significant financial advantages that make direct competition difficult. Keeping Welsh talent at home rather than losing it to better-funded clubs abroad remains an ongoing challenge.</p>
+
+      <h3>What Needs to Improve</h3>
+      <p>Welsh regions need sustained investment, smart recruitment and stable coaching environments to be genuinely competitive in the URC. That is easier said than done given the financial landscape, but the connection between regional success and national team quality cannot be ignored.</p>
+      <p>More competitive Welsh regions would mean more confident Welsh players heading into international windows — and a stronger national team as a result.</p>
+      <div class="closing-quote">
+        The URC is the right competition for Welsh rugby to be in.<br><br>
+        But being in it is not enough. Wales needs its regions to be genuinely competing — not just participating.
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE 7 -->
+  <div class="article">
+    <div class="article-header">
+      <div class="article-num">Article 7</div>
+      <div class="article-title">Grassroots Rugby in Wales: The Heartbeat Nobody Talks About</div>
+      <div class="article-meta">
+        <span class="author">&#9998; By John James</span>
+        <span class="dot">|</span>
+        <span>&#128197; 20 May 2026</span>
+        <span class="dot">|</span>
+        <span>&#9201; 4 min read</span>
+      </div>
+    </div>
+    <div class="article-body">
+      <p>Every time Wales runs out at Principality Stadium, something much more important happened first.</p>
+      <p>A child turned up to a muddy pitch on a Saturday morning. A volunteer coach gave up a weekend. A club ran a fundraiser to keep the lights on. A family drove across the county to watch an under-11s game in the pouring rain.</p>
+      <p>Grassroots rugby in Wales is the foundation that the entire professional game is built on. And it does not get nearly enough credit.</p>
+
+      <h3>The Club Network</h3>
+      <p>Wales has one of the densest rugby club networks of any nation in the world relative to its population. From Wrexham to Swansea, from Aberystwyth to Cardiff, hundreds of clubs at all levels keep the sport alive week in and week out. These clubs are community institutions as much as they are sports organisations — places where friendships are formed, rivalries are built and lifelong supporters are created.</p>
+
+      <h3>Where Welsh Players Start</h3>
+      <p>Almost every Welsh international started at a local club. The talent pathway runs from grassroots through schools, through age-grade regional rugby and eventually into professional contracts. But without that first step — without those clubs existing and thriving — the pathway breaks before it even begins.</p>
+      <p>Clubs that are well-run, well-funded and well-attended create an environment where talented youngsters want to stay in Wales and develop. Clubs that are struggling have the opposite effect.</p>
+
+      <h3>The Volunteers Who Make It Happen</h3>
+      <p>Perhaps the most under-appreciated people in Welsh rugby are the volunteers. Coaches, committee members, kit washers, pitch markers, fixture secretaries — hundreds of thousands of hours of unpaid work goes into keeping Welsh rugby clubs running every single year. These are the real backbone of the sport in Wales.</p>
+
+      <div class="closing-quote">
+        If you care about the Welsh national team, support your local club.<br><br>
+        Because without grassroots rugby, there is no Welsh rugby at all.
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE 8 -->
+  <div class="article">
+    <div class="article-header">
+      <div class="article-num">Article 8</div>
+      <div class="article-title">Six Nations: Why It Still Matters More Than Anything Else</div>
+      <div class="article-meta">
+        <span class="author">&#9998; By John James</span>
+        <span class="dot">|</span>
+        <span>&#128197; 21 May 2026</span>
+        <span class="dot">|</span>
+        <span>&#9201; 4 min read</span>
+      </div>
+    </div>
+    <div class="article-body">
+      <p>You can talk about the World Cup. You can debate the value of the URC. You can analyse summer tours and autumn internationals all you like.</p>
+      <p>But for Welsh rugby supporters, nothing — absolutely nothing — compares to the Six Nations.</p>
+      <p>Six weeks in February and March. Six weeks where Wales matters on a world stage. Six weeks where every conversation in every pub, every workplace and every school playground in Wales comes back to the same thing: the rugby.</p>
+
+      <h3>The History of It</h3>
+      <p>The Six Nations has roots going back to 1883. More than 140 years of competition between England, Wales, Scotland, Ireland, France and Italy. The history is inseparable from the competition itself. Every game carries weight that goes beyond the present. Wales vs England is not just about this season's table — it is about more than a century of rivalry, pride and history.</p>
+
+      <h3>Why Wales Feels It So Deeply</h3>
+      <p>For a small nation of around three million people, Wales punches extraordinarily above its weight in the Six Nations. Grand Slams. Triple Crowns. Championship titles. Wales has won more than its fair share over the decades.</p>
+      <p>But it is not just about winning. Six Nations Saturdays in Wales take on a life of their own regardless of where Wales is in the table. The build-up, the nerves, the communal watching experience — whether in a stadium, a pub or a living room — is something uniquely powerful.</p>
+
+      <h3>What It Gives Welsh Rugby</h3>
+      <p>The Six Nations gives Welsh rugby its biggest audience, its biggest moments and its biggest emotional peaks. It is the competition that reminds the world Wales exists as a rugby force. And it is the competition that, even in difficult years, gives supporters something to hold onto and believe in.</p>
+      <div class="closing-quote">
+        The Six Nations is where Welsh rugby defines itself.<br><br>
+        Every year. Whatever the form guide says.
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE 9 -->
+  <div class="article">
+    <div class="article-header">
+      <div class="article-num">Article 9</div>
+      <div class="article-title">Welsh Rugby and the Next World Cup: Building for 2027</div>
+      <div class="article-meta">
+        <span class="author">&#9998; By John James</span>
+        <span class="dot">|</span>
+        <span>&#128197; 22 May 2026</span>
+        <span class="dot">|</span>
+        <span>&#9201; 5 min read</span>
+      </div>
+    </div>
+    <div class="article-body">
+      <p>Rugby World Cup 2027 will be held in Australia. And for Wales, it represents a crucial target — a chance to prove that the current rebuilding phase has produced something meaningful.</p>
+      <p>The 2027 tournament is a little over a year away. Which means the decisions being made right now — about players, coaching, squad building and game style — will directly shape how Wales arrive on the biggest stage in rugby.</p>
+
+      <h3>What Wales Needs</h3>
+      <p>Wales needs consistency above everything else. Not necessarily winning every match between now and 2027, but building a settled squad, a clear identity and genuine belief in the system. Teams that arrive at World Cups with confidence built over a sustained period tend to outperform those who scrape through qualification and stumble into tournaments.</p>
+      <p>A defined style of play matters too. Wales at their best have always had an identity — physical, direct, emotionally driven rugby with moments of real brilliance. Getting back to that clarity of purpose is essential.</p>
+
+      <h3>The Players to Watch</h3>
+      <p>The current generation of Welsh players in their early-to-mid twenties will be at the right age for 2027. This is genuinely exciting. Players gaining experience in the URC and with the national team now will have years of top-level rugby behind them by the time Australia comes around.</p>
+      <p>World Cups are won by experienced squads. Wales has time to build that experience if the pathway is managed properly.</p>
+
+      <h3>Reasons for Cautious Optimism</h3>
+      <p>The honest assessment is that 2027 is a realistic target for Wales to arrive as genuine dark horses rather than also-rans. Not favourites — the All Blacks, South Africa and Ireland will likely be ahead of them in the pecking order. But a team capable of causing upsets, reaching the knockout stages and competing at the highest level.</p>
+      <p>That is an achievable goal if the building blocks are put in place now.</p>
+      <div class="closing-quote">
+        Australia 2027 is not a dream.<br><br>
+        It is a target. And Welsh rugby has enough time left to be ready for it.
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE 10 -->
+  <div class="article">
+    <div class="article-header">
+      <div class="article-num">Article 10</div>
+      <div class="article-title">The Ospreys: South Wales' Sleeping Giant</div>
+      <div class="article-meta">
+        <span class="author">&#9998; By John James</span>
+        <span class="dot">|</span>
+        <span>&#128197; 24 May 2026</span>
+        <span class="dot">|</span>
+        <span>&#9201; 4 min read</span>
+      </div>
+    </div>
+    <div class="article-body">
+      <p>There was a time not long ago when the Ospreys were the dominant force in Welsh regional rugby. Multiple Pro14 titles, European pedigree, a stadium packed with passionate supporters and a conveyor belt of Welsh internationals wearing the black jersey.</p>
+      <p>That era feels distant now. But the potential that made the Ospreys great has not disappeared.</p>
+
+      <h3>What Made the Ospreys Special</h3>
+      <p>At their peak, the Ospreys were built on a foundation of outstanding Welsh talent combined with smart recruitment. The squad had genuine depth, a clear playing style and a settled environment that allowed players to develop. Results followed naturally from that stable base.</p>
+      <p>The connection with the South Wales rugby community also gave the Ospreys an identity that felt genuine. The Swansea and Neath heartland, the Liberty Stadium atmosphere on big nights, the pride of representing a specific part of Wales — these things matter to supporters and players alike.</p>
+
+      <h3>Where Things Stand Now</h3>
+      <p>Recent seasons have been inconsistent. The Ospreys have shown flashes of the quality that once made them a URC force, but sustained performance has been harder to come by. The challenge of retaining top Welsh talent while also competing with the financial power of Irish and South African franchises has been real and ongoing.</p>
+      <p>But the foundations are still there. The region has the support base, the geography and the rugby tradition to be a major force again.</p>
+
+      <h3>Why There Is Still Reason for Belief</h3>
+      <p>Welsh rugby needs strong regions. The Ospreys, historically, have been its strongest. Getting the Ospreys back to genuine URC competitiveness would have a direct positive effect on Welsh international rugby — producing more confident, more experienced players heading into national camps.</p>
+      <p>The sleeping giant of South Wales rugby has woken before. There is every reason to believe it can wake again.</p>
+      <div class="closing-quote">
+        The Ospreys are not a finished story.<br><br>
+        They are a chapter waiting to be written again.
+      </div>
+    </div>
+  </div>
+
 </div>
+
+
+  <!-- ARTICLE 11 -->
+  <div class="article">
+    <div class="article-header">
+      <div class="article-num">Article 11</div>
+      <div class="article-title">The Ospreys Through the Eyes of a Lifelong Fan</div>
+      <div class="article-meta">
+        <span class="author">&#9998; By John James</span>
+        <span class="dot">|</span>
+        <span>&#128197; 24 May 2026</span>
+        <span class="dot">|</span>
+        <span>&#9201; 5 min read</span>
+      </div>
+    </div>
+    <div class="article-body">
+      <p>I have followed the Ospreys since the regional structure was created. And before that, I followed the clubs they were built from — Swansea and Neath — for decades before that. My connection to South Wales rugby goes back to around 1965. So when I talk about the Ospreys, I am not talking as a casual observer. I am talking as someone who has lived every season of this club's existence.</p>
+      <p>The early years were something genuinely special. A team packed with Welsh internationals, a clear identity, a South Wales base that felt authentic and proud. Winning the Celtic League, producing players who went on to become legends of the red jersey — it felt like the Ospreys were going to be a permanent force in European rugby.</p>
+
+      <h3>What Made Those Teams So Good</h3>
+      <p>The secret was relatively simple: keep Welsh talent in Wales, build a team with genuine depth and let them play together consistently. At their best, the Ospreys had a first XV that could compete with anyone in Europe. The pack was physical, the backs were creative and the players genuinely seemed to understand what the black jersey meant to the South Wales rugby community.</p>
+      <p>As we explored in our piece on <a href="articles.html#article10">The Ospreys: South Wales' Sleeping Giant</a>, the potential that produced those trophy years has not gone anywhere. The foundations are still there. The question is whether the environment can be rebuilt around them.</p>
+
+      <h3>The Difficult Years</h3>
+      <p>I will not pretend the recent seasons have been easy to watch. Inconsistency, player losses, financial pressures — these things have taken a toll. Any honest Ospreys supporter has to acknowledge that the gap between where the club was and where it is now has been painful.</p>
+      <p>But I have watched Welsh rugby go through hard times before. I have sat through difficult periods with this sport since the 1960s and seen it come back stronger each time. The Ospreys are not a finished story. South Wales rugby has too much history, too much passion and too much talent for this to be a permanent decline.</p>
+
+      <h3>What I Want to See</h3>
+      <p>Stability. That is the word. Stable coaching, stable contracts for young Welsh talent, a clear playing identity that supporters can understand and get behind. The Ospreys do not need to sign the most expensive players in the world. They need to build something coherent and give it time.</p>
+      <p>The fans are still there. I am still there. We will keep turning up — and the day the Ospreys put it all together again, South Wales rugby will remind Europe exactly what it is capable of.</p>
+      <div class="closing-quote">
+        Six decades of watching Welsh rugby has taught me one thing above all else.<br><br>
+        The passion never dies. And neither do the Ospreys.
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE 12 -->
+  <div class="article">
+    <div class="article-header">
+      <div class="article-num">Article 12</div>
+      <div class="article-title">Wales Women's Rugby: The Team That Deserves So Much More</div>
+      <div class="article-meta">
+        <span class="author">&#9998; By John James</span>
+        <span class="dot">|</span>
+        <span>&#128197; 24 May 2026</span>
+        <span class="dot">|</span>
+        <span>&#9201; 5 min read</span>
+      </div>
+    </div>
+    <div class="article-body">
+      <p>Let me say this clearly: Wales Women's rugby does not get the recognition it deserves. Not from the media. Not from the casual rugby-watching public. Not even, at times, from within the Welsh rugby establishment itself.</p>
+      <p>That needs to change. And I say that as someone who has followed the Wales Women's team with genuine passion for years — not as a box-ticking exercise, but because they earn it every single time they pull on the red jersey.</p>
+
+      <h3>What They Represent</h3>
+      <p>The Wales Women's team represents exactly the same things the men's team represents. Pride. Identity. Community. The same anthem. The same jersey. The same extraordinary weight of expectation that comes with representing a rugby-mad nation.</p>
+      <p>The players who represent Wales Women do so with an intensity and commitment that commands respect. Many of them balance professional playing careers with other jobs and responsibilities — because the financial support available to them is still nowhere near what it should be. That they perform at the level they do given those circumstances says everything about their character.</p>
+
+      <h3>The Six Nations Women's Championship</h3>
+      <p>The Women's Six Nations has grown significantly in profile and quality in recent years. Wales compete at the top level of European women's rugby — and there are seasons where they have produced performances that would make any supporter incredibly proud.</p>
+      <p>The same passion that makes the <a href="articles.html#article8">Six Nations so important for the men's team</a> applies here too. A Women's Six Nations Saturday, Wales playing in Cardiff, the anthem ringing around the stadium — that is a moment worth experiencing for any rugby supporter.</p>
+
+      <h3>What Needs to Improve</h3>
+      <p>Resources. Coverage. Visibility. The Wales Women's team needs sustained investment from the WRU — in professional contracts, in facilities, in coaching and in promotion. Every pound invested in the women's game is money well spent for the long-term health of Welsh rugby.</p>
+      <p>And supporters can play a role too. Watch the games. Talk about them. Share results. The more visibility the Wales Women's team gets, the more pressure there is on decision-makers to invest properly.</p>
+
+      <h3>A Personal Message</h3>
+      <p>I have been watching Welsh rugby since 1965. In that time I have seen the sport grow and change enormously. The growth of the women's game is one of the most positive developments in all of that time. Wales Women deserve a fanbase as loud and passionate as the one that follows the men's team.</p>
+      <div class="closing-quote">
+        The red jersey means the same thing regardless of who is wearing it.<br><br>
+        Wales Women deserve our support, our voice and our pride.
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE 13 -->
+  <div class="article">
+    <div class="article-header">
+      <div class="article-num">Article 13</div>
+      <div class="article-title">Wales Under-20s: Where the Future of Welsh Rugby Is Being Written</div>
+      <div class="article-meta">
+        <span class="author">&#9998; By John James</span>
+        <span class="dot">|</span>
+        <span>&#128197; 24 May 2026</span>
+        <span class="dot">|</span>
+        <span>&#9201; 4 min read</span>
+      </div>
+    </div>
+    <div class="article-body">
+      <p>If you want to understand where Welsh rugby is headed, do not just look at the Six Nations table. Look at the Under-20s.</p>
+      <p>The Wales Under-20s team is where the next generation of Welsh internationals is being forged. These are the players who, within five years, could be pulling on the senior red jersey. The performances, the development and the environment at Under-20 level have a direct impact on what Welsh rugby looks like at the 2027 World Cup and beyond.</p>
+
+      <h3>Why the Under-20s Matter So Much</h3>
+      <p>International rugby at Under-20 level — including the Six Nations Under-20s and the World Rugby Under-20 Championship — is the most important development competition in the world game. The teams that consistently produce strong Under-20 squads tend to be the teams that build sustainable international success over time.</p>
+      <p>Ireland's dominance at Under-20 level in the 2010s and early 2020s directly fed into their senior team's extraordinary rise. The connection is not coincidence. Develop players well at age-grade level and the senior team benefits for a decade.</p>
+
+      <h3>What Wales Needs From the Under-20s Programme</h3>
+      <p>First, consistency of selection and coaching. Young players need a stable environment where they know what is expected of them and can develop without constant disruption. Second, playing time. Wales Under-20 players need to be getting genuine game time at their regions — not sitting on benches waiting for opportunities that never come.</p>
+      <p>As we discussed in our article on <a href="articles.html#article9">building for the 2027 World Cup</a>, the players in their late teens and early twenties right now are exactly the right age to be the core of that tournament squad. The investment made in them today is the investment Wales makes in its own future.</p>
+
+      <h3>Following the Under-20s</h3>
+      <p>I watch the Wales Under-20s with the same investment I watch the senior side. Sometimes more, because you are watching potential take shape in real time. You see a young flanker dominate a game and think — that could be a future Wales captain. You see a fly-half orchestrate a comeback and wonder how long before they are starting at Principality Stadium.</p>
+      <p>That is one of the genuine joys of following Welsh rugby at every level. The story never ends. There is always a next chapter being written somewhere.</p>
+      <div class="closing-quote">
+        The Under-20s are not the future of Welsh rugby.<br><br>
+        They are the present of Welsh rugby — happening right now, if you are watching.
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE 14 -->
+  <div class="article">
+    <div class="article-header">
+      <div class="article-num">Article 14</div>
+      <div class="article-title">60 Years of Welsh Rugby: What the Game Has Taught Me About Life</div>
+      <div class="article-meta">
+        <span class="author">&#9998; By John James</span>
+        <span class="dot">|</span>
+        <span>&#128197; 24 May 2026</span>
+        <span class="dot">|</span>
+        <span>&#9201; 5 min read</span>
+      </div>
+    </div>
+    <div class="article-body">
+      <p>I started following Welsh rugby around 1965. I was young. Wales was a different country in many ways — the valleys were still working communities built around industry, rugby clubs were the social centres of those communities, and the national team was approaching one of the greatest eras in the history of the sport.</p>
+      <p>Six decades later, I am still here. Still watching. Still caring as much as I ever did. Which makes me think occasionally about what this sport has actually given me — and what it has taught me along the way.</p>
+
+      <h3>It Taught Me How to Handle Disappointment</h3>
+      <p>Anyone who has followed Welsh rugby for any length of time knows heartbreak. Matches that should have been won. World Cup campaigns that ended too soon. Dark periods that felt like they might never end. You learn, over time, not to let disappointment break you — because the next match is always coming. The next season is always around the corner. Welsh rugby never stays down forever.</p>
+
+      <h3>It Taught Me About Community</h3>
+      <p>The best things about Welsh rugby are not on the pitch. They are in the conversations before kick-off, the collective groan when a penalty goes wide, the eruption when a try is scored in the corner. They are the strangers who become friends because they are both wearing the same replica jersey on a train to Cardiff.</p>
+      <p>Rugby in Wales is a communal experience in a way that is genuinely rare in modern sport. As I wrote in the piece on <a href="articles.html#article7">grassroots rugby</a>, it is the people — the volunteers, the supporters, the club members — who are the real heart of the game here.</p>
+
+      <h3>It Taught Me That Great Things Take Time</h3>
+      <p>The Grand Slams of the 1970s did not happen overnight. The great Wales team of 2005–2013 was built over years. Even the painful periods — and there have been several — eventually gave way to something better. Nothing worthwhile in rugby, as in life, comes without patience.</p>
+
+      <h3>What I Hope the Next Generation Feels</h3>
+      <p>I hope the young Welsh rugby supporters watching today — the ten-year-olds at their first match, the teenagers learning the words to the anthem — feel what I felt in 1965. That electric connection between a small nation and a sport that is woven into its identity.</p>
+      <p>It does not matter what the scoreboard says. What matters is that they catch the feeling. Because once Welsh rugby gets into you, it never really leaves.</p>
+      <div class="closing-quote">
+        Sixty years of Welsh rugby.<br>
+        Sixty years of passion, heartbreak, joy and identity.<br><br>
+        I would not trade a single match.
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE 15 -->
+  <div class="article">
+    <div class="article-header">
+      <div class="article-num">Article 15</div>
+      <div class="article-title">The Principality Stadium: More Than Just a Rugby Ground</div>
+      <div class="article-meta">
+        <span class="author">&#9998; By John James</span>
+        <span class="dot">|</span>
+        <span>&#128197; 24 May 2026</span>
+        <span class="dot">|</span>
+        <span>&#9201; 4 min read</span>
+      </div>
+    </div>
+    <div class="article-body">
+      <p>There is a moment that happens inside the Principality Stadium before every Wales home match. The teams are in the tunnel. The crowd is at full noise. And then the anthem starts.</p>
+      <p>Hen Wlad Fy Nhadau — Land of My Fathers. Sung by 74,500 people with a conviction that makes the hairs stand up on the back of your neck, however many times you have heard it. That moment is not just a rugby ritual. It is a statement of identity from a small nation that refuses to be overlooked.</p>
+      <p>The Principality Stadium is where that statement is made most loudly. And it is far more than a rugby ground.</p>
+
+      <h3>The History of the Place</h3>
+      <p>The current stadium was built for the 1999 Rugby World Cup, replacing the old Cardiff Arms Park terraces that had stood as the home of Welsh rugby for over a century. The Arms Park itself still exists alongside it — home to Cardiff Rugby — but the national stadium rose around and above it, becoming one of the most recognisable sporting venues in the world.</p>
+      <p>The retractable roof was groundbreaking when it opened. Closing that roof in bad weather transforms the noise inside into something almost physical — a wall of sound that has driven Wales to victories that seemed impossible and broken the confidence of visiting sides who had no idea what was coming.</p>
+
+      <h3>The Matches That Made It Legendary</h3>
+      <p>Every Welsh rugby supporter carries a mental highlight reel from this ground. Grand Slam clinchers. Last-minute wins against England. Unforgettable European nights. The stadium has hosted Rugby World Cup matches, FA Cup finals, boxing world title fights and concerts from the biggest acts on the planet — but it is on rugby internationals that it truly comes alive.</p>
+      <p>As we described in our piece on <a href="articles.html#article3">the greatest atmospheres in Welsh rugby</a>, when the roof is closed and Wales are playing England, the Principality Stadium is arguably the most intense sporting environment in the world.</p>
+
+      <h3>What It Means to a Welsh Rugby Fan</h3>
+      <p>I have been lucky enough to experience match days at the Principality Stadium many times over the years. Each one is different. Each one carries its own emotion depending on what is at stake. But the constant — the thing that never changes — is the feeling of being part of something much bigger than yourself.</p>
+      <p>That is what this stadium does. It collects the passion of an entire nation and holds it in one place for eighty minutes. It turns individual supporters into a single collective voice. It makes you feel, regardless of the result, that being Welsh and loving rugby is something worth being enormously proud of.</p>
+      <div class="closing-quote">
+        The Principality Stadium is not just where Wales plays rugby.<br><br>
+        It is where Wales reminds the world who it is.
+      </div>
+    </div>
+  </div>
 
 <footer>
   <div class="footer-logo">Welsh Dragon Rugby</div>
   <p>Independent Welsh rugby coverage &middot; <a href="index.html">welshdragonrugby.co.uk</a></p>
+  <p style="margin-top:8px;"><a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="cookie-policy.html">Cookie Policy</a> &middot; <a href="about.html">About</a> &middot; <a href="contact.html">Contact</a></p>
 </footer>
 
 </body>
