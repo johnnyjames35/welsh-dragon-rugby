@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Young Welsh Rugby Talent to Watch | Welsh Dragon Rugby</title>
+  <meta name="description" content="Ten Welsh rugby players under 25 to watch in 2026 — the next generation building towards the 2027 Rugby World Cup."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #c9a84c; --gold-light: #e2c47a;
+      --red: #b5132b;
+      --green-deep: #0a2318; --green-mid: #0f3524;
+      --green-bright: #1a5c3a; --green-accent: #2a7a50;
+      --white: #f8f5ee; --off-white: #ede8de;
+      --border: rgba(201,168,76,0.2);
+      --card: rgba(255,255,255,0.04);
+      --text-muted: #8aab96;
+    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--green-deep); color: var(--white); min-height: 100vh; }
+    header { background: var(--green-deep); border-bottom: 2px solid var(--gold); padding: 16px 20px; display: flex; align-items: center; gap: 14px; }
+    .logo-shield { width: 46px; height: 46px; border-radius: 8px; background: linear-gradient(135deg, var(--gold), var(--gold-light)); display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; font-size: 11px; font-weight: 900; color: var(--green-deep); letter-spacing: 1px; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.4); text-decoration: none; }
+    .logo-text h1 { font-family: 'Cinzel', serif; font-size: 20px; font-weight: 900; color: var(--gold); letter-spacing: 1px; }
+    .logo-text p { font-size: 11px; color: var(--green-accent); margin-top: 3px; letter-spacing: 0.5px; }
+    nav { background: var(--green-mid); display: flex; overflow-x: auto; border-top: 1px solid var(--border); }
+    nav a { color: var(--off-white); background: none; border: none; border-bottom: 3px solid transparent; padding: 12px 20px; font-size: 13px; font-family: 'DM Sans', sans-serif; font-weight: 600; cursor: pointer; white-space: nowrap; opacity: 0.6; transition: all 0.2s; letter-spacing: 0.3px; text-decoration: none; display: block; }
+    nav a:hover { opacity: 1; color: var(--gold-light); }
+    nav a.active { opacity: 1; color: var(--gold); border-bottom-color: var(--gold); }
+    .hero { background: linear-gradient(135deg, var(--green-mid), var(--green-deep)); border-bottom: 1px solid var(--border); padding: 40px 20px; text-align: center; }
+    .hero-badge { display: inline-block; background: var(--gold); color: var(--green-deep); font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 14px; }
+    .hero h2 { font-family: 'Cinzel', serif; font-size: clamp(24px, 4vw, 36px); font-weight: 900; color: var(--gold); margin-bottom: 10px; }
+    .hero p { font-size: 14px; color: var(--text-muted); max-width: 560px; margin: 0 auto; }
+    .container { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
+    .intro { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--gold); border-radius: 0 12px 12px 0; padding: 24px 28px; margin-bottom: 40px; line-height: 1.8; font-size: 15px; color: var(--off-white); }
+    .intro p { margin-bottom: 12px; }
+    .intro p:last-child { margin-bottom: 0; }
+    .profile { background: var(--card); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 32px; overflow: hidden; }
+    .profile-header { background: linear-gradient(135deg, var(--green-mid), var(--green-bright)); padding: 24px 28px; }
+    .profile-number { font-family: 'Cinzel', serif; font-size: 11px; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+    .profile-name { font-family: 'Cinzel', serif; font-size: clamp(20px, 3vw, 26px); font-weight: 900; color: var(--gold-light); margin-bottom: 8px; }
+    .profile-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+    .tag { background: rgba(201,168,76,0.15); border: 1px solid var(--border); border-radius: 20px; padding: 3px 12px; color: var(--gold); font-size: 12px; font-weight: 600; }
+    .profile-stats { display: flex; gap: 24px; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-val { font-family: 'Cinzel', serif; font-size: 22px; font-weight: 900; color: var(--gold); display: block; }
+    .stat-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; }
+    .profile-body { padding: 28px; line-height: 1.85; font-size: 15px; color: var(--off-white); }
+    .profile-body p { margin-bottom: 16px; }
+    .profile-body p:last-child { margin-bottom: 0; }
+    .profile-body h3 { font-family: 'Cinzel', serif; font-size: 14px; color: var(--gold); margin: 24px 0 10px; }
+    .profile-body strong { color: var(--white); font-weight: 600; }
+    .profile-body a { color: var(--gold); text-decoration: underline; }
+    .watch-out { background: rgba(181,19,43,0.08); border: 1px solid rgba(181,19,43,0.3); border-radius: 8px; padding: 14px 18px; margin-top: 16px; font-size: 14px; color: var(--off-white); }
+    .watch-out strong { color: var(--gold-light); }
+    footer { background: var(--green-mid); border-top: 2px solid var(--gold); padding: 32px 20px; text-align: center; margin-top: 20px; }
+    .footer-logo { font-family: 'Cinzel', serif; font-size: 20px; font-weight: 900; color: var(--gold); margin-bottom: 8px; }
+    footer p { font-size: 13px; color: var(--green-accent); }
+    footer a { color: var(--gold); text-decoration: none; }
+    @media(max-width:600px) { .profile-body { padding: 20px; } .profile-header { padding: 20px; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo-shield">WDR</a>
+  <div class="logo-text">
+    <h1>Welsh Dragon Rugby</h1>
+    <p>Live scores · Fixtures · Tables</p>
+  </div>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="index.html#wales">Wales</a>
+  <a href="index.html#scarlets">Scarlets</a>
+  <a href="index.html#ospreys">Ospreys</a>
+  <a href="index.html#cardiff">Cardiff Rugby</a>
+  <a href="index.html#dragons">Dragons</a>
+  <a href="articles.html">Articles</a>
+  <a href="players.html">Players</a>
+  <a href="young-talent.html" class="active">Young Talent</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">🌟 Under 25</div>
+  <h2>Young Welsh Talent to Watch</h2>
+  <p>Ten Welsh rugby players under 25 who could define the national team's future as Wales builds towards the 2027 Rugby World Cup.</p>
+</div>
+
+<div class="container">
+
+  <div class="intro">
+    <p>Welsh rugby's long-term future depends on the depth and quality of young talent coming through its regional and academy system. As Wales enters the inaugural <a href="articles.html#article17">World Rugby Nations Championship</a>, the next generation is already pushing hard for recognition.</p>
+    <p>These are ten Welsh players under 25 — all either already in the Wales senior setup or knocking loudly on the door — who we believe could be cornerstone players in the red jersey for years to come.</p>
+  </div>
+
+  <!-- 1. DAN EDWARDS -->
+  <div class="profile">
+    <div class="profile-header">
+      <div class="profile-number">Player 1</div>
+      <div class="profile-name">Dan Edwards</div>
+      <div class="profile-meta">
+        <span class="tag">Fly-half</span>
+        <span class="tag">Ospreys</span>
+        <span class="tag">Born: 7 May 2003</span>
+        <span class="tag">178cm · 83kg</span>
+      </div>
+      <div class="profile-stats">
+        <div class="stat"><span class="stat-val">23</span><span class="stat-label">Age</span></div>
+        <div class="stat"><span class="stat-val">178cm</span><span class="stat-label">Height</span></div>
+        <div class="stat"><span class="stat-val">83kg</span><span class="stat-label">Weight</span></div>
+      </div>
+    </div>
+    <div class="profile-body">
+      <p>Already Wales's first-choice fly-half at just 23, Dan Edwards is the most important young player in Welsh rugby right now. Born in Port Talbot and developed through the Ospreys academy, Edwards made his senior Wales debut against France in January 2025 and quickly established himself as the number one at 10.</p>
+      <p>He earned his first start against Japan in July 2025, marking the occasion with a 16-point haul. He started games in the <a href="articles.html#article20">2026 Six Nations</a> against England, France and Ireland and will be central to Wales's Nations Championship campaign. Wearing a jersey carried by Barry John, Phil Bennett and Dan Biggar, Edwards takes enormous pride in the legacy — and his ceiling as a player is extraordinarily high.</p>
+      <div class="watch-out"><strong>Why he'll be huge:</strong> Already the incumbent at 10 for Wales at 23. If he continues developing his game management alongside his natural flair and pace, he could be Wales's fly-half for the next decade. See his full profile on our <a href="players.html">Wales Squad Profiles</a> page.</div>
+    </div>
+  </div>
+
+  <!-- 2. LOUIE HENNESSEY -->
+  <div class="profile">
+    <div class="profile-header">
+      <div class="profile-number">Player 2</div>
+      <div class="profile-name">Louie Hennessey</div>
+      <div class="profile-meta">
+        <span class="tag">Centre</span>
+        <span class="tag">Bath Rugby</span>
+        <span class="tag">Born: 29 Mar 2004</span>
+        <span class="tag">191cm · 105kg</span>
+      </div>
+      <div class="profile-stats">
+        <div class="stat"><span class="stat-val">22</span><span class="stat-label">Age</span></div>
+        <div class="stat"><span class="stat-val">191cm</span><span class="stat-label">Height</span></div>
+        <div class="stat"><span class="stat-val">105kg</span><span class="stat-label">Weight</span></div>
+      </div>
+    </div>
+    <div class="profile-body">
+      <p>Cardiff-born Louie Hennessey is one of the most physically imposing centres in Welsh rugby — 6ft 3in, 105kg, with pace and footwork that makes him a serious threat in the midfield. He started his rugby at Llanishen RFC before progressing through Cardiff Rugby's academy system, joining Bath in 2022 where he combined playing with studying Sports Performance at the University of Bath.</p>
+      <p>Hennessey was named in the NextGen XV World U18 Dream Team in 2022 and represented Wales U20. He made his senior Wales debut coming off the bench against Ireland in the <a href="articles.html#article20">2026 Six Nations</a> in Dublin — a moment he described as a "crazy feeling." Unfortunately, a shoulder injury sustained in Bath's Champions Cup semi-final in May 2026 has ruled him out of the Nations Championship summer programme. At 22, his best years are ahead of him.</p>
+      <div class="watch-out"><strong>Why he'll be huge:</strong> Size, pace and skill make him a potentially devastating outside centre at Test level. Once fit, expect him to push hard for a starting Wales midfield jersey.</div>
+    </div>
+  </div>
+
+  <!-- 3. ELLIS MEE -->
+  <div class="profile">
+    <div class="profile-header">
+      <div class="profile-number">Player 3</div>
+      <div class="profile-name">Ellis Mee</div>
+      <div class="profile-meta">
+        <span class="tag">Wing / Fullback</span>
+        <span class="tag">Scarlets</span>
+        <span class="tag">Born: 6 Oct 2003</span>
+        <span class="tag">193cm · 92kg</span>
+      </div>
+      <div class="profile-stats">
+        <div class="stat"><span class="stat-val">22</span><span class="stat-label">Age</span></div>
+        <div class="stat"><span class="stat-val">193cm</span><span class="stat-label">Height</span></div>
+        <div class="stat"><span class="stat-val">92kg</span><span class="stat-label">Weight</span></div>
+      </div>
+    </div>
+    <div class="profile-body">
+      <p>Ellis Mee's story is one of the most remarkable in recent Welsh rugby. Born in Nottingham, raised in Adelaide, Australia, and qualifying for Wales through his mother Karen who hails from Newport — Mee had never played representative rugby at any level when he made his Wales debut in 2025. He had played just 10 games for the Scarlets after joining from English Championship side Nottingham, where he had been voted players', fans' and overall player of the season.</p>
+      <p>His Wales debut against Ireland in the 2025 Six Nations drew comparisons with George North's sensational debut in 2010. Standing 6ft 4in tall, Mee is powerful in the air, deceptively quick and brings an attacking work rate that immediately caught the eye at Test level. He was named in the <a href="articles.html#article20">2026 Six Nations</a> squad and has been a consistent presence on Steve Tandy's radar. He dedicated his debut to his late father Tony, who had introduced him to rugby.</p>
+      <div class="watch-out"><strong>Why he'll be huge:</strong> Raw ability and physical tools are exceptional. As he accumulates experience at the highest level, Mee could develop into a top-class Test wing.</div>
+    </div>
+  </div>
+
+  <!-- 4. MASON GRADY -->
+  <div class="profile">
+    <div class="profile-header">
+      <div class="profile-number">Player 4</div>
+      <div class="profile-name">Mason Grady</div>
+      <div class="profile-meta">
+        <span class="tag">Centre</span>
+        <span class="tag">Cardiff Rugby</span>
+        <span class="tag">Born: 29 Mar 2002</span>
+        <span class="tag">196cm · 117kg</span>
+      </div>
+      <div class="profile-stats">
+        <div class="stat"><span class="stat-val">24</span><span class="stat-label">Age</span></div>
+        <div class="stat"><span class="stat-val">196cm</span><span class="stat-label">Height</span></div>
+        <div class="stat"><span class="stat-val">117kg</span><span class="stat-label">Weight</span></div>
+      </div>
+    </div>
+    <div class="profile-body">
+      <p>At 6ft 5in and 117kg, Mason Grady is a physically extraordinary centre — but what makes him genuinely dangerous is that he also possesses pace, footwork and the finishing ability to go with it. Born in Cardiff on 29 March 2002, Grady signed his first professional contract with Cardiff in September 2020, becoming the second youngest player to represent the club at 17 years and seven months. His grandfather is Irish and he was eligible for Ireland, but chose Wales.</p>
+      <p>Grady made his Wales debut against England in the 2023 Six Nations and has gone on to make over 48 appearances for Cardiff, scoring 14 tries. He has committed his future to the club, signing a further extension in January 2025. Wales coach Cardiff head coach Matt Sherratt described him as having "size, speed, and power added to a good general skill set." He featured in the Nations Championship extended squad and is very much part of Steve Tandy's plans.</p>
+      <div class="watch-out"><strong>Why he'll be huge:</strong> The physical combination of Grady's size and speed is rare in world rugby. A consistent run of games at Test level could unlock a truly special career for Wales.</div>
+    </div>
+  </div>
+
+  <!-- 5. DAFYDD JENKINS -->
+  <div class="profile">
+    <div class="profile-header">
+      <div class="profile-number">Player 5</div>
+      <div class="profile-name">Dafydd Jenkins</div>
+      <div class="profile-meta">
+        <span class="tag">Lock</span>
+        <span class="tag">Exeter Chiefs</span>
+        <span class="tag">Born: 5 Dec 2002</span>
+        <span class="tag">201cm · 120kg</span>
+      </div>
+      <div class="profile-stats">
+        <div class="stat"><span class="stat-val">23</span><span class="stat-label">Age</span></div>
+        <div class="stat"><span class="stat-val">201cm</span><span class="stat-label">Height</span></div>
+        <div class="stat"><span class="stat-val">120kg</span><span class="stat-label">Weight</span></div>
+      </div>
+    </div>
+    <div class="profile-body">
+      <p>Born in Bridgend on 5 December 2002, Dafydd Jenkins is already one of the most impressive young locks in European rugby. Standing 6ft 7in tall and weighing 120kg, he combines the physical tools needed to dominate at the highest level with an on-field rugby intelligence that has made him stand out at Exeter Chiefs from an early age. Rugby is in his DNA — his father Hywel played as a back row for Swansea and Neath.</p>
+      <p>Jenkins came through Porthcawl RFC juniors before attending Hartpury College, where Exeter head coach Rob Baxter contacted him directly. He made his Exeter debut in the Premiership Rugby Cup in November 2021 and within weeks was featuring in both the Heineken Champions Cup and Gallagher Premiership. He was handed both the Wales captaincy — becoming Wales's second youngest test captain — and the Exeter matchday captaincy during the 2023-24 season. He has started all five 2026 Six Nations matches and is named in the Wales Nations Championship squad.</p>
+      <div class="watch-out"><strong>Why he'll be huge:</strong> Already one of the best young locks in the northern hemisphere. At 23 with 26+ Wales caps, Jenkins has the tools to become one of the great Welsh second rows of his generation.</div>
+    </div>
+  </div>
+
+  <!-- 6. BLAIR MURRAY -->
+  <div class="profile">
+    <div class="profile-header">
+      <div class="profile-number">Player 6</div>
+      <div class="profile-name">Blair Murray</div>
+      <div class="profile-meta">
+        <span class="tag">Fullback / Wing</span>
+        <span class="tag">Scarlets</span>
+        <span class="tag">Born: 9 Oct 2001</span>
+        <span class="tag">173cm · 83kg</span>
+      </div>
+      <div class="profile-stats">
+        <div class="stat"><span class="stat-val">24</span><span class="stat-label">Age</span></div>
+        <div class="stat"><span class="stat-val">173cm</span><span class="stat-label">Height</span></div>
+        <div class="stat"><span class="stat-val">83kg</span><span class="stat-label">Weight</span></div>
+      </div>
+    </div>
+    <div class="profile-body">
+      <p>Blair Murray is one of the most electric attacking backs in Welsh rugby. Born in Hāwera, New Zealand on 9 October 2001, Murray qualifies for Wales through his mother Paula, who is from Tonyrefail in the Rhondda. He attended New Plymouth Boys' High School and was part of the wider Crusaders Super Rugby squad before the Scarlets came calling. He joined the Scarlets in July 2024 and his debut season in Welsh rugby was simply outstanding.</p>
+      <p>Murray was described by former All Blacks head coach Scott Robertson as "5ft 7in and can bounce, spin and hit." He finished his debut Scarlets season as the club's top try-scorer with 11 tries, was named in the URC Elite XV, and was voted Players' Player of the Season. He won his first Wales cap in autumn 2024, scoring with his first touch in Test rugby. He was a standout in the 2025 Six Nations and was named in the <a href="articles.html#article20">2026 Six Nations</a> squad. He signed a contract extension with the Scarlets until 2028 in August 2025.</p>
+      <div class="watch-out"><strong>Why he'll be huge:</strong> A pocket rocket with the ability to change a game in an instant. Murray's combination of evasiveness, pace and instinct make him a constant threat and a fan favourite in the making.</div>
+    </div>
+  </div>
+
+  <!-- 7. ARCHIE GRIFFIN -->
+  <div class="profile">
+    <div class="profile-header">
+      <div class="profile-number">Player 7</div>
+      <div class="profile-name">Archie Griffin</div>
+      <div class="profile-meta">
+        <span class="tag">Tighthead Prop</span>
+        <span class="tag">Bath Rugby</span>
+        <span class="tag">Born: 24 Jul 2001</span>
+        <span class="tag">190cm · 124kg</span>
+      </div>
+      <div class="profile-stats">
+        <div class="stat"><span class="stat-val">24</span><span class="stat-label">Age</span></div>
+        <div class="stat"><span class="stat-val">190cm</span><span class="stat-label">Height</span></div>
+        <div class="stat"><span class="stat-val">124kg</span><span class="stat-label">Weight</span></div>
+      </div>
+    </div>
+    <div class="profile-body">
+      <p>Archie Griffin is one of the most promising tighthead props in the Welsh game — a powerful scrummager with the athleticism and physicality to become a genuine Test-level starter. Born in Sydney, Australia on 24 July 2001, Griffin qualifies for Wales through his parents — his mother was born in Wrexham and his father is from Cardiff. He joined the Bath Rugby academy at just 13 years old.</p>
+      <p>Griffin made his senior Bath debut in November 2022 and has developed rapidly since. He made his Wales debut as a replacement in the 2024 Six Nations defeat to England and has accumulated 11+ caps. He was named in the <a href="articles.html#article20">2026 Six Nations</a> squad, featured across the tournament and is part of the Nations Championship plans. Bath head of rugby Johann van Graan has said: "Archie has got a massive future ahead of him. He's trained so hard for his opportunities and, boy, has he used them."</p>
+      <div class="watch-out"><strong>Why he'll be huge:</strong> Quality tighthead props are among the rarest commodities in world rugby. At 24 and with 11+ caps, Griffin has the foundations to become a 10-year servant to Wales at loosehead.</div>
+    </div>
+  </div>
+
+  <!-- 8. BRYN BRADLEY -->
+  <div class="profile">
+    <div class="profile-header">
+      <div class="profile-number">Player 8</div>
+      <div class="profile-name">Bryn Bradley</div>
+      <div class="profile-meta">
+        <span class="tag">Centre</span>
+        <span class="tag">Harlequins</span>
+        <span class="tag">Born: 17 Apr 2003</span>
+        <span class="tag">192cm · 106kg</span>
+      </div>
+      <div class="profile-stats">
+        <div class="stat"><span class="stat-val">23</span><span class="stat-label">Age</span></div>
+        <div class="stat"><span class="stat-val">192cm</span><span class="stat-label">Height</span></div>
+        <div class="stat"><span class="stat-val">106kg</span><span class="stat-label">Weight</span></div>
+      </div>
+    </div>
+    <div class="profile-body">
+      <p>Bryn Bradley is one of the most exciting young centres on the radar of Welsh rugby — a powerful, physically imposing midfielder who has had a genuine breakout season at Harlequins in 2025-26. Born in London on 17 April 2003, Bradley qualifies for Wales through his Newport-born mother. His brother Gwilym plays for Cardiff Rugby. Bradley attended Epsom College and played for Cobham RFC before joining the Harlequins academy in 2022.</p>
+      <p>Bradley represented Wales U20 and scored during the 2023 World Rugby U20 Championship. At 6ft 4in and 106kg, he brings a physical edge to the midfield that is increasingly rare. Harlequins' director of rugby praised him as someone who "flourishes at the next level when he steps up" — and Bradley's 2025-26 season for Quins, in which he established himself as the first-choice 12, has attracted wider attention. He was named in Steve Tandy's extended 48-man Nations Championship training squad as an uncapped player.</p>
+      <div class="watch-out"><strong>Why he'll be huge:</strong> Size, footwork and a growing appetite for the big occasion. If he continues his development at Harlequins, a full Wales debut could come during the Nations Championship autumn window.</div>
+    </div>
+  </div>
+
+  <!-- 9. RYAN WOODMAN -->
+  <div class="profile">
+    <div class="profile-header">
+      <div class="profile-number">Player 9</div>
+      <div class="profile-name">Ryan Woodman</div>
+      <div class="profile-meta">
+        <span class="tag">Lock / Flanker</span>
+        <span class="tag">Dragons RFC</span>
+        <span class="tag">Born: 2 Feb 2004</span>
+        <span class="tag">196cm · 107kg</span>
+      </div>
+      <div class="profile-stats">
+        <div class="stat"><span class="stat-val">22</span><span class="stat-label">Age</span></div>
+        <div class="stat"><span class="stat-val">196cm</span><span class="stat-label">Height</span></div>
+        <div class="stat"><span class="stat-val">107kg</span><span class="stat-label">Weight</span></div>
+      </div>
+    </div>
+    <div class="profile-body">
+      <p>Ryan Woodman is one of the brightest young forwards to emerge from the Dragons academy in years. Born in Newport on 2 February 2004 and raised in Caldicot, Woodman began his rugby journey at Caldicot RFC before progressing through the Dragons pathway. Comfortable at both lock and flanker, his versatility is one of his biggest strengths at 6ft 5in and 107kg.</p>
+      <p>Woodman captained Wales U20 in 2023 and made his Dragons senior debut in December 2022. His 2024-25 season saw him make 18 appearances for Dragons, winning the club's Young Player of the Season award. He signed a contract extension with the Dragons until 2027 in April 2024. He was added to the Wales squad during the 2026 Six Nations as injury cover, training with the senior group, and was named in the extended 48-man Nations Championship training squad. Teammates and coaches have described him as a "future captain."</p>
+      <div class="watch-out"><strong>Why he'll be huge:</strong> Leadership qualities, physical presence and versatility across the forward positions. At just 22, Woodman has the profile of a player who could anchor the Welsh pack for the next decade.</div>
+    </div>
+  </div>
+
+  <!-- 10. RHYS BARRATT -->
+  <div class="profile">
+    <div class="profile-header">
+      <div class="profile-number">Player 10</div>
+      <div class="profile-name">Rhys Barratt</div>
+      <div class="profile-meta">
+        <span class="tag">Loosehead Prop</span>
+        <span class="tag">Cardiff Rugby</span>
+        <span class="tag">Born: 2002</span>
+        <span class="tag">184cm · 111kg</span>
+      </div>
+      <div class="profile-stats">
+        <div class="stat"><span class="stat-val">23</span><span class="stat-label">Age</span></div>
+        <div class="stat"><span class="stat-val">184cm</span><span class="stat-label">Height</span></div>
+        <div class="stat"><span class="stat-val">111kg</span><span class="stat-label">Weight</span></div>
+      </div>
+    </div>
+    <div class="profile-body">
+      <p>Rhys Barratt is the kind of quietly developing prospect that Welsh rugby has historically produced well — a technically grounded loosehead prop who has been steadily building his game at Cardiff Rugby. Born in the Rhondda and raised in the area, Barratt began his rugby at Llantwit Fardre RFC before progressing through Pontypridd Schools and the Cardiff Blues age-grade system, eventually signing a professional contract with Cardiff Rugby in 2023.</p>
+      <p>Barratt made his Cardiff debut in September 2022 against Munster. His development has been patient and methodical — exactly what is required for a prop — and his 2024-25 season saw him make his first senior starts, beginning with a Challenge Cup fixture against Perpignan in January 2025. He then started a string of URC matches, catching the eye of Wales coaches. He was brought in to train with the senior Wales squad during the 2025 Six Nations and has been named in the extended Nations Championship training squad. His younger brother Dylan also plays for Cardiff Academy.</p>
+      <div class="watch-out"><strong>Why he'll be huge:</strong> Props take time to develop but Barratt is on the right track. His technically sound scrummaging and growing consistency at URC level suggest a Wales cap may not be far away.</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Welsh Dragon Rugby</div>
+  <p>Independent Welsh rugby coverage &middot; <a href="index.html">welshdragonrugby.co.uk</a></p>
+  <p style="margin-top:8px;"><a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="cookie-policy.html">Cookie Policy</a> &middot; <a href="about.html">About</a> &middot; <a href="contact.html">Contact</a></p>
+</footer>
+
+</body>
+</html>
