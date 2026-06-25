@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Player Profiles | Welsh Dragon Rugby</title>
+  <meta name="description" content="In-depth player profiles for Wales internationals — Tom Rogers, Joe Hawkins, Dan Edwards, Dewi Lake, Ben Carter and Aaron Wainwright."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #c9a84c; --gold-light: #e2c47a;
+      --red: #b5132b;
+      --green-deep: #0a2318; --green-mid: #0f3524;
+      --green-bright: #1a5c3a; --green-accent: #2a7a50;
+      --white: #f8f5ee; --off-white: #ede8de;
+      --border: rgba(201,168,76,0.2);
+      --card: rgba(255,255,255,0.04);
+      --text-muted: #8aab96;
+    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--green-deep); color: var(--white); min-height: 100vh; }
+    header { background: var(--green-deep); border-bottom: 2px solid var(--gold); padding: 16px 20px; display: flex; align-items: center; gap: 14px; }
+    .logo-shield { width: 46px; height: 46px; border-radius: 8px; background: linear-gradient(135deg, var(--gold), var(--gold-light)); display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; font-size: 11px; font-weight: 900; color: var(--green-deep); letter-spacing: 1px; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.4); text-decoration: none; }
+    .logo-text h1 { font-family: 'Cinzel', serif; font-size: 20px; font-weight: 900; color: var(--gold); letter-spacing: 1px; }
+    .logo-text p { font-size: 11px; color: var(--green-accent); margin-top: 3px; letter-spacing: 0.5px; }
+    nav { background: var(--green-mid); display: flex; overflow-x: auto; border-top: 1px solid var(--border); }
+    nav a { color: var(--off-white); background: none; border: none; border-bottom: 3px solid transparent; padding: 12px 20px; font-size: 13px; font-family: 'DM Sans', sans-serif; font-weight: 600; cursor: pointer; white-space: nowrap; opacity: 0.6; transition: all 0.2s; letter-spacing: 0.3px; text-decoration: none; display: block; }
+    nav a:hover { opacity: 1; color: var(--gold-light); }
+    nav a.active { opacity: 1; color: var(--gold); border-bottom-color: var(--gold); }
+    .hero { background: linear-gradient(135deg, var(--green-mid), var(--green-deep)); border-bottom: 1px solid var(--border); padding: 40px 20px; text-align: center; }
+    .hero-badge { display: inline-block; background: var(--gold); color: var(--green-deep); font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 14px; }
+    .hero h2 { font-family: 'Cinzel', serif; font-size: clamp(24px, 4vw, 36px); font-weight: 900; color: var(--gold); margin-bottom: 10px; }
+    .hero p { font-size: 14px; color: var(--text-muted); max-width: 500px; margin: 0 auto; }
+    .container { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
+    .section-title { font-family: 'Cinzel', serif; font-size: 13px; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin: 40px 0 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .section-title:first-child { margin-top: 0; }
+    .profile { background: var(--card); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 32px; overflow: hidden; }
+    .profile-header { background: linear-gradient(135deg, var(--green-mid), var(--green-bright)); padding: 24px 28px; }
+    .profile-name { font-family: 'Cinzel', serif; font-size: clamp(20px, 3vw, 26px); font-weight: 900; color: var(--gold-light); margin-bottom: 8px; }
+    .profile-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+    .tag { background: rgba(201,168,76,0.15); border: 1px solid var(--border); border-radius: 20px; padding: 3px 12px; color: var(--gold); font-size: 12px; font-weight: 600; }
+    .profile-stats { display: flex; gap: 24px; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-val { font-family: 'Cinzel', serif; font-size: 22px; font-weight: 900; color: var(--gold); display: block; }
+    .stat-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; }
+    .profile-body { padding: 28px; line-height: 1.85; font-size: 15px; color: var(--off-white); }
+    .profile-body p { margin-bottom: 16px; }
+    .profile-body p:last-child { margin-bottom: 0; }
+    .profile-body h3 { font-family: 'Cinzel', serif; font-size: 14px; color: var(--gold); margin: 24px 0 10px; }
+    .profile-body strong { color: var(--white); font-weight: 600; }
+    footer { background: var(--green-mid); border-top: 2px solid var(--gold); padding: 32px 20px; text-align: center; margin-top: 20px; }
+    .footer-logo { font-family: 'Cinzel', serif; font-size: 20px; font-weight: 900; color: var(--gold); margin-bottom: 8px; }
+    footer p { font-size: 13px; color: var(--green-accent); }
+    footer a { color: var(--gold); text-decoration: none; }
+    @media(max-width:600px) { .profile-body { padding: 20px; } .profile-header { padding: 20px; } .profile-stats { gap: 16px; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo-shield">WDR</a>
+  <div class="logo-text">
+    <h1>Welsh Dragon Rugby</h1>
+    <p>Live scores · Fixtures · Tables</p>
+  </div>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="index.html#wales">Wales</a>
+  <a href="index.html#scarlets">Scarlets</a>
+  <a href="index.html#ospreys">Ospreys</a>
+  <a href="index.html#cardiff">Cardiff Rugby</a>
+  <a href="index.html#dragons">Dragons</a>
+  <a href="articles.html">Articles</a>
+  <a href="players.html" class="active">Players</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">Player Profiles</div>
+  <h2>Wales Nations Championship Squad</h2>
+  <p>In-depth profiles of key Wales players heading into the 2026 World Rugby Nations Championship.</p>
+</div>
+
+<div class="container">
+
+  <div class="section-title">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Wales Squad Profiles</div>
+
+  <!-- TOM ROGERS -->
+  <div class="profile">
+    <div class="profile-header">
+      <div class="profile-name">Tom Rogers</div>
+      <div class="profile-meta">
+        <span class="tag">Wing</span>
+        <span class="tag">Scarlets</span>
+        <span class="tag">Born: 17 Dec 1998</span>
+        <span class="tag">6ft 1in · 87kg</span>
+      </div>
+      <div class="profile-stats">
+        <div class="stat"><span class="stat-val">185cm</span><span class="stat-label">Height</span></div>
+        <div class="stat"><span class="stat-val">87kg</span><span class="stat-label">Weight</span></div>
+        <div class="stat"><span class="stat-val">Wing</span><span class="stat-label">Position</span></div>
+      </div>
+    </div>
+    <div class="profile-body">
+      <p>Tom Rogers has emerged as one of the most exciting wings in Welsh rugby, combining explosive pace with a clinical finishing ability that has seen him become a genuine match-winner at both regional and international level. Born in West Wales, Rogers came through the Scarlets academy after starting his rugby journey at Cefneithin RFC and Tumble RFC.</p>
+      <h3>Scarlets Career</h3>
+      <p>Rogers made his senior debut for the Scarlets in November 2017 against Exeter in the Anglo-Welsh Cup. After gaining experience on the World Rugby Sevens Series circuit, he returned to XVs rugby and has gone on to make over 80 appearances for the Scarlets, scoring more than 19 tries. His reliability was underscored by a contract extension signed in February 2024 securing his commitment to the region.</p>
+      <h3>Wales International</h3>
+      <p>Rogers made his Wales senior debut in July 2021 and has become an increasingly important figure in the national setup. His 2025 Six Nations campaign saw him start against France and Italy and score his first international try against Ireland. The highlight of his international career to date came in November 2025 when he became the <strong>first player from the northern hemisphere — and only the fourth in international history — to score a hat-trick against New Zealand</strong>, a stunning individual achievement that announced him on the world stage.</p>
+      <p>Rogers was named in Steve Tandy's squad for the 2026 Six Nations and is a key part of Wales's plans for the Nations Championship. At 27, he is in the prime years of his career and one of the most dangerous finishers in Welsh rugby.</p>
+    </div>
+  </div>
+
+  <!-- JOE HAWKINS -->
+  <div class="profile">
+    <div class="profile-header">
+      <div class="profile-name">Joe Hawkins</div>
+      <div class="profile-meta">
+        <span class="tag">Centre</span>
+        <span class="tag">Scarlets</span>
+        <span class="tag">Born: 11 Jun 2002</span>
+        <span class="tag">184cm · 98kg</span>
+      </div>
+      <div class="profile-stats">
+        <div class="stat"><span class="stat-val">184cm</span><span class="stat-label">Height</span></div>
+        <div class="stat"><span class="stat-val">98kg</span><span class="stat-label">Weight</span></div>
+        <div class="stat"><span class="stat-val">Centre</span><span class="stat-label">Position</span></div>
+      </div>
+    </div>
+    <div class="profile-body">
+      <p>Joe Hawkins is one of the most naturally talented young centres in Welsh rugby — a player who combines physical power with a footballing intelligence that belies his years. Born in Ystalyfera and raised in the Swansea Valley, Hawkins grew up playing his youth rugby at Pontardawe RFC before progressing through the Ospreys academy system.</p>
+      <h3>A Rapid Rise</h3>
+      <p>Hawkins made his professional debut for the Ospreys in Round 4 of the 2020-21 Pro14 against Zebre at just 18 years old. He is equally capable at inside centre and outside half — a versatility that makes him a uniquely valuable option for both club and country. Hawkins represented Wales at the 2020 Six Nations Under 20s Championship at just 17, later captaining the U20 side. Rugby runs in the family — his grandfather Brian represented Wales Youth in 1970.</p>
+      <h3>International Career and Return to Wales</h3>
+      <p>Hawkins made his senior Wales debut against Australia in November 2022, becoming one of the youngest centres to represent the national side in recent years. After a spell at Exeter Chiefs in the Premiership, he returned to Wales by signing for the Scarlets in March 2025 — a move that immediately restored his eligibility for national selection. He featured prominently in the 2026 Six Nations under Steve Tandy and is a central part of Wales's midfield options for the Nations Championship.</p>
+    </div>
+  </div>
+
+  <!-- DAN EDWARDS -->
+  <div class="profile">
+    <div class="profile-header">
+      <div class="profile-name">Dan Edwards</div>
+      <div class="profile-meta">
+        <span class="tag">Fly-half</span>
+        <span class="tag">Ospreys</span>
+        <span class="tag">Born: 7 May 2003</span>
+        <span class="tag">178cm · 83kg</span>
+      </div>
+      <div class="profile-stats">
+        <div class="stat"><span class="stat-val">178cm</span><span class="stat-label">Height</span></div>
+        <div class="stat"><span class="stat-val">83kg</span><span class="stat-label">Weight</span></div>
+        <div class="stat"><span class="stat-val">Fly-half</span><span class="stat-label">Position</span></div>
+      </div>
+    </div>
+    <div class="profile-body">
+      <p>Dan Edwards is Welsh rugby's most exciting young fly-half in a generation — a player who combines a running game of real threat with the composure and kicking game to manage a match at the highest level. Born in Port Talbot and raised near Cwmavon RFC, Edwards came through the Ospreys system and has rapidly established himself as the number one choice at 10 for Wales.</p>
+      <h3>The Ospreys Breakthrough</h3>
+      <p>Edwards's rise through the Ospreys has been rapid. He benefited enormously from working alongside former Wales fly-half James Hook, now part of the Ospreys coaching staff, who helped develop the range and precision of his kicking game. His attacking ability — particularly his pace in broken field and ability to create from nothing — marked him out during the 2024-25 season as a genuine talent.</p>
+      <h3>Making the Wales No.10 Jersey His Own</h3>
+      <p>Edwards made his senior Wales debut against France in the opening game of the 2025 Six Nations, coming off the bench. He earned his first start against Japan in July 2025 on the summer tour, marking the occasion with a 16-point haul including a try that helped end Wales's long losing run. He started games in the 2026 Six Nations against England, France and Ireland — wearing a jersey that has been carried by Barry John, Phil Bennett, Jonathan Davies and Dan Biggar before him. Edwards takes enormous pride in that legacy and is determined to do it justice heading into the Nations Championship.</p>
+    </div>
+  </div>
+
+  <!-- DEWI LAKE -->
+  <div class="profile">
+    <div class="profile-header">
+      <div class="profile-name">Dewi Lake — Captain</div>
+      <div class="profile-meta">
+        <span class="tag">Hooker</span>
+        <span class="tag">Ospreys</span>
+        <span class="tag">Born: 16 May 1999</span>
+        <span class="tag">185cm · 114kg</span>
+        <span class="tag">🏴󠁧󠁢󠁷󠁬󠁳󠁥󠁿 Fluent Welsh Speaker</span>
+      </div>
+      <div class="profile-stats">
+        <div class="stat"><span class="stat-val">185cm</span><span class="stat-label">Height</span></div>
+        <div class="stat"><span class="stat-val">114kg</span><span class="stat-label">Weight</span></div>
+        <div class="stat"><span class="stat-val">Captain</span><span class="stat-label">Wales</span></div>
+      </div>
+    </div>
+    <div class="profile-body">
+      <p>Dewi Lake is the captain of Wales and one of the most respected hookers in the United Rugby Championship. Born in Bridgend on 16 May 1999, Lake is a fluent Welsh speaker who has come to embody the values and character that Welsh rugby holds most dear — competitiveness, physicality, and an uncompromising commitment to the jersey.</p>
+      <h3>From Back Row to Hooker</h3>
+      <p>Lake's journey to becoming Wales captain is an unusual one. He originally joined the Ospreys academy as a back row forward before being converted to hooker — a transition that, given his athleticism and carrying ability, proved to be an inspired decision. Before focusing on rugby, he also represented Wales as a schoolboy gymnast. He made his Ospreys debut in 2018 and has gone on to become the cornerstone of their set piece.</p>
+      <h3>Leading Wales</h3>
+      <p>Lake made his senior Wales debut against Ireland in the 2022 Six Nations and quickly established himself as a key figure in the national squad. He captained the Wales Under-20 side at the 2019 World Rugby U20 Championship, leading them to a famous 8-7 victory over New Zealand — only the second under-20 victory over the age-grade All Blacks. He was named Wales captain for the 2026 Six Nations by head coach Steve Tandy and led the side across all five matches. At the Nations Championship, with Fiji, Argentina and South Africa on the horizon, Lake's leadership and set-piece excellence will be essential.</p>
+      <p><em>Note: Lake has signed for Gloucester ahead of the 2026-27 season following uncertainty over the future of the Ospreys region.</em></p>
+    </div>
+  </div>
+
+  <!-- BEN CARTER -->
+  <div class="profile">
+    <div class="profile-header">
+      <div class="profile-name">Ben Carter</div>
+      <div class="profile-meta">
+        <span class="tag">Lock</span>
+        <span class="tag">Dragons RFC</span>
+        <span class="tag">Born: 23 Jan 2001</span>
+        <span class="tag">198cm · 122kg</span>
+      </div>
+      <div class="profile-stats">
+        <div class="stat"><span class="stat-val">198cm</span><span class="stat-label">Height</span></div>
+        <div class="stat"><span class="stat-val">122kg</span><span class="stat-label">Weight</span></div>
+        <div class="stat"><span class="stat-val">Lock</span><span class="stat-label">Position</span></div>
+      </div>
+    </div>
+    <div class="profile-body">
+      <p>Ben Carter is one of the most imposing locks in Welsh rugby — a towering second row of 6ft 6in who combines physical dominance with a level of mobility and skill that makes him a genuine presence across all facets of the game. Born on 23 January 2001, Carter has already captained Wales at Under 18 and Under 19 level and was compared to Alun Wyn Jones by Wales coach Wayne Pivac when he first broke into the senior squad.</p>
+      <h3>Dragons Stalwart</h3>
+      <p>Carter made his Dragons debut in Round 4 of the 2020-21 Pro14 against Munster and has been one of the most consistent performers at Rodney Parade ever since. He was named Dragons co-captain for both the 2024-25 and 2025-26 seasons — a mark of the respect he commands within the squad. By the end of the 2022-23 season, at just 22 years old, he had made 48 appearances for his home region and was named the club's Young Player of the Season.</p>
+      <h3>Wales International</h3>
+      <p>Carter made his senior Wales debut in the 68-12 win over Canada in the 2021 summer internationals, being named man of the match on his debut — an astonishing start to his international career. He has since been a regular in the Wales squad, earning three starts in the 2026 Six Nations including the victory over Italy. He was named in the Wales squad to tour Japan in the summer of 2025. At 25 and standing at 198cm, Carter is set to be a cornerstone of the Wales pack for years to come.</p>
+    </div>
+  </div>
+
+  <!-- AARON WAINWRIGHT -->
+  <div class="profile">
+    <div class="profile-header">
+      <div class="profile-name">Aaron Wainwright</div>
+      <div class="profile-meta">
+        <span class="tag">Number 8</span>
+        <span class="tag">Dragons RFC</span>
+        <span class="tag">Born: 25 Sep 1997</span>
+        <span class="tag">188cm · 110kg</span>
+      </div>
+      <div class="profile-stats">
+        <div class="stat"><span class="stat-val">62+</span><span class="stat-label">Wales Caps</span></div>
+        <div class="stat"><span class="stat-val">188cm</span><span class="stat-label">Height</span></div>
+        <div class="stat"><span class="stat-val">110kg</span><span class="stat-label">Weight</span></div>
+      </div>
+    </div>
+    <div class="profile-body">
+      <p>Aaron Wainwright is one of the most experienced and important players in the current Wales squad — a Number 8 of genuine international quality who has represented his country over 62 times and remains one of the most dangerous ball-carriers in the northern hemisphere. Born in Newport on 25 September 1997, Wainwright's path to rugby was far from straightforward.</p>
+      <h3>From Football to Rugby</h3>
+      <p>As a teenager, Wainwright was talented enough at football to be on the books of Cardiff City from Under 9 to Under 16 level and was included in the Wales Under 16 football squad. It was only when rugby took over that his extraordinary athletic gifts found their true home. He made his Dragons debut in 2017 after playing for Newport RFC and by May 2019 had won the Coaches', Players' and Supporters' Player of the Year awards at the region in the same season — a clean sweep that underlined his rapid rise.</p>
+      <h3>World Cup Hero and International Leader</h3>
+      <p>Wainwright scored a try in Wales's dramatic 20-19 victory over France in the 2019 Rugby World Cup quarter-final at Oita Stadium — one of the defining moments of Welsh rugby in recent years. He was named Mastercard Player of the Match. He went on to contribute to Wales's 2021 Six Nations title and has been a first-choice Number 8 under multiple head coaches.</p>
+      <p>In the 2026 Six Nations, Wainwright started all five matches and made 48 carries across the tournament — bettered only by England's Ben Earl among all players. His power across the gainline and exceptional work rate without the ball remain the foundations of his game. He has signed for Leicester Tigers ahead of the 2026-27 season but, with over 62 caps, comfortably exceeds the 25-cap threshold to remain eligible for Wales while playing outside the country.</p>
+      <p>Wainwright was named the Welsh Rugby Writers' Association Wales Men's Player of the Year for 2023-24 and has twice been voted Dragons Players' Player of the Year. He enters the Nations Championship as one of Wales's most crucial players.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Welsh Dragon Rugby</div>
+  <p>Independent Welsh rugby coverage &middot; <a href="index.html">welshdragonrugby.co.uk</a></p>
+  <p style="margin-top:8px;"><a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="cookie-policy.html">Cookie Policy</a> &middot; <a href="about.html">About</a> &middot; <a href="contact.html">Contact</a></p>
+</footer>
+
+</body>
+</html>
