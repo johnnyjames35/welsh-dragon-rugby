@@ -869,8 +869,11 @@ function formatScore(g){if(!g)return'';const st=g.status?.short;if(st==='FT'||st
 function renderFixtures(games,cid){
   const el=document.getElementById(cid);
   if(!games||games.length===0){el.innerHTML='<div class="error">No fixtures found</div>';return;}
-  const sorted=[...games].sort((a,b)=>new Date(b.date)-new Date(a.date));
-  el.innerHTML=sorted.slice(0,20).map(g=>{
+  const now=new Date();
+  const played=[...games].filter(g=>new Date(g.date)<=now).sort((a,b)=>new Date(b.date)-new Date(a.date));
+  const upcoming=[...games].filter(g=>new Date(g.date)>now).sort((a,b)=>new Date(a.date)-new Date(b.date));
+  const sorted=[...played.slice(0,5),...upcoming.slice(0,15)];
+  el.innerHTML=sorted.map(g=>{
     const score=formatScore(g),upcoming=score==='upcoming';
     const home=cleanName(g.teams?.home?.name||''),away=cleanName(g.teams?.away?.name||'');
     const comp=(g.league?.name||'').replace('United Rugby Championship','URC').replace('Six Nations','6 Nations').replace('Friendly International','Friendly');
