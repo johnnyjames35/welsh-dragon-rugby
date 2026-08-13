@@ -900,7 +900,7 @@ function extractStandings(data){
   if(!s||s.length===0){if(Array.isArray(data.response[0]))s=data.response[0];}
   return(s&&s.length>0)?s:null;
 }
-function renderStandings(data,cid,hl=true){const el=document.getElementById(cid);const st=extractStandings(data);if(!st){el.innerHTML='<div class="error">No standings available</div>';return;}el.innerHTML=buildStandingsTable(st,hl);}
+function renderStandings(data,cid,hl=true,emptyMsg='No standings available'){const el=document.getElementById(cid);const st=extractStandings(data);if(!st){el.innerHTML='<div class="error">'+emptyMsg+'</div>';return;}el.innerHTML=buildStandingsTable(st,hl);}
 let urcData=null,snData=null,snPrevData=null;
 function switchStandings(pid,btn){
   btn.closest('.card').querySelectorAll('.switcher button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
@@ -932,12 +932,12 @@ function showSection(name,e){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));document.getElementById(name).classList.add('active');if(e&&e.target)e.target.classList.add('active');
   if(!loadedSections[name]){loadedSections[name]=true;
     if(name==='wales')loadFixtures('wales','wales-fixtures');if(name==='scarlets')loadFixtures('scarlets','scarlets-fixtures');if(name==='ospreys')loadFixtures('ospreys','ospreys-fixtures');if(name==='cardiff')loadFixtures('cardiff','cardiff-fixtures');if(name==='dragons')loadFixtures('dragons','dragons-fixtures');if(name==='wales-u20')loadFixtures('wales-u20','wales-u20-fixtures');if(name==='wales-women')loadFixtures('wales-women','wales-women-fixtures');
-    if(name==='tables'){fetch('/api/standings').then(r=>r.json()).then(d=>renderStandings(d,'urc-full'));fetch('/api/sixnations').then(r=>r.json()).then(d=>renderStandings(d,'sixnations-full'));}
+    if(name==='tables'){fetch('/api/standings').then(r=>r.json()).then(d=>renderStandings(d,'urc-full',true,'2026–27 URC standings will appear when the season begins on 25th September.'));fetch('/api/sixnations').then(r=>r.json()).then(d=>renderStandings(d,'sixnations-full'));}
   }
 }
 async function init(){
   const walesGames=await loadFixtures('wales','home-fixtures');setNextMatch(walesGames);loadFixtures('scarlets','region-fixtures');
-  fetch('/api/standings').then(r=>r.json()).then(d=>{urcData=d;const st=extractStandings(d);if(st){document.getElementById('urc-welsh').innerHTML=buildWelshStandings(st);document.getElementById('urc-full-side').innerHTML=buildStandingsTable(st,true);}else{document.getElementById('urc-welsh').innerHTML='<div class="error">No standings available</div>';}});
+  fetch('/api/standings').then(r=>r.json()).then(d=>{urcData=d;const st=extractStandings(d);const urcEmptyMsg='2026–27 URC standings will appear when the season begins on 25th September.';if(st){document.getElementById('urc-welsh').innerHTML=buildWelshStandings(st);document.getElementById('urc-full-side').innerHTML=buildStandingsTable(st,true);}else{document.getElementById('urc-welsh').innerHTML='<div class="error">'+urcEmptyMsg+'</div>';document.getElementById('urc-full-side').innerHTML='<div class="error">'+urcEmptyMsg+'</div>';}});
   fetch('/api/sixnations').then(r=>r.json()).then(d=>{snData=d;const st=extractStandings(d);if(st){document.getElementById('sn-current').innerHTML=buildStandingsTable(st,true);}else{document.getElementById('sn-current').innerHTML='<div class="error">No standings available</div>';}});
 }
 init();
