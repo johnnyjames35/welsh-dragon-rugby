@@ -503,11 +503,9 @@
         <div class="card">
           <div class="card-header"><span class="icon">🏆</span> Six Nations standings</div>
           <div class="switcher">
-            <button class="active" onclick="switchSixNations('sn-current', this)">2024/25</button>
-            <button onclick="switchSixNations('sn-prev', this)">2023/24</button>
+            <button class="active" onclick="switchSixNations('sn-current', this)">2026</button>
           </div>
           <div id="sn-current" class="card-body"><div class="loading">Loading...</div></div>
-          <div id="sn-prev" class="card-body" style="display:none"><div class="loading">Loading...</div></div>
         </div>
       </div>
     </div>
@@ -854,12 +852,12 @@
 
 <footer style="background:#0a2318;border-top:1px solid rgba(201,168,76,0.2);color:#5a7a65;text-align:center;padding:24px 16px;font-size:12px;margin-top:40px;">
   <img src="wales-flag.png.png" alt="Welsh Dragon" style="width:48px;height:30px;object-fit:cover;border-radius:4px;opacity:0.5;display:block;margin:0 auto 10px;" />
-  <p>Welsh Dragon Rugby &copy; 2026 &nbsp;|&nbsp; Data: API-Sports &nbsp;|&nbsp; <a href="mailto:hello@welshdragonrugby.co.uk" style="color:#c9a84c;">hello@welshdragonrugby.co.uk</a></p>
+  <p>Welsh Dragon Rugby &copy; 2026 &nbsp;|&nbsp; Data: API-Sports &nbsp;|&nbsp; <a href="/cdn-cgi/l/email-protection#d6beb3babab996a1b3baa5beb2a4b7b1b9b8a4a3b1b4aff8b5b9f8a3bd" style="color:#c9a84c;"><span class="__cf_email__" data-cfemail="d9b1bcb5b5b699aebcb5aab1bdabb8beb6b7abacbebba0f7bab6f7acb2">[email&#160;protected]</span></a></p>
   <p style="margin-top:5px;"><a href="privacy-policy.html" style="color:#c9a84c;">Privacy Policy</a> &middot; <a href="terms.html" style="color:#c9a84c;">Terms of Service</a> &middot; <a href="cookie-policy.html" style="color:#c9a84c;">Cookie Policy</a></p>
   <p style="margin-top:5px;">Celebrating Welsh rugby — Wales · Scarlets · Ospreys · Cardiff Rugby · Dragons</p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const WELSH_TEAMS=['wales','scarlets','ospreys','cardiff rugby','dragons','cardiff','llanelli'];
 const WELSH_REGION_NAMES=['scarlets','ospreys','cardiff rugby','dragons','cardiff','llanelli'];
 function cleanName(n){return n?n.replace(/\s+PS$/i,'').trim():'';}
@@ -905,7 +903,7 @@ function extractStandings(data){
   return(s&&s.length>0)?s:null;
 }
 function renderStandings(data,cid,hl=true,emptyMsg='No standings available'){const el=document.getElementById(cid);const st=extractStandings(data);if(!st){el.innerHTML='<div class="error">'+emptyMsg+'</div>';return;}el.innerHTML=buildStandingsTable(st,hl);}
-let urcData=null,snData=null,snPrevData=null;
+let urcData=null,snData=null;
 function switchStandings(pid,btn){
   btn.closest('.card').querySelectorAll('.switcher button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
   btn.closest('.card').querySelectorAll('.card-body').forEach(p=>p.style.display='none');document.getElementById(pid).style.display='block';
@@ -914,7 +912,6 @@ function switchStandings(pid,btn){
 function switchSixNations(pid,btn){
   btn.closest('.card').querySelectorAll('.switcher button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
   btn.closest('.card').querySelectorAll('.card-body').forEach(p=>p.style.display='none');document.getElementById(pid).style.display='block';
-  if(pid==='sn-prev'&&!snPrevData){document.getElementById('sn-prev').innerHTML='<div class="loading">Loading...</div>';fetch('/api/sixnations?season=2023').then(r=>r.json()).then(d=>{snPrevData=d;const st=extractStandings(d);document.getElementById('sn-prev').innerHTML=st?buildStandingsTable(st,true):'<div class="error">No data available</div>';});}
 }
 function setNextMatch(games){
   const te=document.getElementById('next-teams'),de=document.getElementById('next-detail'),ce=document.getElementById('next-countdown'),cl=document.getElementById('next-countdown-label');
