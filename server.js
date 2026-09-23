@@ -197,6 +197,52 @@ app.post('/api/admin/stars', (req, res) => {
   res.json({ success: true, updated: starsOfWeek.updatedDate });
 });
 
+// ── NEW SIGNINGS 2026-27 ──────────────────────────────────────────────────────
+// Update via POST /api/admin/signings with secret key
+let newSignings = {
+  updatedDate: '2026-09-23',
+  regions: {
+    ospreys: [
+      { name: 'Liam Wright', position: 'Back-row', from: 'Queensland Reds', note: 'Wallaby back-row & captain' },
+      { name: 'Lalakai Foketi', position: 'Centre', from: 'Chiefs', note: 'Current Wallaby centre' },
+      { name: 'Lawson Creighton', position: 'Fly-half', from: 'NSW Waratahs', note: 'Australia U20 international' },
+      { name: 'Marika Koroibete', position: 'Wing', from: 'Panasonic Wild Knights (Japan)', note: '63-cap Wallaby, 2x John Eales Medal' }
+    ],
+    scarlets: [
+      { name: 'Gareth Anscombe', position: 'Fly-half', from: 'Bayonne', note: 'Wales international' },
+      { name: 'Cullen Grace', position: 'Back-row/Lock', from: 'Crusaders', note: 'All Black, arrives November' },
+      { name: 'Corey Domachowski', position: 'Prop', from: 'Cardiff Rugby', note: 'Wales international' },
+      { name: 'Alex Groves', position: 'Lock', from: 'Stormers', note: '6ft 9in lock' },
+      { name: 'Tom Allen', position: 'Lock', from: 'Hurricanes', note: '6ft 6in lock, arrives November' }
+    ],
+    cardiff: [
+      { name: 'Scott Sio', position: 'Prop', from: 'Exeter Chiefs', note: 'Former Australia international' },
+      { name: 'Semisi Paea', position: 'Back-row', from: 'Moana Pasifika', note: 'Tonga international' },
+      { name: 'Le Roux Malan', position: 'Centre', from: 'Sharks', note: 'Namibia international' }
+    ],
+    dragons: [
+      { name: 'Ereatara Enari', position: 'Scrum-half', from: 'Hurricanes', note: 'Samoa international, 57 Super Rugby caps' },
+      { name: 'Anzelo Tuitavuki', position: 'Wing', from: 'Colomiers', note: 'Tonga international' },
+      { name: 'Terrell Peita', position: 'Back-row', from: 'Blues', note: 'New Zealand back-rower' }
+    ]
+  }
+};
+
+app.get('/api/signings', (req, res) => {
+  res.json(newSignings);
+});
+
+app.post('/api/admin/signings', (req, res) => {
+  const { secret, regions, updatedDate } = req.body;
+  if (secret !== (process.env.ADMIN_SECRET || 'wdr-admin-2026')) {
+    return res.status(403).json({ error: 'Unauthorised' });
+  }
+  if (regions) newSignings.regions = regions;
+  if (updatedDate) newSignings.updatedDate = updatedDate;
+  else newSignings.updatedDate = new Date().toISOString().split('T')[0];
+  res.json({ success: true, updated: newSignings.updatedDate });
+});
+
 // ── QUIZ ──────────────────────────────────────────────────────────────────────
 const quizQuestions = [
   { q: "How many times has Wales won the Six Nations Grand Slam?", options: ["9", "11", "12", "8"], answer: 1, fact: "Wales have won 12 Grand Slams, more than any other nation." },
