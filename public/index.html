@@ -380,14 +380,14 @@
       <span class="ticker-item ticker-link" onclick="document.getElementById('wrsStartPanel').scrollIntoView({behavior:'smooth'})">🔥 Take the Ultimate Welsh Rugby Fan Quiz</span>
       <span class="ticker-item ticker-link" onclick="document.getElementById('poll-section').scrollIntoView({behavior:'smooth'})">⭐ Vote your Wales Player of the Match</span>
       <span class="ticker-item">🐉 Cymru am Byth</span>
-      <span class="ticker-item">📊 Live URC tables updated</span>
+      <span class="ticker-item">📊 URC fixtures & live scores</span>
       <span class="ticker-item">🎁 Monthly fan prize coming soon</span>
       <!-- Duplicate set for seamless loop -->
       <span class="ticker-item">🏉 Autumn Nations Championship: Wales v Japan, 7 Nov</span>
       <span class="ticker-item ticker-link" onclick="document.getElementById('wrsStartPanel').scrollIntoView({behavior:'smooth'})">🔥 Take the Ultimate Welsh Rugby Fan Quiz</span>
       <span class="ticker-item ticker-link" onclick="document.getElementById('poll-section').scrollIntoView({behavior:'smooth'})">⭐ Vote your Wales Player of the Match</span>
       <span class="ticker-item">🐉 Cymru am Byth</span>
-      <span class="ticker-item">📊 Live URC tables updated</span>
+      <span class="ticker-item">📊 URC fixtures & live scores</span>
       <span class="ticker-item">🎁 Monthly fan prize coming soon</span>
     </div>
   </div>
@@ -507,6 +507,19 @@
           </div>
           <div id="sn-current" class="card-body"><div class="loading">Loading...</div></div>
         </div>
+        <div class="card">
+          <div class="card-header"><span class="icon">✍️</span> New Signings 2026-27</div>
+          <div class="switcher">
+            <button class="active" onclick="switchSignings('sign-ospreys', this)">Ospreys</button>
+            <button onclick="switchSignings('sign-scarlets', this)">Scarlets</button>
+            <button onclick="switchSignings('sign-cardiff', this)">Cardiff</button>
+            <button onclick="switchSignings('sign-dragons', this)">Dragons</button>
+          </div>
+          <div id="sign-ospreys" class="card-body"><div class="loading">Loading...</div></div>
+          <div id="sign-scarlets" class="card-body" style="display:none"></div>
+          <div id="sign-cardiff" class="card-body" style="display:none"></div>
+          <div id="sign-dragons" class="card-body" style="display:none"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -617,66 +630,15 @@
 
 </div><!-- /container -->
 
-<!-- ══ POLL — now properly centred ══ -->
+<!-- ══ POLL — retired until Autumn campaign, 23 Sep 2026 ══ -->
 <div class="poll-band">
-  <section id="poll-section" style="background:linear-gradient(135deg,#0a1f12 0%,#0d2b1e 50%,#091a0f 100%);border:1px solid rgba(201,168,76,0.3);border-radius:12px;padding:32px;position:relative;overflow:hidden;">
+  <section id="poll-section" style="background:linear-gradient(135deg,#0a1f12 0%,#0d2b1e 50%,#091a0f 100%);border:1px solid rgba(201,168,76,0.3);border-radius:12px;padding:32px;position:relative;overflow:hidden;text-align:center;">
     <div style="position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;"></div>
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;"><span style="font-size:24px;">🏉</span><span style="background:linear-gradient(90deg,#c9a84c,#e2c47a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:'Cinzel',serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;">Nations Cup 2026</span></div>
-    <h2 style="font-family:'Cinzel',serif;color:#f8f5ee;font-size:clamp(20px,4vw,28px);margin:0 0 6px 0;line-height:1.2;">Player of the Match</h2>
-    <p id="poll-match-label" style="color:#5a7a65;font-family:'DM Sans',sans-serif;font-size:13px;margin:0 0 28px 0;letter-spacing:0.5px;">Wales vs Fiji · 4 Jul 2026 · Round 1</p>
-    <div id="poll-options" style="display:flex;flex-direction:column;gap:12px;"></div>
-    <div id="poll-result" style="display:none;margin-top:24px;">
-      <p style="color:#c9a84c;font-family:'DM Sans',sans-serif;font-size:13px;text-align:center;letter-spacing:1px;">RESULTS</p>
-      <div id="poll-bars" style="display:flex;flex-direction:column;gap:10px;margin-top:12px;"></div>
-      <p style="color:#5a7a65;font-family:'DM Sans',sans-serif;font-size:12px;text-align:center;margin-top:16px;"><span id="poll-total">0</span> votes cast</p>
-    </div>
-    <p style="color:#2d4a35;font-family:'DM Sans',sans-serif;font-size:11px;margin:20px 0 0 0;text-align:center;letter-spacing:0.5px;">ONE VOTE PER DEVICE · RESETS EACH MATCH</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:8px;"><span style="font-size:24px;">🏉</span><span style="background:linear-gradient(90deg,#c9a84c,#e2c47a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:'Cinzel',serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;">World Rugby Nations Championship</span></div>
+    <h2 style="font-family:'Cinzel',serif;color:#f8f5ee;font-size:clamp(20px,4vw,28px);margin:0 0 10px 0;line-height:1.2;">Player of the Match voting returns 7 November</h2>
+    <p style="color:#8fae9a;font-family:'DM Sans',sans-serif;font-size:14px;margin:0;max-width:520px;margin-left:auto;margin-right:auto;">Voting will open for Wales' next match — Wales vs Japan, 7 Nov 2026 — once the Autumn campaign gets under way.</p>
   </section>
 </div>
-
-<script>
-(function() {
-  const MATCH_ID = 'wales-fiji-04jul2026';
-  const MATCH_LABEL = 'Wales vs Fiji · 4 Jul 2026 · Round 1';
-  const PLAYERS = [
-    { name: 'Aaron Wainwright', position: 'Number 8' },
-    { name: 'Dan Edwards', position: 'Fly-half' },
-    { name: 'Rhys Carré', position: 'Prop' },
-    { name: 'Louis Rees-Zammit', position: 'Wing' },
-  ];
-  const STORAGE_KEY = 'wdr_poll_' + MATCH_ID;
-  const voted = localStorage.getItem(STORAGE_KEY);
-  document.getElementById('poll-match-label').textContent = MATCH_LABEL;
-  const votes = JSON.parse(localStorage.getItem(STORAGE_KEY + '_votes') || 'null') || PLAYERS.map(() => 0);
-  function totalVotes() { return votes.reduce((a,b) => a+b, 0); }
-  function showResults() {
-    document.getElementById('poll-options').style.display = 'none';
-    document.getElementById('poll-result').style.display = 'block';
-    document.getElementById('poll-total').textContent = totalVotes();
-    const bars = document.getElementById('poll-bars');
-    bars.innerHTML = '';
-    const max = Math.max(...votes, 1);
-    PLAYERS.forEach((p, i) => {
-      const pct = totalVotes() ? Math.round(votes[i]/totalVotes()*100) : 0;
-      const width = Math.round(votes[i]/max*100);
-      bars.innerHTML += `<div><div style="display:flex;justify-content:space-between;margin-bottom:5px;"><span style="color:#f8f5ee;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;">${p.name}</span><span style="color:#c9a84c;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;">${pct}%</span></div><div style="background:rgba(255,255,255,0.06);border-radius:4px;height:8px;overflow:hidden;"><div style="height:100%;width:${width}%;background:linear-gradient(90deg,#c9a84c,#e2c47a);border-radius:4px;transition:width 0.6s ease;"></div></div><div style="color:#5a7a65;font-family:'DM Sans',sans-serif;font-size:11px;margin-top:3px;">${p.position}</div></div>`;
-    });
-  }
-  function buildOptions() {
-    const container = document.getElementById('poll-options');
-    PLAYERS.forEach((p, i) => {
-      const btn = document.createElement('button');
-      btn.style.cssText = 'background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:14px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:all 0.2s ease;width:100%;';
-      btn.innerHTML = `<div style="text-align:left;"><div style="color:#f8f5ee;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;">${p.name}</div><div style="color:#5a7a65;font-family:'DM Sans',sans-serif;font-size:12px;margin-top:2px;">${p.position}</div></div><div style="width:22px;height:22px;border-radius:50%;border:2px solid rgba(201,168,76,0.4);flex-shrink:0;"></div>`;
-      btn.onmouseover = () => btn.style.borderColor = 'rgba(201,168,76,0.6)';
-      btn.onmouseout = () => btn.style.borderColor = 'rgba(201,168,76,0.2)';
-      btn.onclick = () => { votes[i]++; localStorage.setItem(STORAGE_KEY, '1'); localStorage.setItem(STORAGE_KEY + '_votes', JSON.stringify(votes)); showResults(); };
-      container.appendChild(btn);
-    });
-  }
-  if (voted) { showResults(); } else { buildOptions(); }
-})();
-</script>
 
 <!-- ══ QUIZ — now properly centred ══ -->
 <div class="quiz-band">
@@ -913,6 +875,20 @@ function switchSixNations(pid,btn){
   btn.closest('.card').querySelectorAll('.switcher button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
   btn.closest('.card').querySelectorAll('.card-body').forEach(p=>p.style.display='none');document.getElementById(pid).style.display='block';
 }
+function switchSignings(pid,btn){
+  btn.closest('.card').querySelectorAll('.switcher button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+  btn.closest('.card').querySelectorAll('.card-body').forEach(p=>p.style.display='none');document.getElementById(pid).style.display='block';
+}
+function renderSigningsList(players){
+  if(!players||players.length===0)return'<div class="error">No signings listed yet</div>';
+  return '<div style="display:flex;flex-direction:column;gap:10px;">'+players.map(p=>
+    '<div style="border-bottom:1px solid rgba(201,168,76,0.12);padding-bottom:8px;">'+
+    '<div style="color:#f8f5ee;font-family:\'DM Sans\',sans-serif;font-size:14px;font-weight:600;">'+p.name+'</div>'+
+    '<div style="color:#8fae9a;font-family:\'DM Sans\',sans-serif;font-size:12px;margin-top:2px;">'+p.position+' · from '+p.from+'</div>'+
+    '<div style="color:#5a7a65;font-family:\'DM Sans\',sans-serif;font-size:11px;margin-top:2px;">'+p.note+'</div>'+
+    '</div>'
+  ).join('')+'</div>';
+}
 function setNextMatch(games){
   const te=document.getElementById('next-teams'),de=document.getElementById('next-detail'),ce=document.getElementById('next-countdown'),cl=document.getElementById('next-countdown-label');
   if(!games||games.length===0){te.className='no-match';te.textContent='No upcoming matches scheduled';return;}
@@ -940,6 +916,12 @@ async function init(){
   const walesGames=await loadFixtures('wales','home-fixtures');setNextMatch(walesGames);loadFixtures('scarlets','region-fixtures');
   fetch('/api/standings').then(r=>r.json()).then(d=>{urcData=d;const st=extractStandings(d);const urcEmptyMsg='2026–27 URC standings will appear when the season begins on 25th September.';if(st){document.getElementById('urc-welsh').innerHTML=buildWelshStandings(st);document.getElementById('urc-full-side').innerHTML=buildStandingsTable(st,true);}else{document.getElementById('urc-welsh').innerHTML='<div class="error">'+urcEmptyMsg+'</div>';document.getElementById('urc-full-side').innerHTML='<div class="error">'+urcEmptyMsg+'</div>';}});
   fetch('/api/sixnations').then(r=>r.json()).then(d=>{snData=d;const st=extractStandings(d);if(st){document.getElementById('sn-current').innerHTML=buildStandingsTable(st,true);}else{document.getElementById('sn-current').innerHTML='<div class="error">No standings available</div>';}});
+  fetch('/api/signings').then(r=>r.json()).then(d=>{
+    document.getElementById('sign-ospreys').innerHTML=renderSigningsList(d.regions.ospreys);
+    document.getElementById('sign-scarlets').innerHTML=renderSigningsList(d.regions.scarlets);
+    document.getElementById('sign-cardiff').innerHTML=renderSigningsList(d.regions.cardiff);
+    document.getElementById('sign-dragons').innerHTML=renderSigningsList(d.regions.dragons);
+  }).catch(()=>{document.getElementById('sign-ospreys').innerHTML='<div class="error">Signings coming soon</div>';});
 }
 init();
 </script>
