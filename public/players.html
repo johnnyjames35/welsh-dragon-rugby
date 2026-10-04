@@ -48,7 +48,7 @@
     body { font-family: 'DM Sans', sans-serif; background: var(--green-deep); color: var(--white); min-height: 100vh; }
     header { background: var(--green-deep); border-bottom: 2px solid var(--gold); padding: 16px 20px; display: flex; align-items: center; gap: 14px; }
     .logo-shield { width: 46px; height: 46px; border-radius: 8px; background: linear-gradient(135deg, var(--gold), var(--gold-light)); display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; font-size: 11px; font-weight: 900; color: var(--green-deep); letter-spacing: 1px; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.4); text-decoration: none; }
-    .logo-text h1 { font-family: 'Cinzel', serif; font-size: 20px; font-weight: 900; color: var(--gold); letter-spacing: 1px; }
+    .logo-text .site-name { font-family: 'Cinzel', serif; font-size: 20px; font-weight: 900; color: var(--gold); letter-spacing: 1px; }
     .logo-text p { font-size: 11px; color: var(--green-accent); margin-top: 3px; letter-spacing: 0.5px; }
     nav { background: var(--green-mid); display: flex; overflow-x: auto; border-top: 1px solid var(--border); }
     nav a { color: var(--off-white); background: none; border: none; border-bottom: 3px solid transparent; padding: 12px 20px; font-size: 13px; font-family: 'DM Sans', sans-serif; font-weight: 600; cursor: pointer; white-space: nowrap; opacity: 0.6; transition: all 0.2s; letter-spacing: 0.3px; text-decoration: none; display: block; }
@@ -56,7 +56,7 @@
     nav a.active { opacity: 1; color: var(--gold); border-bottom-color: var(--gold); }
     .hero { background: linear-gradient(135deg, var(--green-mid), var(--green-deep)); border-bottom: 1px solid var(--border); padding: 40px 20px; text-align: center; }
     .hero-badge { display: inline-block; background: var(--gold); color: var(--green-deep); font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 14px; }
-    .hero h2 { font-family: 'Cinzel', serif; font-size: clamp(24px, 4vw, 36px); font-weight: 900; color: var(--gold); margin-bottom: 10px; }
+    .hero h1 { font-family: 'Cinzel', serif; font-size: clamp(24px, 4vw, 36px); font-weight: 900; color: var(--gold); margin-bottom: 10px; }
     .hero p { font-size: 14px; color: var(--text-muted); max-width: 500px; margin: 0 auto; }
     .container { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
     .section-title { font-family: 'Cinzel', serif; font-size: 13px; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin: 40px 0 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
@@ -87,7 +87,7 @@
 <header>
   <a href="index.html" class="logo-shield">WDR</a>
   <div class="logo-text">
-    <h1>Welsh Dragon Rugby</h1>
+    <div class="site-name">Welsh Dragon Rugby</div>
     <p>Live scores · Fixtures · Tables</p>
   </div>
 </header>
@@ -107,7 +107,7 @@
 
 <div class="hero">
   <div class="hero-badge">Player Profiles</div>
-  <h2>Wales Nations Championship Squad</h2>
+  <h1>Wales Player Profiles: Height, Weight and Position</h1>
   <p>In-depth profiles of key Wales players heading into the 2026 World Rugby Nations Championship.</p>
 </div>
 
