@@ -20,19 +20,20 @@
   <link rel="stylesheet" href="/features.css">
   <style>
     :root {
-      --green-deep:   #0a2318;
-      --green-mid:    #0f3524;
-      --green-bright: #1a5c3a;
-      --green-accent: #2a7a50;
+      --green-deep:   #14472f;
+      --green-mid:    #1b5a3c;
+      --green-bright: #26784f;
+      --green-accent: #5cc08c;
       --gold:         #c9a84c;
       --gold-light:   #e2c47a;
       --red:          #b5132b;
       --white:        #f8f5ee;
       --off-white:    #ede8de;
-      --text-muted:   #5a7a65;
+      --text-muted:   #a9cdb8;
       --border:       rgba(201,168,76,0.2);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; max-width: 100%; }
     body { font-family: 'DM Sans', sans-serif; background: var(--green-deep); color: var(--white); min-height: 100vh; }
 
     /* HEADER */
@@ -163,6 +164,8 @@
     .container { max-width: 1120px; margin: 0 auto; padding: 24px 16px; }
     .grid { display: grid; grid-template-columns: 1fr 320px; gap: 22px; }
     @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) { .feature-grid { grid-template-columns: 1fr !important; } .feature-grid > div { min-width: 0; position: static !important; } }
+
 
     /* CARDS */
     .card { background: var(--green-mid); border-radius: 10px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border); box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
@@ -242,7 +245,7 @@
     ::-webkit-scrollbar-thumb { background: var(--green-accent); border-radius: 3px; }
 
     /* NATIONS */
-    .nations-banner { background: linear-gradient(135deg, #0a1a2e 0%, #0d2318 40%, #1a0a08 100%); border: 2px solid var(--gold); border-radius: 12px; padding: 20px; margin-bottom: 22px; position: relative; overflow: hidden; box-shadow: 0 6px 24px rgba(0,0,0,0.5), 0 0 40px rgba(201,168,76,0.08); }
+    .nations-banner { background: linear-gradient(135deg, #1c3d63 0%, #175a3a 55%, #3a2a1c 100%); border: 2px solid var(--gold); border-radius: 12px; padding: 20px; margin-bottom: 22px; position: relative; overflow: hidden; box-shadow: 0 6px 24px rgba(0,0,0,0.5), 0 0 40px rgba(201,168,76,0.08); }
     .nations-banner::before { content: '🌍'; position: absolute; right: -10px; top: -10px; font-size: 100px; opacity: 0.05; pointer-events: none; }
     .nations-banner-header { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
     .nations-badge { background: var(--gold); color: var(--green-deep); font-size: 9px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; font-family: 'DM Sans', sans-serif; white-space: nowrap; }
@@ -254,7 +257,7 @@
     .nations-fixture { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.15); border-radius: 8px; padding: 10px 12px; display: flex; flex-direction: column; gap: 3px; transition: background 0.15s; }
     .nations-fixture:hover { background: rgba(255,255,255,0.07); }
     .nations-fixture.next-up { border-color: var(--gold); background: rgba(201,168,76,0.08); }
-    .nations-fixture.played { opacity: 0.55; }
+    .nations-fixture.played { opacity: 0.85; }
     .nations-fixture-date { font-size: 10px; color: var(--text-muted); font-family: 'DM Sans', sans-serif; }
     .nations-fixture-match { font-size: 12px; font-weight: 600; color: var(--white); font-family: 'DM Sans', sans-serif; }
     .nations-fixture-match span { color: var(--gold); }
@@ -276,20 +279,18 @@
     }
     body::before {
       left: 0;
-      background: linear-gradient(90deg, rgba(0,0,0,0.35) 0%, transparent 100%);
-      border-right: 1px solid rgba(201,168,76,0.12);
+      background: none;
     }
     body::after {
       right: 0;
-      background: linear-gradient(270deg, rgba(0,0,0,0.35) 0%, transparent 100%);
-      border-left: 1px solid rgba(201,168,76,0.12);
+      background: none;
     }
     #rugby-ball-bg {
       position: fixed;
       bottom: -80px;
-      right: -80px;
-      width: 600px;
-      height: 600px;
+      right: 0;
+      width: min(600px, 100vw);
+      height: min(600px, 100vw);
       background: url('rugby-ball-bg.png') no-repeat center center;
       background-size: contain;
       opacity: 0.10;
@@ -299,10 +300,10 @@
 
     #dragon-bg {
       position: fixed;
-      left: -120px;
+      left: 0;
       top: 120px;
-      width: 700px;
-      height: 700px;
+      width: min(700px, 100vw);
+      height: min(700px, 100vw);
       background: url('dragon-watermark.png') no-repeat center center;
       background-size: contain;
       opacity: 0.05;
@@ -313,10 +314,10 @@
 
     #rugby-ball-bg {
       position: fixed;
-      right: -80px;
+      right: 0;
       bottom: 60px;
-      width: 700px;
-      height: 700px;
+      width: min(700px, 100vw);
+      height: min(700px, 100vw);
       background: url('rugby-ball.png') no-repeat center center;
       background-size: contain;
       opacity: 0.10;
@@ -788,7 +789,7 @@
 <!-- ══ STARS / NEWS / ADS ══ -->
 <section class="feature-section-dark">
   <div class="feature-section">
-    <div style="display:grid;grid-template-columns:1fr 280px;gap:28px;align-items:start;">
+    <div class="feature-grid" style="display:grid;grid-template-columns:1fr 280px;gap:28px;align-items:start;">
       <div>
         <h2 class="feature-heading">⭐ Stars of the Week</h2>
         <p class="feature-subheading">Standout performers from across Welsh rugby</p>
