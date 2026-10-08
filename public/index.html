@@ -164,6 +164,15 @@
     .container { max-width: 1120px; margin: 0 auto; padding: 24px 16px; }
     .grid { display: grid; grid-template-columns: 1fr 320px; gap: 22px; }
     @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+    /* PHONE FIT: let the main column shrink to the screen, tighten rows, scroll wide tables */
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: minmax(0, 1fr); }
+      .grid > * { min-width: 0; }
+      .card-body { overflow-x: auto; }
+      .fixture { grid-template-columns: 52px minmax(0, 1fr) 58px 60px; padding: 10px 12px; gap: 6px; }
+      .fixture-comp { font-size: 9px; }
+      .standings-table thead th, .standings-table tbody td { padding-left: 4px; padding-right: 4px; }
+    }
     @media (max-width: 768px) { .feature-grid { grid-template-columns: 1fr !important; } .feature-grid > div { min-width: 0; position: static !important; } }
 
 
@@ -883,11 +892,11 @@ function switchSignings(pid,btn){
 }
 function renderSigningsList(players){
   if(!players||players.length===0)return'<div class="error">No signings listed yet</div>';
-  return '<div style="display:flex;flex-direction:column;gap:10px;">'+players.map(p=>
+  return '<div style="display:flex;flex-direction:column;gap:10px;padding:14px 16px;">'+players.map(p=>
     '<div style="border-bottom:1px solid rgba(201,168,76,0.12);padding-bottom:8px;">'+
     '<div style="color:#f8f5ee;font-family:\'DM Sans\',sans-serif;font-size:14px;font-weight:600;">'+p.name+'</div>'+
     '<div style="color:#8fae9a;font-family:\'DM Sans\',sans-serif;font-size:12px;margin-top:2px;">'+p.position+' · from '+p.from+'</div>'+
-    '<div style="color:#5a7a65;font-family:\'DM Sans\',sans-serif;font-size:11px;margin-top:2px;">'+p.note+'</div>'+
+    '<div style="color:#a9cdb8;font-family:\'DM Sans\',sans-serif;font-size:11px;margin-top:2px;">'+p.note+'</div>'+
     '</div>'
   ).join('')+'</div>';
 }
