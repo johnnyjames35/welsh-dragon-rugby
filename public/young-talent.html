@@ -92,7 +92,12 @@
     .footer-logo { font-family: 'Cinzel', serif; font-size: 20px; font-weight: 900; color: var(--gold); margin-bottom: 8px; }
     footer p { font-size: 13px; color: var(--green-accent); }
     footer a { color: var(--gold); text-decoration: none; }
-    @media(max-width:600px) { .profile-body { padding: 20px; } .profile-header { padding: 20px; } }
+    .profile-header.has-photo { display: flex; gap: 20px; align-items: flex-start; }
+    .profile-head-text { flex: 1; min-width: 0; }
+    .profile-photo { width: 120px; height: 150px; object-fit: cover; border-radius: 10px; border: 2px solid var(--gold); flex-shrink: 0; display: block; }
+    .profile-body p.photo-credit { font-size: 11px; line-height: 1.5; color: var(--text-muted); margin-top: 20px; }
+    .profile-body .photo-credit a { color: var(--text-muted); }
+    @media(max-width:600px) { .profile-photo { width: 84px; height: 105px; } .profile-header.has-photo { gap: 14px; }  .profile-body { padding: 20px; } .profile-header { padding: 20px; } }
   </style>
 </head>
 <body>
@@ -206,7 +211,9 @@
 
   <!-- 4. MASON GRADY -->
   <div class="profile">
-    <div class="profile-header">
+    <div class="profile-header has-photo">
+      <img class="profile-photo" src="images/players/grady.jpg" alt="Mason Grady playing for Wales" width="320" height="400" loading="lazy">
+      <div class="profile-head-text">
       <div class="profile-number">Player 4</div>
       <div class="profile-name">Mason Grady</div>
       <div class="profile-meta">
@@ -220,17 +227,20 @@
         <div class="stat"><span class="stat-val">196cm</span><span class="stat-label">Height</span></div>
         <div class="stat"><span class="stat-val">117kg</span><span class="stat-label">Weight</span></div>
       </div>
-    </div>
+    </div></div>
     <div class="profile-body">
       <p>At 6ft 5in and 117kg, Mason Grady is a physically extraordinary centre — but what makes him genuinely dangerous is that he also possesses pace, footwork and the finishing ability to go with it. Born in Cardiff on 29 March 2002, Grady signed his first professional contract with Cardiff in September 2020, becoming the second youngest player to represent the club at 17 years and seven months. His grandfather is Irish and he was eligible for Ireland, but chose Wales.</p>
       <p>Grady made his Wales debut against England in the 2023 Six Nations and has gone on to make over 48 appearances for Cardiff, scoring 14 tries. He has committed his future to the club, signing a further extension in January 2025. Wales coach Cardiff head coach Matt Sherratt described him as having "size, speed, and power added to a good general skill set." He featured in the Nations Championship extended squad and is very much part of Steve Tandy's plans.</p>
       <div class="watch-out"><strong>Why he'll be huge:</strong> The physical combination of Grady's size and speed is rare in world rugby. A consistent run of games at Test level could unlock a truly special career for Wales.</div>
+      <p class="photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Mason_Grady_2023.jpg" rel="noopener" target="_blank">stede64 (Stefano Delfrate)</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0" rel="noopener" target="_blank">CC BY-SA 2.0</a>, via Wikimedia Commons (cropped).</p>
     </div>
   </div>
 
   <!-- 5. DAFYDD JENKINS -->
   <div class="profile">
-    <div class="profile-header">
+    <div class="profile-header has-photo">
+      <img class="profile-photo" src="images/players/jenkins.jpg" alt="Dafydd Jenkins in a Wales shirt" width="320" height="400" loading="lazy">
+      <div class="profile-head-text">
       <div class="profile-number">Player 5</div>
       <div class="profile-name">Dafydd Jenkins</div>
       <div class="profile-meta">
@@ -244,17 +254,20 @@
         <div class="stat"><span class="stat-val">201cm</span><span class="stat-label">Height</span></div>
         <div class="stat"><span class="stat-val">120kg</span><span class="stat-label">Weight</span></div>
       </div>
-    </div>
+    </div></div>
     <div class="profile-body">
       <p>Born in Bridgend on 5 December 2002, Dafydd Jenkins is already one of the most impressive young locks in European rugby. Standing 6ft 7in tall and weighing 120kg, he combines the physical tools needed to dominate at the highest level with an on-field rugby intelligence that has made him stand out at Exeter Chiefs from an early age. Rugby is in his DNA — his father Hywel played as a back row for Swansea and Neath.</p>
       <p>Jenkins came through Porthcawl RFC juniors before attending Hartpury College, where Exeter head coach Rob Baxter contacted him directly. He made his Exeter debut in the Premiership Rugby Cup in November 2021 and within weeks was featuring in both the Heineken Champions Cup and Gallagher Premiership. He was handed both the Wales captaincy — becoming Wales's second youngest test captain — and the Exeter matchday captaincy during the 2023-24 season. He has started all five 2026 Six Nations matches and is named in the Wales Nations Championship squad.</p>
       <div class="watch-out"><strong>Why he'll be huge:</strong> Already one of the best young locks in the northern hemisphere. At 23 with 26+ Wales caps, Jenkins has the tools to become one of the great Welsh second rows of his generation.</div>
+      <p class="photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Dafydd_Jenkins_2023.jpg" rel="noopener" target="_blank">stede64 (Stefano Delfrate)</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0" rel="noopener" target="_blank">CC BY-SA 2.0</a>, via Wikimedia Commons (cropped).</p>
     </div>
   </div>
 
   <!-- 6. BLAIR MURRAY -->
   <div class="profile">
-    <div class="profile-header">
+    <div class="profile-header has-photo">
+      <img class="profile-photo" src="images/players/murray.jpg" alt="Blair Murray playing for Wales" width="320" height="400" loading="lazy">
+      <div class="profile-head-text">
       <div class="profile-number">Player 6</div>
       <div class="profile-name">Blair Murray</div>
       <div class="profile-meta">
@@ -268,17 +281,20 @@
         <div class="stat"><span class="stat-val">173cm</span><span class="stat-label">Height</span></div>
         <div class="stat"><span class="stat-val">75kg</span><span class="stat-label">Weight</span></div>
       </div>
-    </div>
+    </div></div>
     <div class="profile-body">
       <p>Blair Murray is one of the most electric attacking backs in Welsh rugby. Born in Hāwera, New Zealand on 9 October 2001, Murray qualifies for Wales through his mother Paula, who is from Tonyrefail in the Rhondda. He attended New Plymouth Boys' High School and was part of the wider Crusaders Super Rugby squad before the Scarlets came calling. He joined the Scarlets in July 2024 and his debut season in Welsh rugby was simply outstanding.</p>
       <p>Murray was described by former All Blacks head coach Scott Robertson as "5ft 7in and can bounce, spin and hit." He finished his debut Scarlets season as the club's top try-scorer with 11 tries, was named in the URC Elite XV, and was voted Players' Player of the Season. He won his first Wales cap in autumn 2024, scoring with his first touch in Test rugby. He was a standout in the 2025 Six Nations and was named in the <a href="articles.html#article20">2026 Six Nations</a> squad. He signed a contract extension with the Scarlets until 2028 in August 2025.</p>
       <div class="watch-out"><strong>Why he'll be huge:</strong> A pocket rocket with the ability to change a game in an instant. Murray's combination of evasiveness, pace and instinct make him a constant threat and a fan favourite in the making.</div>
+      <p class="photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Blair_Murray_2025.jpg" rel="noopener" target="_blank">stede64 (Stefano Delfrate)</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0" rel="noopener" target="_blank">CC BY-SA 2.0</a>, via Wikimedia Commons (cropped).</p>
     </div>
   </div>
 
   <!-- 7. ARCHIE GRIFFIN -->
   <div class="profile">
-    <div class="profile-header">
+    <div class="profile-header has-photo">
+      <img class="profile-photo" src="images/players/griffin.jpg" alt="Archie Griffin playing for Wales" width="320" height="400" loading="lazy">
+      <div class="profile-head-text">
       <div class="profile-number">Player 7</div>
       <div class="profile-name">Archie Griffin</div>
       <div class="profile-meta">
@@ -292,11 +308,12 @@
         <div class="stat"><span class="stat-val">190cm</span><span class="stat-label">Height</span></div>
         <div class="stat"><span class="stat-val">124kg</span><span class="stat-label">Weight</span></div>
       </div>
-    </div>
+    </div></div>
     <div class="profile-body">
       <p>Archie Griffin is one of the most promising tighthead props in the Welsh game — a powerful scrummager with the athleticism and physicality to become a genuine Test-level starter. Born in Sydney, Australia on 24 July 2001, Griffin qualifies for Wales through his parents — his mother was born in Wrexham and his father is from Cardiff. He joined the Bath Rugby academy at just 13 years old.</p>
       <p>Griffin made his senior Bath debut in November 2022 and has developed rapidly since. He made his Wales debut as a replacement in the 2024 Six Nations defeat to England and has accumulated 11+ caps. He was named in the <a href="articles.html#article20">2026 Six Nations</a> squad, featured across the tournament and is part of the Nations Championship plans. Bath head of rugby Johann van Graan has said: "Archie has got a massive future ahead of him. He's trained so hard for his opportunities and, boy, has he used them."</p>
       <div class="watch-out"><strong>Why he'll be huge:</strong> Quality tighthead props are among the rarest commodities in world rugby. At 24 and with 11+ caps, Griffin has the foundations to become a 10-year servant to Wales at loosehead.</div>
+      <p class="photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:2025_Autumn_Nations_Series_Wales_vs_New_Zealand_20251122_163742_Archie_Griffin.jpg" rel="noopener" target="_blank">Bearas</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="noopener" target="_blank">CC BY-SA 4.0</a>, via Wikimedia Commons (cropped).</p>
     </div>
   </div>
 

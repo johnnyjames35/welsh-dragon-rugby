@@ -126,7 +126,12 @@
     .heights-table tr:last-child td { border-bottom: none; }
     .heights-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 8px; }
     .heights-note { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
-    @media(max-width:600px) { .profile-body { padding: 20px; } .profile-header { padding: 20px; } .profile-stats { gap: 16px; } }
+    .profile-header.has-photo { display: flex; gap: 20px; align-items: flex-start; }
+    .profile-head-text { flex: 1; min-width: 0; }
+    .profile-photo { width: 120px; height: 150px; object-fit: cover; border-radius: 10px; border: 2px solid var(--gold); flex-shrink: 0; display: block; }
+    .profile-body p.photo-credit { font-size: 11px; line-height: 1.5; color: var(--text-muted); margin-top: 20px; }
+    .profile-body .photo-credit a { color: var(--text-muted); }
+    @media(max-width:600px) { .profile-photo { width: 84px; height: 105px; } .profile-header.has-photo { gap: 14px; }  .profile-body { padding: 20px; } .profile-header { padding: 20px; } .profile-stats { gap: 16px; } }
   </style>
 </head>
 <body>
@@ -180,7 +185,9 @@
 
   <!-- TOM ROGERS -->
   <div class="profile">
-    <div class="profile-header">
+    <div class="profile-header has-photo">
+      <img class="profile-photo" src="images/players/rogers.jpg" alt="Tom Rogers playing for the Scarlets" width="320" height="400" loading="lazy">
+      <div class="profile-head-text">
       <div class="profile-name">Tom Rogers</div>
       <div class="profile-meta">
         <span class="tag">Wing</span>
@@ -193,7 +200,7 @@
         <div class="stat"><span class="stat-val">87kg</span><span class="stat-label">Weight</span></div>
         <div class="stat"><span class="stat-val">Wing</span><span class="stat-label">Position</span></div>
       </div>
-    </div>
+    </div></div>
     <div class="profile-body">
       <p>Tom Rogers has emerged as one of the most exciting wings in Welsh rugby, combining explosive pace with a clinical finishing ability that has seen him become a genuine match-winner at both regional and international level. Born in West Wales, Rogers came through the Scarlets academy after starting his rugby journey at Cefneithin RFC and Tumble RFC.</p>
       <h3>Scarlets Career</h3>
@@ -201,12 +208,15 @@
       <h3>Wales International</h3>
       <p>Rogers made his Wales senior debut in July 2021 and has become an increasingly important figure in the national setup. His 2025 Six Nations campaign saw him start against France and Italy and score his first international try against Ireland. The highlight of his international career to date came in November 2025 when he became the <strong>first player from the northern hemisphere — and only the fourth in international history — to score a hat-trick against New Zealand</strong>, a stunning individual achievement that announced him on the world stage.</p>
       <p>Rogers was named in Steve Tandy's squad for the 2026 Six Nations and is a key part of Wales's plans for the <a href="articles.html#article17" style="color:var(--gold);text-decoration:underline;">Nations Championship</a>. At 27, he is in the prime years of his career and one of the most dangerous finishers in Welsh rugby.</p>
+      <p class="photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Tom_Rogers_20250419_174254.jpg" rel="noopener" target="_blank">Bearas</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="noopener" target="_blank">CC BY-SA 4.0</a>, via Wikimedia Commons (cropped).</p>
     </div>
   </div>
 
   <!-- JOE HAWKINS -->
   <div class="profile">
-    <div class="profile-header">
+    <div class="profile-header has-photo">
+      <img class="profile-photo" src="images/players/hawkins.jpg" alt="Joe Hawkins in a Wales shirt" width="320" height="400" loading="lazy">
+      <div class="profile-head-text">
       <div class="profile-name">Joe Hawkins</div>
       <div class="profile-meta">
         <span class="tag">Centre</span>
@@ -219,13 +229,14 @@
         <div class="stat"><span class="stat-val">98kg</span><span class="stat-label">Weight</span></div>
         <div class="stat"><span class="stat-val">Centre</span><span class="stat-label">Position</span></div>
       </div>
-    </div>
+    </div></div>
     <div class="profile-body">
       <p>Joe Hawkins is one of the most naturally talented young centres in Welsh rugby — a player who combines physical power with a footballing intelligence that belies his years. Born in Ystalyfera and raised in the Swansea Valley, Hawkins grew up playing his youth rugby at Pontardawe RFC before progressing through the Ospreys academy system.</p>
       <h3>A Rapid Rise</h3>
       <p>Hawkins made his professional debut for the Ospreys in Round 4 of the 2020-21 Pro14 against Zebre at just 18 years old. He is equally capable at inside centre and outside half — a versatility that makes him a uniquely valuable option for both club and country. Hawkins represented Wales at the 2020 Six Nations Under 20s Championship at just 17, later captaining the U20 side. Rugby runs in the family — his grandfather Brian represented Wales Youth in 1970.</p>
       <h3>International Career and Return to Wales</h3>
       <p>Hawkins made his senior Wales debut against Australia in November 2022, becoming one of the youngest centres to represent the national side in recent years. After a spell at Exeter Chiefs in the Premiership, he returned to Wales by signing for the Scarlets in March 2025 — a move that immediately restored his eligibility for national selection. He featured prominently in the <a href="articles.html#article20" style="color:var(--gold);text-decoration:underline;">2026 Six Nations</a> under Steve Tandy and is a central part of Wales's midfield options for the Nations Championship.</p>
+      <p class="photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Joe_Hawkins_2023.jpg" rel="noopener" target="_blank">stede64 (Stefano Delfrate)</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0" rel="noopener" target="_blank">CC BY-SA 2.0</a>, via Wikimedia Commons (cropped).</p>
     </div>
   </div>
 
@@ -256,7 +267,9 @@
 
   <!-- DEWI LAKE -->
   <div class="profile" id="lake">
-    <div class="profile-header">
+    <div class="profile-header has-photo">
+      <img class="profile-photo" src="images/players/lake.jpg" alt="Dewi Lake playing for Wales" width="320" height="400" loading="lazy">
+      <div class="profile-head-text">
       <div class="profile-name">Dewi Lake — Captain</div>
       <div class="profile-meta">
         <span class="tag">Hooker</span>
@@ -270,7 +283,7 @@
         <div class="stat"><span class="stat-val">114kg</span><span class="stat-label">Weight</span></div>
         <div class="stat"><span class="stat-val">Captain</span><span class="stat-label">Wales</span></div>
       </div>
-    </div>
+    </div></div>
     <div class="profile-body">
       <p>Dewi Lake is the captain of Wales and one of the most respected hookers in the United Rugby Championship. Born in Bridgend on 16 May 1999, Lake is a fluent Welsh speaker who has come to embody the values and character that Welsh rugby holds most dear — competitiveness, physicality, and an uncompromising commitment to the jersey.</p>
       <h3>From Back Row to Hooker</h3>
@@ -278,6 +291,7 @@
       <h3>Leading Wales</h3>
       <p>Lake made his senior Wales debut against Ireland in the 2022 Six Nations and quickly established himself as a key figure in the national squad. He captained the Wales Under-20 side at the 2019 World Rugby U20 Championship, leading them to a famous 8-7 victory over New Zealand — only the second under-20 victory over the age-grade All Blacks. He was named Wales captain for the 2026 Six Nations by head coach Steve Tandy and led the side across all five matches. At the <a href="articles.html#article17" style="color:var(--gold);text-decoration:underline;">Nations Championship</a>, with Fiji, Argentina and South Africa on the horizon, Lake's leadership and set-piece excellence will be essential.</p>
       <p><em>Note: Lake has signed for Gloucester ahead of the 2026-27 season following uncertainty over the future of the Ospreys region.</em></p>
+      <p class="photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:2025_Autumn_Nations_Series_Wales_vs_New_Zealand_20251122_162336_Dewi_Lake.jpg" rel="noopener" target="_blank">Bearas</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="noopener" target="_blank">CC BY-SA 4.0</a>, via Wikimedia Commons (cropped).</p>
     </div>
   </div>
 
@@ -308,7 +322,9 @@
 
   <!-- JAC MORGAN -->
   <div class="profile" id="morgan">
-    <div class="profile-header">
+    <div class="profile-header has-photo">
+      <img class="profile-photo" src="images/players/morgan.jpg" alt="Jac Morgan in a Wales shirt" width="320" height="400" loading="lazy">
+      <div class="profile-head-text">
       <div class="profile-name">Jac Morgan</div>
       <div class="profile-meta">
         <span class="tag">Flanker</span>
@@ -321,19 +337,22 @@
         <div class="stat"><span class="stat-val">105kg</span><span class="stat-label">Weight</span></div>
         <div class="stat"><span class="stat-val">Lion</span><span class="stat-label">2025 Tour</span></div>
       </div>
-    </div>
+    </div></div>
     <div class="profile-body">
       <p>Jac Morgan is one of the best back-rowers Wales has produced in years, a flanker famous for his work at the breakdown and his relentless energy. Born on 21 January 2000 in Sketty, Swansea, he grew up in Brynamman and first played his rugby at Cwmtwrch RFC.</p>
       <h3>The Long Way Round</h3>
       <p>Morgan's route to the top was not a straight line. He spent two years working as an apprentice mechanical engineer before getting his chance in professional rugby. He played for Aberavon in the semi-professional game, came through at the Scarlets, and joined the Ospreys in 2021. He moved to Gloucester ahead of the 2026-27 season.</p>
       <h3>Wales and the Lions</h3>
       <p>Morgan made his Wales debut in 2022 and has captained his country. In 2025 he toured Australia with the British &amp; Irish Lions, coming off the bench in the second and third Tests and scoring a try in the final Test in Sydney. He can play at openside, blindside and number 8, and he is one of the first names Wales fans want to see on the team sheet.</p>
+      <p class="photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Jac_Morgan_2023.jpg" rel="noopener" target="_blank">stede64 (Stefano Delfrate)</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0" rel="noopener" target="_blank">CC BY-SA 2.0</a>, via Wikimedia Commons (cropped).</p>
     </div>
   </div>
 
   <!-- AARON WAINWRIGHT -->
   <div class="profile" id="wainwright">
-    <div class="profile-header">
+    <div class="profile-header has-photo">
+      <img class="profile-photo" src="images/players/wainwright.jpg" alt="Aaron Wainwright playing for the Dragons" width="320" height="400" loading="lazy">
+      <div class="profile-head-text">
       <div class="profile-name">Aaron Wainwright</div>
       <div class="profile-meta">
         <span class="tag">Number 8</span>
@@ -346,7 +365,7 @@
         <div class="stat"><span class="stat-val">189cm</span><span class="stat-label">Height</span></div>
         <div class="stat"><span class="stat-val">110kg</span><span class="stat-label">Weight</span></div>
       </div>
-    </div>
+    </div></div>
     <div class="profile-body">
       <p>Aaron Wainwright is one of the most experienced and important players in the current Wales squad — a Number 8 of genuine international quality who has represented his country over 62 times and remains one of the most dangerous ball-carriers in the northern hemisphere. Born in Newport on 25 September 1997, Wainwright's path to rugby was far from straightforward.</p>
       <h3>From Football to Rugby</h3>
@@ -355,6 +374,7 @@
       <p>Wainwright scored a try in Wales's dramatic 20-19 victory over France in the 2019 Rugby World Cup quarter-final at Oita Stadium — one of the defining moments of Welsh rugby in recent years. He was named Mastercard Player of the Match. He went on to contribute to Wales's 2021 Six Nations title and has been a first-choice Number 8 under multiple head coaches.</p>
       <p>In the <a href="articles.html#article20" style="color:var(--gold);text-decoration:underline;">2026 Six Nations</a>, Wainwright started all five matches and made 48 carries across the tournament — bettered only by England's Ben Earl among all players. His power across the gainline and exceptional work rate without the ball remain the foundations of his game. He has signed for Leicester Tigers ahead of the 2026-27 season but, with over 62 caps, comfortably exceeds the 25-cap threshold to remain eligible for Wales while playing outside the country.</p>
       <p>Wainwright was named the Welsh Rugby Writers' Association Wales Men's Player of the Year for 2023-24 and has twice been voted Dragons Players' Player of the Year. He enters the Nations Championship as one of Wales's most crucial players.</p>
+      <p class="photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Aaron_Wainwright_20250419_173900.jpg" rel="noopener" target="_blank">Bearas</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="noopener" target="_blank">CC BY-SA 4.0</a>, via Wikimedia Commons (cropped).</p>
     </div>
   </div>
 
