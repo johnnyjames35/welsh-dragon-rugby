@@ -31,7 +31,10 @@ async function fetchAPI(endpoint) {
     const res = await fetch(`https://v1.rugby.api-sports.io/${endpoint}`, {
       headers: { 'x-apisports-key': API_KEY }
     });
-    const data = await res.json();
+    // Read the raw text so we can fix old team names before anything is stored or sent.
+    // API-Sports still calls the region "Cardiff Blues"; the club is now "Cardiff Rugby".
+    const raw = await res.text();
+    const data = JSON.parse(raw.replace(/Cardiff Blues/g, 'Cardiff Rugby'));
     cache[endpoint] = data;
     cacheTime[endpoint] = now;
     return data;
