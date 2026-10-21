@@ -392,14 +392,14 @@
       <span class="ticker-item ticker-link" onclick="document.getElementById('poll-section').scrollIntoView({behavior:'smooth'})">⭐ Vote your Wales Player of the Match</span>
       <span class="ticker-item">🐉 Cymru am Byth</span>
       <span class="ticker-item">📊 URC fixtures & live scores</span>
-      <span class="ticker-item">🎁 Monthly fan prize coming soon</span>
+      <span class="ticker-item">🐉 Take the Welsh rugby fan quiz</span>
       <!-- Duplicate set for seamless loop -->
       <span class="ticker-item">🏉 Autumn Nations Championship: Wales v Japan, 7 Nov</span>
       <span class="ticker-item ticker-link" onclick="document.getElementById('wrsStartPanel').scrollIntoView({behavior:'smooth'})">🔥 Take the Ultimate Welsh Rugby Fan Quiz</span>
       <span class="ticker-item ticker-link" onclick="document.getElementById('poll-section').scrollIntoView({behavior:'smooth'})">⭐ Vote your Wales Player of the Match</span>
       <span class="ticker-item">🐉 Cymru am Byth</span>
       <span class="ticker-item">📊 URC fixtures & live scores</span>
-      <span class="ticker-item">🎁 Monthly fan prize coming soon</span>
+      <span class="ticker-item">🐉 Take the Welsh rugby fan quiz</span>
     </div>
   </div>
 
@@ -667,7 +667,7 @@
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px;">
         <div style="background:rgba(10,35,24,0.72);border:1px solid rgba(201,168,76,0.28);border-radius:16px;padding:16px;"><strong style="display:block;color:#e2c47a;margin-bottom:4px;">20 Questions</strong><span style="color:#ede8de;">Mixed difficulty from easy to expert.</span></div>
         <div style="background:rgba(10,35,24,0.72);border:1px solid rgba(201,168,76,0.28);border-radius:16px;padding:16px;"><strong style="display:block;color:#e2c47a;margin-bottom:4px;">Fan Table</strong><span style="color:#ede8de;">Your nickname and score appear at the end.</span></div>
-        <div style="background:rgba(10,35,24,0.72);border:1px solid rgba(201,168,76,0.28);border-radius:16px;padding:16px;"><strong style="display:block;color:#e2c47a;margin-bottom:4px;">Prize Hook</strong><span style="color:#ede8de;">Top monthly score can win a Welsh Rugby Stories prize.</span></div>
+        <div style="background:rgba(10,35,24,0.72);border:1px solid rgba(201,168,76,0.28);border-radius:16px;padding:16px;"><strong style="display:block;color:#e2c47a;margin-bottom:4px;">Bragging Rights</strong><span style="color:#ede8de;">See your Rugby Brain rank at the final whistle.</span></div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end;margin-top:20px;">
         <div><label style="display:block;color:#e2c47a;font-weight:700;margin-bottom:6px;">Your name</label><input id="wrsFanName" type="text" placeholder="Example: John" maxlength="30" style="width:100%;padding:13px 14px;border-radius:12px;border:1px solid rgba(226,196,122,0.45);background:#0a2318;color:#f8f5ee;font-size:1rem;outline:none;" /></div>
@@ -697,9 +697,9 @@
       <div id="wrsFinalScore" style="font-size:clamp(2.5rem,8vw,5rem);color:#c9a84c;margin:8px 0;font-weight:900;line-height:1;"></div>
       <p id="wrsRankMsg" style="color:#ede8de;"></p>
       <div style="background:linear-gradient(145deg,rgba(201,168,76,0.18),rgba(181,19,43,0.16));border:1px solid rgba(226,196,122,0.62);border-radius:18px;padding:18px;margin-top:16px;">
-        <h3 style="color:#e2c47a;margin-top:0;">Prize Challenge</h3>
-        <p style="color:#ede8de;"><strong>Top score at the end of the month wins a Welsh Rugby Stories prize.</strong></p>
-        <p style="color:#ede8de;">Suggested prize: £10 voucher, Welsh rugby mug, sticker pack, or "Fan of the Month" feature on the website.</p>
+        <h3 style="color:#e2c47a;margin-top:0;">Your Rugby Brain Rank</h3>
+        <p style="color:#ede8de;"><strong>How far up your browser's supporters table can you climb?</strong></p>
+        <p style="color:#ede8de;">No purchase or prize — just Welsh rugby bragging rights.</p>
       </div>
       <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;">
         <button onclick="wrsRestartQuiz()" style="cursor:pointer;border:0;border-radius:12px;padding:13px 18px;background:linear-gradient(135deg,#c9a84c,#e2c47a);color:#0a2318;font-weight:900;font-size:1rem;">Try Again</button>
@@ -719,7 +719,7 @@
         </tr></thead>
         <tbody id="wrsLeaderboard"></tbody>
       </table>
-      <p style="color:#5a7a65;font-size:0.9rem;margin-top:12px;">Competition note: add your own terms before making the prize official.</p>
+      <p style="color:#5a7a65;font-size:0.9rem;margin-top:12px;">Scores are stored only in this browser. This is not a site-wide competition.</p>
     </section>
 
   </div>
@@ -749,11 +749,40 @@
     { d:"Expert", q:"Which Welsh club side famously beat New Zealand in 1972?", a:["Llanelli","Cardiff","Swansea","Pontypool"], c:0, f:"Llanelli's 1972 win over the All Blacks remains one of Welsh rugby's famous club moments." },
     { d:"Expert", q:"Which legendary Welsh full-back was known for his fearless attacking style and huge sideburns?", a:["JPR Williams","Gerald Davies","Mervyn Davies","Phil Bennett"], c:0, f:"JPR Williams became one of the most iconic Welsh and Lions players of all time." }
   ];
-  let wrsCurrent=0,wrsScore=0,wrsAnswered=false,wrsPlayer={name:'',nickname:''};
+  const wrsScoresKey='wdr_wrs_scores_v1';
+  let wrsCurrent=0,wrsScore=0,wrsAnswered=false,wrsFinished=false,wrsPlayer={name:'',nickname:''};
+  function wrsTrack(eventName){
+    try {
+      if(typeof window.gtag==='function') window.gtag('event',eventName,{quiz_id:'ultimate_welsh_rugby_fan'});
+    } catch(e) { /* Analytics must never interrupt the quiz. */ }
+  }
+  function wrsReadScores(){
+    try {
+      const scores=JSON.parse(localStorage.getItem(wrsScoresKey)||'[]');
+      return Array.isArray(scores)?scores:[];
+    } catch(e) { return []; }
+  }
+  function wrsRenderLeaderboard(){
+    const body=document.getElementById('wrsLeaderboard');
+    if(!body)return;
+    body.replaceChildren();
+    const scores=wrsReadScores().filter(item=>item&&typeof item.nickname==='string'&&Number.isInteger(item.score)&&item.score>=0&&item.score<=wrsQuestions.length).sort((a,b)=>b.score-a.score).slice(0,10);
+    scores.forEach((item,index)=>{
+      const row=document.createElement('tr');
+      [String(index+1),item.nickname,String(item.score)+'/'+wrsQuestions.length,String(item.date||'')].forEach(value=>{
+        const cell=document.createElement('td');
+        cell.textContent=value;
+        cell.style.cssText='padding:10px;border-bottom:1px solid rgba(42,122,80,0.55);color:#ede8de;';
+        row.appendChild(cell);
+      });
+      body.appendChild(row);
+    });
+  }
   window.wrsStartQuiz=function(){
     wrsPlayer.name=document.getElementById('wrsFanName').value.trim()||'Welsh Rugby Fan';
     wrsPlayer.nickname=document.getElementById('wrsNickname').value.trim()||'Anonymous Dragon';
-    wrsCurrent=0;wrsScore=0;wrsAnswered=false;
+    wrsCurrent=0;wrsScore=0;wrsAnswered=false;wrsFinished=false;
+    wrsTrack('wdr_quiz_start');
     document.getElementById('wrsStartPanel').style.display='none';
     document.getElementById('wrsResultPanel').style.display='none';
     document.getElementById('wrsQuizPanel').style.display='block';
@@ -791,7 +820,37 @@
     document.getElementById('wrsFeedback').style.display='block';
     document.getElementById('wrsNextBtn').style.display='inline-block';
   }
-  window.wrsNextQuestion=function(){wrsCurrent++;if(wrsCurrent>=wrsQuestions.length)wrsEndQuiz();else wrsShowQuestion();};
+  function wrsEndQuiz(){
+    if(wrsFinished)return;
+    wrsFinished=true;
+    wrsTrack('wdr_quiz_complete');
+    document.getElementById('wrsQuizPanel').style.display='none';
+    document.getElementById('wrsResultPanel').style.display='block';
+    document.getElementById('wrsResultLine').textContent='Final whistle, '+wrsPlayer.nickname+'!';
+    document.getElementById('wrsFinalScore').textContent=wrsScore+'/'+wrsQuestions.length;
+    document.getElementById('wrsRankMsg').textContent=wrsScore>=16?'Rugby brain: Dragon Legend':wrsScore>=10?'Rugby brain: First XV':'Rugby brain: Rising Dragon';
+    try {
+      const scores=wrsReadScores();
+      scores.push({nickname:wrsPlayer.nickname,score:wrsScore,date:new Date().toLocaleDateString('en-GB')});
+      localStorage.setItem(wrsScoresKey,JSON.stringify(scores.slice(-100)));
+    } catch(e) { /* Private browsing can disable local storage. */ }
+    wrsRenderLeaderboard();
+  }
+  window.wrsNextQuestion=function(){
+    if(wrsFinished||!wrsAnswered)return;
+    wrsCurrent++;
+    if(wrsCurrent>=wrsQuestions.length)wrsEndQuiz();else wrsShowQuestion();
+  };
+  window.wrsRestartQuiz=function(){
+    document.getElementById('wrsResultPanel').style.display='none';
+    document.getElementById('wrsQuizPanel').style.display='none';
+    document.getElementById('wrsStartPanel').style.display='block';
+  };
+  window.wrsClearScores=function(){
+    try { localStorage.removeItem(wrsScoresKey); } catch(e) {}
+    wrsRenderLeaderboard();
+  };
+  wrsRenderLeaderboard();
 })();
 </script>
 
