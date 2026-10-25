@@ -341,7 +341,7 @@
             .then(function (res) {
               if (res.ok && res.d.success) {
                 msg.className = 'msg ok';
-                msg.textContent = res.d.confirm ? 'Nearly done! Check your inbox and click the link to confirm.' : 'Thanks! You are on the list.';
+                msg.textContent = res.d.confirm ? 'Nearly done! Check your inbox and click the link to confirm. Cannot see it? Check your spam or junk folder.' : 'Thanks! You are on the list.';
                 form.reset();
               } else {
                 msg.className = 'msg bad';
