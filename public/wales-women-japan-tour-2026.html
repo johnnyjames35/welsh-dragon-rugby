@@ -268,6 +268,85 @@
     </div>
   </article>
 
+  <section class="wdr-signup" id="matchday-signup">
+    <style>
+      .wdr-signup { max-width: 760px; margin: 36px auto 8px; padding: 26px 24px; background: var(--card); border: 1px solid var(--border); border-top: 3px solid var(--gold); border-radius: 10px; }
+      .wdr-signup h3 { font-family: 'Cinzel', serif; color: var(--gold); font-size: 20px; margin-bottom: 8px; }
+      .wdr-signup p { color: var(--off-white); font-size: 15px; line-height: 1.55; margin-bottom: 14px; }
+      .wdr-signup .row { display: flex; gap: 10px; flex-wrap: wrap; }
+      .wdr-signup input[type=email] { flex: 1 1 230px; padding: 12px 14px; font-size: 16px; font-family: 'DM Sans', sans-serif; border-radius: 6px; border: 1px solid var(--border); background: var(--green-mid); color: var(--white); }
+      .wdr-signup button { padding: 12px 22px; font-size: 15px; font-weight: 700; font-family: 'DM Sans', sans-serif; border: none; border-radius: 6px; background: var(--gold); color: var(--green-deep); cursor: pointer; }
+      .wdr-signup button:disabled { opacity: 0.6; cursor: default; }
+      .wdr-signup fieldset { border: none; margin: 16px 0 4px; }
+      .wdr-signup legend { font-size: 14px; color: var(--off-white); margin-bottom: 6px; }
+      .wdr-signup label.opt { display: inline-block; margin-right: 16px; font-size: 14px; color: var(--off-white); cursor: pointer; }
+      .wdr-signup .small { font-size: 12.5px; opacity: 0.75; margin: 12px 0 0; }
+      .wdr-signup .small a { color: var(--gold-light); }
+      .wdr-signup .hp { position: absolute; left: -9999px; height: 0; width: 0; overflow: hidden; }
+      .wdr-signup .msg { margin-top: 12px; font-size: 15px; min-height: 1em; }
+      .wdr-signup .msg.ok { color: var(--gold-light); }
+      .wdr-signup .msg.bad { color: #ff9a9a; }
+    </style>
+    <h3>Get Wales match-day emails</h3>
+    <p>Kick-off time, TV channel and a quick preview before each Wales game this autumn. Free, one email per match, and you can unsubscribe at any time.</p>
+    <form id="wdr-signup-form" novalidate>
+      <div class="row">
+        <input type="email" name="email" id="wdr-signup-email" placeholder="Your email address" autocomplete="email" aria-label="Your email address" required>
+        <button type="submit" id="wdr-signup-btn">Send me the emails</button>
+      </div>
+      <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="website" id="wdr-signup-hp" tabindex="-1" autocomplete="off"></label></div>
+      <fieldset>
+        <legend>Optional: would you use a clean Welsh rugby app with no pop-ups or tracking?</legend>
+        <label class="opt"><input type="radio" name="appInterest" value="yes"> Yes</label>
+        <label class="opt"><input type="radio" name="appInterest" value="maybe"> Maybe</label>
+        <label class="opt"><input type="radio" name="appInterest" value="no"> No</label>
+      </fieldset>
+      <p class="small">By signing up you agree to receive Welsh Dragon Rugby match-day emails. We use Brevo to send them and never sell your details. See our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+      <div class="msg" id="wdr-signup-msg" role="status" aria-live="polite"></div>
+    </form>
+    <script>
+      (function () {
+        var form = document.getElementById('wdr-signup-form');
+        if (!form) return;
+        var msg = document.getElementById('wdr-signup-msg');
+        var btn = document.getElementById('wdr-signup-btn');
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var email = document.getElementById('wdr-signup-email').value.trim();
+          if (!email) { msg.className = 'msg bad'; msg.textContent = 'Please enter your email address.'; return; }
+          var picked = form.querySelector('input[name=appInterest]:checked');
+          btn.disabled = true; msg.className = 'msg'; msg.textContent = 'Sending...';
+          fetch('/api/subscribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email: email,
+              website: document.getElementById('wdr-signup-hp').value,
+              appInterest: picked ? picked.value : '',
+              source: location.pathname
+            })
+          }).then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+            .then(function (res) {
+              if (res.ok && res.d.success) {
+                msg.className = 'msg ok';
+                msg.textContent = res.d.confirm ? 'Nearly done! Check your inbox and click the link to confirm.' : 'Thanks! You are on the list.';
+                form.reset();
+              } else {
+                msg.className = 'msg bad';
+                msg.textContent = (res.d && res.d.error) || 'Sorry, something went wrong. Please try again.';
+              }
+              btn.disabled = false;
+            })
+            .catch(function () {
+              msg.className = 'msg bad';
+              msg.textContent = 'Sorry, something went wrong. Please try again.';
+              btn.disabled = false;
+            });
+        });
+      })();
+    </script>
+  </section>
+
   <div class="continue">
     <h3>Continue Reading</h3>
     <a href="japan-v-wales-women-tokyo-2026.html">Match report: Japan 0-17 Wales in Tokyo</a>
