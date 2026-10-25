@@ -109,4 +109,16 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://welshdragonrugby.co.uk/ospreys-v-dragons-st-helens-2026.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://welshdragonrugby.co.uk/stormers-v-scarlets-urc-2026.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
