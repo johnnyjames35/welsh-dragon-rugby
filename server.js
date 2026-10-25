@@ -406,6 +406,76 @@ app.get('/api/wales-squad', (req, res) => {
   };
   res.json(squad);
 });
+// ── MATCH-DAY EMAIL SIGN-UP (Brevo) ───────────────────────────────────────────
+// Needs these Railway variables: BREVO_API_KEY, BREVO_LIST_ID.
+// Optional: BREVO_DOI_TEMPLATE_ID (turns on the "confirm your email" step).
+// Until the key and list are set, this answers politely and does nothing.
+const subscribeHits = {};
+function subscribeAllowed(ip) {
+  const now = Date.now();
+  const hits = (subscribeHits[ip] || []).filter(t => now - t < 60 * 60 * 1000);
+  if (hits.length >= 5) { subscribeHits[ip] = hits; return false; }
+  hits.push(now);
+  subscribeHits[ip] = hits;
+  return true;
+}
+
+app.post('/api/subscribe', async (req, res) => {
+  try {
+    const body = req.body || {};
+    // Hidden "website" box: real people leave it empty, bots fill it in.
+    if (body.website) return res.json({ success: true });
+
+    const email = String(body.email || '').trim().toLowerCase();
+    if (email.length > 200 || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+      return res.status(400).json({ error: 'Please enter a valid email address.' });
+    }
+
+    const ip = (req.headers['x-forwarded-for'] || req.socket.remoteAddress || '').toString().split(',')[0].trim();
+    if (!subscribeAllowed(ip)) {
+      return res.status(429).json({ error: 'Too many attempts. Please try again later.' });
+    }
+
+    const apiKey = process.env.BREVO_API_KEY;
+    const listId = parseInt(process.env.BREVO_LIST_ID, 10);
+    if (!apiKey || !listId) {
+      return res.status(503).json({ error: 'Sign-up is not switched on yet. Please check back soon.' });
+    }
+
+    const attributes = {};
+    const interest = String(body.appInterest || '').toLowerCase();
+    if (['yes', 'maybe', 'no'].includes(interest)) attributes.APP_INTEREST = interest;
+    const source = String(body.source || '').slice(0, 100);
+    if (source) attributes.SOURCE = source;
+
+    const headers = { 'api-key': apiKey, 'content-type': 'application/json', accept: 'application/json' };
+    const templateId = parseInt(process.env.BREVO_DOI_TEMPLATE_ID, 10);
+    let r;
+    if (templateId) {
+      r = await fetch('https://api.brevo.com/v3/contacts/doubleOptinConfirmation', {
+        method: 'POST', headers,
+        body: JSON.stringify({
+          email, attributes, includeListIds: [listId], templateId,
+          redirectionUrl: 'https://welshdragonrugby.co.uk/subscribed.html'
+        })
+      });
+    } else {
+      r = await fetch('https://api.brevo.com/v3/contacts', {
+        method: 'POST', headers,
+        body: JSON.stringify({ email, attributes, listIds: [listId], updateEnabled: true })
+      });
+    }
+    if (r.ok) return res.json({ success: true, confirm: !!templateId });
+
+    const errText = await r.text();
+    console.error('Brevo error', r.status, errText.slice(0, 300));
+    return res.status(502).json({ error: 'Sorry, something went wrong. Please try again later.' });
+  } catch (err) {
+    console.error('Subscribe error:', err);
+    return res.status(500).json({ error: 'Sorry, something went wrong. Please try again later.' });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Welsh Dragon Rugby running on port ${PORT}`);
 });
