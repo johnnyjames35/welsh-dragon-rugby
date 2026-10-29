@@ -133,4 +133,16 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://welshdragonrugby.co.uk/wales-women.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://welshdragonrugby.co.uk/wales-women-six-nations-2027.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
