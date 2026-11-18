@@ -16,11 +16,19 @@ const TEAM_CONFIG = {
 // ── STARS OF THE WEEK ────────────────────────────────────────
 async function loadStarsOfWeek() {
   const container = document.getElementById('stars-container');
-  if (!container) return;
+  const section = document.getElementById('stars-section');
+  if (!container || !section) return;
 
   try {
     const res = await fetch('/api/stars');
+    if (!res.ok) throw new Error('Stars unavailable');
     const data = await res.json();
+    const updatedAt = new Date(`${data.updatedDate}T00:00:00Z`);
+    const ageDays = (Date.now() - updatedAt.getTime()) / 86400000;
+    if (!Number.isFinite(ageDays) || ageDays < 0 || ageDays > 14 || !Array.isArray(data.stars) || !data.stars.length) {
+      section.hidden = true;
+      return;
+    }
 
     const dateStr = new Date(data.updatedDate).toLocaleDateString('en-GB', {
       weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
@@ -34,8 +42,9 @@ async function loadStarsOfWeek() {
         ${data.stars.map(star => renderStarCard(star)).join('')}
       </div>
     `;
+    section.hidden = false;
   } catch (err) {
-    container.innerHTML = '<p class="error-msg">Stars of the Week coming soon...</p>';
+    section.hidden = true;
   }
 }
 
