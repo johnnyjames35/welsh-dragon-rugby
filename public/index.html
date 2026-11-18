@@ -859,7 +859,35 @@
     { d:"Expert", q:"Which Welsh club side famously beat New Zealand in 1972?", a:["Llanelli","Cardiff","Swansea","Pontypool"], c:0, f:"Llanelli's 1972 win over the All Blacks remains one of Welsh rugby's famous club moments." },
     { d:"Expert", q:"Which legendary Welsh full-back was known for his fearless attacking style and huge sideburns?", a:["JPR Williams","Gerald Davies","Mervyn Davies","Phil Bennett"], c:0, f:"JPR Williams became one of the most iconic Welsh and Lions players of all time." }
   ];
+  const wrsScoresKey='wdr-quiz-scores-v1';
   let wrsCurrent=0,wrsScore=0,wrsAnswered=false,wrsPlayer={name:'',nickname:''};
+  function wrsReadScores(){
+    try{
+      const saved=JSON.parse(localStorage.getItem(wrsScoresKey)||'[]');
+      return Array.isArray(saved)?saved.filter(entry=>entry&&typeof entry.nickname==='string'&&Number.isInteger(entry.score)&&typeof entry.date==='string'):[];
+    }catch{return [];}
+  }
+  function wrsRenderScores(){
+    const table=document.getElementById('wrsLeaderboard');
+    table.replaceChildren();
+    const scores=wrsReadScores().sort((a,b)=>b.score-a.score||b.date.localeCompare(a.date)).slice(0,10);
+    if(!scores.length){
+      const row=table.insertRow();
+      const cell=row.insertCell();
+      cell.colSpan=4;
+      cell.textContent='No completed quizzes saved on this device yet.';
+      return;
+    }
+    scores.forEach((entry,index)=>{
+      const row=table.insertRow();
+      [index+1,entry.nickname,entry.score+'/'+wrsQuestions.length,entry.date.slice(0,10)].forEach(value=>{
+        row.insertCell().textContent=String(value);
+      });
+    });
+  }
+  function wrsTrack(eventName){
+    if(typeof window.gtag==='function')window.gtag('event',eventName,{quiz_name:'ultimate_welsh_rugby_fan_quiz'});
+  }
   window.wrsStartQuiz=function(){
     wrsPlayer.name=document.getElementById('wrsFanName').value.trim()||'Welsh Rugby Fan';
     wrsPlayer.nickname=document.getElementById('wrsNickname').value.trim()||'Anonymous Dragon';
@@ -868,6 +896,7 @@
     document.getElementById('wrsResultPanel').style.display='none';
     document.getElementById('wrsQuizPanel').style.display='block';
     wrsShowQuestion();
+    wrsTrack('quiz_started');
   };
   function wrsShowQuestion(){
     wrsAnswered=false;
@@ -901,7 +930,35 @@
     document.getElementById('wrsFeedback').style.display='block';
     document.getElementById('wrsNextBtn').style.display='inline-block';
   }
-  window.wrsNextQuestion=function(){wrsCurrent++;if(wrsCurrent>=wrsQuestions.length)wrsEndQuiz();else wrsShowQuestion();};
+  function wrsEndQuiz(){
+    const completedAt=new Date().toISOString();
+    const scores=wrsReadScores();
+    scores.push({nickname:wrsPlayer.nickname,score:wrsScore,date:completedAt});
+    try{localStorage.setItem(wrsScoresKey,JSON.stringify(scores.slice(-50)));}catch{}
+    document.getElementById('wrsQuizPanel').style.display='none';
+    document.getElementById('wrsResultPanel').style.display='block';
+    document.getElementById('wrsResultLine').textContent=wrsPlayer.name+', you finished the quiz!';
+    document.getElementById('wrsFinalScore').textContent=wrsScore+' / '+wrsQuestions.length;
+    document.getElementById('wrsRankMsg').textContent=wrsScore>=16?'Top-class Welsh rugby knowledge!':wrsScore>=10?'Solid supporter knowledge!':'Keep learning and have another go!';
+    wrsRenderScores();
+    wrsTrack('quiz_completed');
+    document.getElementById('wrsResultPanel').scrollIntoView({behavior:'smooth'});
+  }
+  window.wrsNextQuestion=function(){
+    if(!wrsAnswered)return;
+    wrsCurrent++;
+    if(wrsCurrent>=wrsQuestions.length)wrsEndQuiz();else wrsShowQuestion();
+  };
+  window.wrsRestartQuiz=function(){
+    document.getElementById('wrsResultPanel').style.display='none';
+    document.getElementById('wrsStartPanel').style.display='block';
+    document.getElementById('wrsStartPanel').scrollIntoView({behavior:'smooth'});
+  };
+  window.wrsClearScores=function(){
+    try{localStorage.removeItem(wrsScoresKey);}catch{}
+    wrsRenderScores();
+  };
+  wrsRenderScores();
 })();
 </script>
 
