@@ -1,0 +1,53 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Welsh Dragon Rugby//Wales Six Nations 2027//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Wales Six Nations 2027
+X-WR-TIMEZONE:Europe/London
+BEGIN:VEVENT
+UID:wales-six-nations-2027-r1@welshdragonrugby.co.uk
+DTSTAMP:20261120T120000Z
+DTSTART:20270206T164000Z
+DTEND:20270206T184000Z
+SUMMARY:France v Wales (Six Nations 2027)
+LOCATION:Stade de France, Paris
+DESCRIPTION:Guinness Men's Six Nations 2027 Round 1. Kick-off times are UK time and the end time is an estimate. Details: https://welshdragonrugby.co.uk/six-nations-2027-wales-fixtures.html
+END:VEVENT
+BEGIN:VEVENT
+UID:wales-six-nations-2027-r2@welshdragonrugby.co.uk
+DTSTAMP:20261120T120000Z
+DTSTART:20270213T164000Z
+DTEND:20270213T184000Z
+SUMMARY:Scotland v Wales (Six Nations 2027)
+LOCATION:Murrayfield, Edinburgh
+DESCRIPTION:Guinness Men's Six Nations 2027 Round 2. Kick-off times are UK time and the end time is an estimate. Details: https://welshdragonrugby.co.uk/six-nations-2027-wales-fixtures.html
+END:VEVENT
+BEGIN:VEVENT
+UID:wales-six-nations-2027-r3@welshdragonrugby.co.uk
+DTSTAMP:20261120T120000Z
+DTSTART:20270220T141000Z
+DTEND:20270220T161000Z
+SUMMARY:Wales v Ireland (Six Nations 2027)
+LOCATION:Principality Stadium, Cardiff
+DESCRIPTION:Guinness Men's Six Nations 2027 Round 3. Kick-off times are UK time and the end time is an estimate. Details: https://welshdragonrugby.co.uk/six-nations-2027-wales-fixtures.html
+END:VEVENT
+BEGIN:VEVENT
+UID:wales-six-nations-2027-r4@welshdragonrugby.co.uk
+DTSTAMP:20261120T120000Z
+DTSTART:20270306T164000Z
+DTEND:20270306T184000Z
+SUMMARY:Wales v England (Six Nations 2027)
+LOCATION:Principality Stadium, Cardiff
+DESCRIPTION:Guinness Men's Six Nations 2027 Round 4. Kick-off times are UK time and the end time is an estimate. Details: https://welshdragonrugby.co.uk/six-nations-2027-wales-fixtures.html
+END:VEVENT
+BEGIN:VEVENT
+UID:wales-six-nations-2027-r5@welshdragonrugby.co.uk
+DTSTAMP:20261120T120000Z
+DTSTART:20270313T141000Z
+DTEND:20270313T161000Z
+SUMMARY:Italy v Wales (Six Nations 2027)
+LOCATION:Stadio Olimpico, Rome
+DESCRIPTION:Guinness Men's Six Nations 2027 Round 5 (Super Saturday). Kick-off times are UK time and the end time is an estimate. Details: https://welshdragonrugby.co.uk/six-nations-2027-wales-fixtures.html
+END:VEVENT
+END:VCALENDAR
