@@ -348,8 +348,7 @@ app.get('/api/news', async (req, res) => {
     res.json({
       source: 'BBC Sport Rugby',
       items: [
-        { title: 'Wales prepare for Nations Championship opener against Fiji', link: 'https://www.bbc.co.uk/sport/rugby-union', desc: 'Wales head coach Warren Gatland has named his squad for the inaugural World Rugby Nations Championship.', pubDate: new Date().toUTCString() },
-        { title: 'United Rugby Championship reaches climax with Welsh regions in contention', link: 'https://www.bbc.co.uk/sport/rugby-union', desc: 'The Scarlets lead the Welsh challenge as the URC season reaches its final stages.', pubDate: new Date().toUTCString() }
+        { title: 'Latest rugby news on BBC Sport', link: 'https://www.bbc.co.uk/sport/rugby-union', desc: 'Our live news feed is temporarily unavailable. Visit BBC Sport for the latest rugby union headlines.', pubDate: new Date().toUTCString() }
       ],
       fetched: new Date().toISOString()
     });
