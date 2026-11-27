@@ -400,4 +400,10 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <url>
+    <loc>https://welshdragonrugby.co.uk/wales-rugby-world-cup-2027-pool-f-fixtures.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
